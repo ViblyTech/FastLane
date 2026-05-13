@@ -62,7 +62,7 @@ export default function Image() {
             }}
           >
             <span>Detailing that</span>
-            <span style={{ color: "#e84a38" }}>comes to you.</span>
+            <span style={{ color: "#dce0e5" }}>comes to you.</span>
           </div>
           <div style={{ fontSize: 32, color: "#9a9a9f", maxWidth: 900 }}>
             Mobile auto detailing, ceramic coating, and paint correction. Bend and Central Oregon.

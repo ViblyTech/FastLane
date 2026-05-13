@@ -12,7 +12,7 @@ export default function Icon() {
           width: "100%",
           height: "100%",
           background: "#0b0b0d",
-          color: "#e84a38",
+          color: "#dce0e5",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

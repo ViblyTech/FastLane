@@ -26,7 +26,7 @@ export default function AppleIcon() {
             fontWeight: 900,
             fontStyle: "italic",
             fontSize: 88,
-            color: "#e84a38",
+            color: "#dce0e5",
             letterSpacing: -4,
             lineHeight: 1,
           }}
