@@ -3,6 +3,8 @@ import Script from "next/script";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
+import { localBusinessSchema, websiteSchema, organizationSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -22,15 +24,26 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Mobile Auto Detailing in Bend, OR`,
-    template: `%s — ${site.name}`,
+    default: `${site.name}, Mobile Auto Detailing in Bend, OR`,
+    template: `%s | ${site.name}`,
   },
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: site.name }],
+  authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   publisher: site.name,
-  icons: { icon: "/logo.svg" },
+  keywords: [...site.keywords],
+  icons: {
+    icon: [{ url: "/icon", sizes: "32x32", type: "image/png" }],
+    shortcut: "/icon",
+    apple: "/icon",
+  },
+  manifest: "/manifest.webmanifest",
+  formatDetection: {
+    telephone: true,
+    address: true,
+    email: true,
+  },
 };
 
 export const viewport: Viewport = {
@@ -38,6 +51,7 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: dark)", color: "#0b0b0d" },
     { media: "(prefers-color-scheme: light)", color: "#f6f4ef" },
   ],
+  colorScheme: "dark light",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -45,7 +59,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+      </head>
       <body>
+        <JsonLd data={[organizationSchema(), localBusinessSchema(), websiteSchema()]} />
         <Header />
         <main id="main">{children}</main>
         <Footer />

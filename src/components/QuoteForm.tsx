@@ -47,12 +47,13 @@ export function QuoteForm() {
     return (
       <div
         role="status"
-        className="rounded-lg border border-[var(--color-line-soft)] bg-[var(--color-surface)] p-8 text-center"
+        aria-live="polite"
+        className="rounded-card border border-[var(--color-accent)] bg-[var(--color-surface)] p-8 text-center"
       >
         <div className="eyebrow mb-2 text-[var(--color-accent)]">Got it</div>
-        <h3 className="text-2xl font-bold">We'll get back to you within a few hours.</h3>
+        <h3 className="text-2xl font-bold">We will get back to you within a few hours.</h3>
         <p className="mt-3 text-[var(--color-fg-muted)]">
-          If you need an answer faster, call or text us at (541) 640-0612.
+          If you need an answer faster, call or text (541) 640-0612.
         </p>
       </div>
     );
@@ -62,7 +63,7 @@ export function QuoteForm() {
     <form
       onSubmit={onSubmit}
       noValidate
-      className="grid gap-6 rounded-lg border border-[var(--color-line-soft)] bg-[var(--color-surface)] p-6 sm:p-8"
+      className="grid gap-6 rounded-card border border-[var(--color-line-soft)] bg-[var(--color-surface)] p-6 sm:p-8"
     >
       <div className="hidden" aria-hidden="true">
         <label>
@@ -79,49 +80,27 @@ export function QuoteForm() {
       <Field label="Email" name="email" type="email" autoComplete="email" required />
 
       <div className="grid gap-6 sm:grid-cols-2">
-        <Field label="Vehicle (year, make, model)" name="vehicle" placeholder="2022 Toyota 4Runner" />
-        <div>
-          <label htmlFor="service" className="mb-2 block text-sm font-medium">
-            What you're interested in
-          </label>
-          <select
-            id="service"
-            name="service"
-            defaultValue=""
-            className="w-full rounded-md border border-[var(--color-line-soft)] bg-[var(--color-canvas)] px-3 py-3 text-base focus:border-[var(--color-accent)] focus:outline-none"
-          >
-            <option value="" disabled>
-              Select a service
+        <Field
+          label="Vehicle (year, make, model)"
+          name="vehicle"
+          placeholder="2022 Toyota 4Runner"
+        />
+        <Select label="What you're interested in" name="service" defaultLabel="Select a service">
+          {services.map((s) => (
+            <option key={s.slug} value={s.name}>
+              {s.name}
             </option>
-            {services.map((s) => (
-              <option key={s.slug} value={s.name}>
-                {s.name}
-              </option>
-            ))}
-            <option value="not-sure">Not sure yet</option>
-          </select>
-        </div>
+          ))}
+          <option value="not-sure">Not sure yet</option>
+        </Select>
       </div>
 
-      <div>
-        <label htmlFor="location" className="mb-2 block text-sm font-medium">
-          Where
-        </label>
-        <select
-          id="location"
-          name="location"
-          defaultValue=""
-          className="w-full rounded-md border border-[var(--color-line-soft)] bg-[var(--color-canvas)] px-3 py-3 text-base focus:border-[var(--color-accent)] focus:outline-none"
-        >
-          <option value="" disabled>
-            Select a location
-          </option>
-          <option value="my-home">My driveway / home</option>
-          <option value="my-office">My office / parking lot</option>
-          <option value="your-shop">Your shop</option>
-          <option value="not-sure">Not sure yet</option>
-        </select>
-      </div>
+      <Select label="Where" name="location" defaultLabel="Select a location">
+        <option value="my-home">My driveway or home</option>
+        <option value="my-office">My office or parking lot</option>
+        <option value="your-shop">Your shop</option>
+        <option value="not-sure">Not sure yet</option>
+      </Select>
 
       <div>
         <label htmlFor="notes" className="mb-2 block text-sm font-medium">
@@ -132,7 +111,7 @@ export function QuoteForm() {
           name="notes"
           rows={4}
           placeholder="Pet hair, smoke smell, new car coating, scheduling preferences..."
-          className="w-full rounded-md border border-[var(--color-line-soft)] bg-[var(--color-canvas)] px-3 py-3 text-base focus:border-[var(--color-accent)] focus:outline-none"
+          className="w-full rounded-md border border-[var(--color-line-soft)] bg-[var(--color-canvas)] px-3 py-3 text-base transition-colors focus:border-[var(--color-accent)] focus:outline-none"
         />
       </div>
 
@@ -146,7 +125,7 @@ export function QuoteForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-medium text-[var(--color-accent-fg)] transition-opacity hover:opacity-90 disabled:opacity-50"
+          className="cta disabled:cursor-not-allowed disabled:opacity-50"
         >
           {status === "submitting" ? "Sending..." : "Request quote"}
         </button>
@@ -177,7 +156,11 @@ function Field({
     <div>
       <label htmlFor={name} className="mb-2 block text-sm font-medium">
         {label}
-        {required ? <span aria-hidden="true" className="ml-1 text-[var(--color-accent)]">*</span> : null}
+        {required ? (
+          <span aria-hidden="true" className="ml-1 text-[var(--color-accent)]">
+            *
+          </span>
+        ) : null}
       </label>
       <input
         id={name}
@@ -186,8 +169,39 @@ function Field({
         required={required}
         autoComplete={autoComplete}
         placeholder={placeholder}
-        className="w-full rounded-md border border-[var(--color-line-soft)] bg-[var(--color-canvas)] px-3 py-3 text-base focus:border-[var(--color-accent)] focus:outline-none"
+        className="w-full rounded-md border border-[var(--color-line-soft)] bg-[var(--color-canvas)] px-3 py-3 text-base transition-colors focus:border-[var(--color-accent)] focus:outline-none"
       />
+    </div>
+  );
+}
+
+function Select({
+  label,
+  name,
+  defaultLabel,
+  children,
+}: {
+  label: string;
+  name: string;
+  defaultLabel: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      <label htmlFor={name} className="mb-2 block text-sm font-medium">
+        {label}
+      </label>
+      <select
+        id={name}
+        name={name}
+        defaultValue=""
+        className="w-full rounded-md border border-[var(--color-line-soft)] bg-[var(--color-canvas)] px-3 py-3 text-base transition-colors focus:border-[var(--color-accent)] focus:outline-none"
+      >
+        <option value="" disabled>
+          {defaultLabel}
+        </option>
+        {children}
+      </select>
     </div>
   );
 }

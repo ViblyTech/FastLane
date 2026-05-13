@@ -3,6 +3,7 @@
 @theme {
   --color-canvas: #0b0b0d;
   --color-surface: #141417;
+  --color-surface-2: #1c1c20;
   --color-fg: #f2efe8;
   --color-fg-muted: #9a9a9f;
   --color-line: #f2efe8;
@@ -12,12 +13,19 @@
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: var(--font-mono-face), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius-card: 0.75rem;
+  --radius-pill: 999px;
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 :root {
   color-scheme: dark light;
   --color-canvas: #0b0b0d;
   --color-surface: #141417;
+  --color-surface-2: #1c1c20;
   --color-fg: #f2efe8;
   --color-fg-muted: #9a9a9f;
   --color-line: #f2efe8;
@@ -30,6 +38,7 @@
   :root {
     --color-canvas: #f6f4ef;
     --color-surface: #ffffff;
+    --color-surface-2: #efece4;
     --color-fg: #0e0e10;
     --color-fg-muted: #5a5a5f;
     --color-line: #1a1a1d;
@@ -39,18 +48,24 @@
   }
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 @layer base {
   html {
     background: var(--color-canvas);
     color: var(--color-fg);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
   }
 
   body {
     font-family: var(--font-sans);
     font-size: 1rem;
     line-height: 1.6;
+    font-feature-settings: "ss01", "cv11";
   }
 
   @media (min-width: 768px) {
@@ -66,6 +81,11 @@
     letter-spacing: -0.02em;
     line-height: 1.1;
     font-weight: 700;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   a {
@@ -89,14 +109,29 @@
     border-top: 1px solid var(--color-line-soft);
   }
 
+  details summary {
+    list-style: none;
+  }
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 360ms;
+    animation-timing-function: var(--ease-out-quart);
+  }
+
   @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
     *,
     *::before,
     *::after {
       animation-duration: 0.001ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
-      scroll-behavior: auto !important;
     }
   }
 }
@@ -120,10 +155,109 @@
   font-size: clamp(2.25rem, 5vw, 4rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1.05;
 }
 
 @utility text-h2 {
   font-size: clamp(1.875rem, 3.5vw, 2.75rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+@utility cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: transform 220ms var(--ease-out-quart), box-shadow 220ms var(--ease-out-quart);
+  box-shadow: 0 0 0 0 color-mix(in oklab, var(--color-accent) 35%, transparent);
+}
+.cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px -12px color-mix(in oklab, var(--color-accent) 60%, transparent);
+}
+.cta:active {
+  transform: translateY(0);
+}
+
+@utility cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-line-soft);
+  color: var(--color-fg);
+  font-size: 0.875rem;
+  transition: border-color 220ms var(--ease-out-quart), color 220ms var(--ease-out-quart),
+    background 220ms var(--ease-out-quart);
+}
+.cta-ghost:hover {
+  border-color: var(--color-fg);
+  background: var(--color-surface);
+}
+
+@utility container-page {
+  margin-inline: auto;
+  max-width: 72rem;
+  padding-inline: 1.5rem;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation: reveal-up 800ms var(--ease-out-quart) both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 24%;
+}
+
+@supports not (animation-timeline: view()) {
+  .reveal {
+    animation: reveal-up 800ms var(--ease-out-quart) 120ms both;
+  }
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }

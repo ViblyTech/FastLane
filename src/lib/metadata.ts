@@ -6,12 +6,17 @@ export function buildMetadata(opts: {
   description: string;
   path?: string;
   ogImage?: string;
+  noindex?: boolean;
+  keywords?: string[];
 }): Metadata {
   const url = `${site.url}${opts.path ?? ""}`;
-  const image = opts.ogImage ?? `${site.url}/og.png`;
+  const image = opts.ogImage ?? `${site.url}/opengraph-image`;
+  const keywords = opts.keywords ?? [...site.keywords];
+
   return {
     title: opts.title,
     description: opts.description,
+    keywords,
     metadataBase: new URL(site.url),
     alternates: { canonical: url },
     openGraph: {
@@ -29,15 +34,24 @@ export function buildMetadata(opts: {
       description: opts.description,
       images: [image],
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
+    robots: opts.noindex
+      ? { index: false, follow: true }
+      : {
+          index: true,
+          follow: true,
+          googleBot: {
+            index: true,
+            follow: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+          },
+        },
+    other: {
+      "geo.region": "US-OR",
+      "geo.placename": "Bend",
+      "geo.position": `${site.geo.lat};${site.geo.lng}`,
+      ICBM: `${site.geo.lat}, ${site.geo.lng}`,
     },
   };
 }

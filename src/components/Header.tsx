@@ -6,8 +6,8 @@ const nav = [
   { href: "/services", label: "Services" },
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
+  { href: "/service-area", label: "Service area" },
+  { href: "/reviews", label: "Reviews" },
 ];
 
 export function Header() {
@@ -19,16 +19,22 @@ export function Header() {
       >
         Skip to content
       </a>
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg sm:text-xl" aria-label="Fast Lane Detailing home">
+      <div className="container-page flex items-center justify-between py-4">
+        <Link
+          href="/"
+          className="text-lg sm:text-xl"
+          aria-label={`${site.name} home`}
+          prefetch
+        >
           <LogoMark />
         </Link>
-        <nav aria-label="Primary" className="hidden gap-8 text-sm md:flex">
+        <nav aria-label="Primary" className="hidden gap-7 text-sm md:flex">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className="text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)]"
+              prefetch
             >
               {item.label}
             </Link>
@@ -42,11 +48,7 @@ export function Header() {
           >
             {site.phone}
           </a>
-          <Link
-            href="/#quote"
-            className="rounded-full bg-[var(--color-accent)] px-4 py-2 text-sm font-medium text-[var(--color-accent-fg)] transition-opacity hover:opacity-90"
-            data-event="cta_book_click"
-          >
+          <Link href="/#quote" className="cta" data-event="cta_book_click">
             Book now
           </Link>
         </div>

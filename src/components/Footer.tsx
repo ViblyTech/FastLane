@@ -16,7 +16,7 @@ const cols = {
     { href: "/reviews", label: "Reviews" },
     { href: "/service-area", label: "Service area" },
     { href: "/pricing", label: "Pricing" },
-    { href: "/blog", label: "Blog" },
+    { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
   ],
   legal: [
@@ -30,7 +30,7 @@ const cols = {
 export function Footer() {
   return (
     <footer className="border-t border-[var(--color-line-soft)] bg-[var(--color-canvas)]">
-      <div className="mx-auto max-w-6xl px-6 py-16">
+      <div className="container-page py-16">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <div className="h-32 w-32 text-[var(--color-fg)]">
@@ -38,7 +38,9 @@ export function Footer() {
             </div>
             <address className="not-italic mt-6 space-y-1 text-sm text-[var(--color-fg-muted)]">
               <div className="text-[var(--color-fg)]">{site.name}</div>
-              <div>{site.address.locality}, {site.address.region}</div>
+              <div>
+                {site.address.locality}, {site.address.region}
+              </div>
               <div>
                 <a
                   href={`tel:${site.phoneE164}`}
@@ -46,12 +48,10 @@ export function Footer() {
                   data-event="cta_call_click"
                 >
                   {site.phone}
-                </a>{" "}
-                · call or text
+                </a>
+                {" · call or text"}
               </div>
-              <div>
-                Mon to Fri 8am to 6pm · Sat 9am to 4pm
-              </div>
+              <div>Mon to Fri 8am to 6pm · Sat 9am to 4pm</div>
             </address>
           </div>
 
@@ -109,7 +109,7 @@ function FooterCol({
 }) {
   return (
     <div>
-      <div className="eyebrow mb-4 text-[var(--color-fg-muted)]">{title}</div>
+      <div className="eyebrow mb-4">{title}</div>
       <ul className="space-y-2 text-sm">
         {links.map((l) => (
           <li key={l.href}>

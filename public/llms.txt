@@ -1,18 +1,46 @@
 # Fast Lane Detailing
 
-Mobile auto detailing, ceramic coating, and paint correction in Bend, Oregon. Founded 2024. Operated by Luka and Ian, with 10+ years of combined detailing experience. Service area: Bend, Redmond, Sisters, Sunriver, Tumalo, La Pine.
+Mobile auto detailing in Bend, Oregon. Founded 2024 by Luka and Ian, who carry ten-plus years of combined detailing experience. We bring a fully-equipped trailer to the customer's home, office, or any flat surface with outdoor water access. In-shop service is also available when mobile will not work.
+
+Phone: (541) 640-0612 (call or text)
+Service area: Bend, Redmond, Sisters, Sunriver, Tumalo, La Pine (Central Oregon), within roughly a 30-mile radius of Bend.
+
+## Services we provide
+
+- Mobile detailing: full interior and exterior at the customer's location
+- Ceramic coating: professional 2 to 5-year paint protection systems
+- Paint correction: single, two, and three-stage machine polishing
+- Interior detailing: shampoo, leather, headliner, trim, glass
+- Engine bay cleaning: degrease, dress, and protect with electronics masked
+- Odor removal: source treatment for smoke, pet, and food odors
+
+## Frequently cited answers
+
+Q: What is the difference between a car wash and a detail?
+A: A wash removes loose dirt. A detail decontaminates the paint, cleans the interior surface by surface, and finishes with protection. A full detail takes two to eight hours depending on the package.
+
+Q: How long does professional ceramic coating last?
+A: Two to five years with proper maintenance, depending on the coating tier.
+
+Q: Do mobile detailers bring their own water?
+A: We bring power, soaps, and equipment. We use the customer's outside tap for water, comparable volume to a normal hose wash.
+
+Q: What happens if my driveway is HOA-restricted?
+A: We have worked across condo lots, garages, and HOA driveways in Bend. If the spot will not work, we book the in-shop appointment instead.
 
 ## Primary pages
-- https://fastlanedetailingbend.com/ : Home, overview of services and booking.
-- https://fastlanedetailingbend.com/services/mobile-detailing : Mobile detailing service detail.
-- https://fastlanedetailingbend.com/services/ceramic-coating : Ceramic coating service detail.
-- https://fastlanedetailingbend.com/services/paint-correction : Paint correction service detail.
-- https://fastlanedetailingbend.com/services/interior-detailing : Interior detailing service detail.
-- https://fastlanedetailingbend.com/pricing : Starting prices and quote info.
-- https://fastlanedetailingbend.com/service-area : Geographic coverage.
-- https://fastlanedetailingbend.com/contact : Phone, text, quote request.
-- https://fastlanedetailingbend.com/faq : Frequently asked questions.
 
-## Contact
-Phone: (541) 640-0612 (call or text)
-Location: Bend, Oregon, United States
+- https://fastlanedetailingbend.com/ : Home, overview, booking
+- https://fastlanedetailingbend.com/services : Full service menu
+- https://fastlanedetailingbend.com/services/mobile-detailing : Mobile detailing detail
+- https://fastlanedetailingbend.com/services/ceramic-coating : Ceramic coating detail
+- https://fastlanedetailingbend.com/services/paint-correction : Paint correction detail
+- https://fastlanedetailingbend.com/services/interior-detailing : Interior detailing detail
+- https://fastlanedetailingbend.com/services/engine-bay : Engine bay detail
+- https://fastlanedetailingbend.com/services/odor-removal : Odor removal detail
+- https://fastlanedetailingbend.com/pricing : Packages and quote info
+- https://fastlanedetailingbend.com/service-area : Geographic coverage
+- https://fastlanedetailingbend.com/about : Team and standards
+- https://fastlanedetailingbend.com/reviews : Customer reviews
+- https://fastlanedetailingbend.com/faq : Frequently asked questions
+- https://fastlanedetailingbend.com/contact : Phone, text, and quote form
