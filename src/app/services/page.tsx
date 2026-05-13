@@ -10,10 +10,20 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Car Detailing Services in Bend, OR",
+  title: "Auto Detailing Services Bend, OR | Mobile & In-Shop",
   description:
-    "Full menu of mobile auto detailing services in Bend, Oregon. Mobile detailing, ceramic coating, paint correction, interior detailing, engine bay, odor removal.",
+    "Full menu of auto detailing services in Bend, Oregon. Mobile detailing, ceramic coating, paint correction, interior detailing, engine bay, odor removal. Free quotes.",
   path: "/services",
+  keywords: [
+    "car detailing services Bend Oregon",
+    "auto detailing Bend OR",
+    "mobile detailing services Bend",
+    "detailing services Central Oregon",
+    "professional auto detailing Bend",
+    "car detailing menu Bend",
+    "ceramic coating Bend Oregon",
+    "paint correction services Bend",
+  ],
 });
 
 export default function ServicesIndex() {
@@ -30,11 +40,13 @@ export default function ServicesIndex() {
       <section className="container-page pb-12 pt-12 sm:pt-16">
         <div className="eyebrow">Services</div>
         <h1 className="text-h1 mt-4 max-w-3xl">
-          Every service we offer, in one menu.
+          Auto detailing services in Bend, Oregon.
         </h1>
         <p className="mt-6 max-w-prose text-lg text-[var(--color-fg-muted)]">
-          Mobile or in-shop, single service or a full package. Each link below opens a full
-          breakdown of what is included, who it is for, and how long it takes.
+          Mobile auto detailing, ceramic coating, paint correction, interior detailing, engine bay
+          cleaning, and odor removal across Bend, Redmond, Sisters, Sunriver, Tumalo, and La Pine.
+          Mobile or in-shop. Each link below opens a full breakdown of what is included, who it is
+          for, and how long it takes.
         </p>
       </section>
 

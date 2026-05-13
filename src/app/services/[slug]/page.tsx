@@ -23,9 +23,10 @@ export async function generateMetadata(
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
   return buildMetadata({
-    title: `${service.name} in Bend, OR`,
-    description: `${service.short} ${service.long}`,
+    title: service.metaTitle,
+    description: service.metaDescription,
     path: `/services/${service.slug}`,
+    keywords: service.keywords,
   });
 }
 
@@ -197,7 +198,7 @@ export default async function ServiceDetail(
                   <h3 className="text-xl font-bold">{r.name}</h3>
                   <p className="text-[var(--color-fg-muted)]">{r.short}</p>
                   <span className="mt-2 text-sm text-[var(--color-fg-muted)] group-hover:text-[var(--color-accent)]">
-                    Learn more →
+                    {r.name} in Bend, OR →
                   </span>
                 </Link>
               ))}

@@ -8,10 +8,19 @@ import { team, site } from "@/lib/site";
 import { breadcrumbSchema, personSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About Fast Lane Detailing",
+  title: "About Fast Lane Detailing | Bend, OR Mobile Auto Detailers",
   description:
-    "Meet Luka and Ian, the team behind Fast Lane Detailing. Founded in Bend in 2024 with ten-plus years of detailing experience behind the trailer.",
+    "Meet Luka and Ian, the owner-operated mobile auto detailing team in Bend, Oregon. Founded 2024 with 10+ years of paint, polish, and ceramic experience.",
   path: "/about",
+  keywords: [
+    "Fast Lane Detailing Bend Oregon",
+    "Bend OR car detailers",
+    "Luka Ian Fast Lane Detailing",
+    "mobile detailer Bend Oregon",
+    "owner-operated detailing Bend",
+    "best mobile detailer Bend",
+    "auto detailers Central Oregon",
+  ],
 });
 
 export default function AboutPage() {
@@ -31,11 +40,12 @@ export default function AboutPage() {
       <section className="container-page pb-16 pt-12 sm:pt-16">
         <div className="eyebrow">About</div>
         <h1 className="text-h1 mt-4 max-w-3xl">
-          Built by detailers, in Bend.
+          About Fast Lane Detailing, Bend, OR.
         </h1>
         <p className="mt-6 max-w-3xl text-lg text-[var(--color-fg-muted)]">
-          Founded in Bend in 2024 with ten-plus years of detailing experience behind the trailer.
-          Two people, one trailer, every appointment hands-on.
+          Owner-operated mobile auto detailing in Bend, Oregon. Founded 2024 with ten-plus years
+          of paint, polish, and ceramic experience behind the trailer. Two people, one trailer,
+          every appointment hands-on across Bend, Redmond, Sisters, Sunriver, Tumalo, and La Pine.
         </p>
       </section>
 

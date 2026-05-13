@@ -42,10 +42,21 @@ const areas: Array<{ city: string; note: string; drive: string }> = [
 ];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Service Area: Bend, Redmond, Sisters, Sunriver",
+  title: "Mobile Detailing Service Area | Bend, Redmond, Sisters, Sunriver",
   description:
-    "Mobile auto detailing across Bend, Redmond, Sisters, Sunriver, Tumalo, and La Pine. Free travel inside our service zone.",
+    "Mobile auto detailing across Central Oregon: Bend, Redmond, Sisters, Sunriver, Tumalo, La Pine. Free travel within a 30-mile radius of Bend.",
   path: "/service-area",
+  keywords: [
+    "mobile detailing Bend Oregon",
+    "mobile detailing Redmond Oregon",
+    "mobile detailing Sisters Oregon",
+    "mobile detailing Sunriver Oregon",
+    "mobile detailing Tumalo Oregon",
+    "mobile detailing La Pine Oregon",
+    "auto detailing Central Oregon",
+    "car detailing service area Bend",
+    "mobile detailer near me",
+  ],
 });
 
 export default function ServiceAreaPage() {
@@ -77,12 +88,13 @@ export default function ServiceAreaPage() {
       <section className="container-page pb-12 pt-12 sm:pt-16">
         <div className="eyebrow">Service area</div>
         <h1 className="text-h1 mt-4 max-w-3xl">
-          We come to you, across Central Oregon.
+          Mobile auto detailing across Central Oregon.
         </h1>
         <p className="mt-6 max-w-prose text-lg text-[var(--color-fg-muted)]">
-          Standard service area is a {site.serviceRadiusMiles}-mile radius from Bend, no travel fee
-          inside it. Outside that, we still go for ceramic coating and bigger jobs. Ask when you
-          book.
+          Standard mobile detailing service area is a {site.serviceRadiusMiles}-mile radius from
+          Bend, Oregon — no travel fee inside it. We cover Bend, Redmond, Sisters, Sunriver,
+          Tumalo, and La Pine. Outside that radius, we still travel for ceramic coating and bigger
+          paint correction jobs. Ask when you book.
         </p>
       </section>
 

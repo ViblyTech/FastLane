@@ -52,10 +52,20 @@ const tiers = [
 ];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Pricing: Mobile Detailing in Bend, OR",
+  title: "Auto Detailing Prices Bend, OR | Free Quotes",
   description:
-    "Free quotes on every car. Mobile auto detailing in Bend and Central Oregon. Packages from maintenance washes to full ceramic coating.",
+    "Detailing prices in Bend, Oregon. Maintenance washes from $80, full details $200-$500, ceramic coating $800+. Free same-day quotes on every car.",
   path: "/pricing",
+  keywords: [
+    "car detailing prices Bend Oregon",
+    "auto detailing cost Bend",
+    "mobile detailing cost Bend OR",
+    "ceramic coating cost Bend Oregon",
+    "paint correction cost Bend",
+    "detailing prices Central Oregon",
+    "how much does car detailing cost",
+    "car detail prices near me",
+  ],
 });
 
 export default function PricingPage() {
@@ -71,19 +81,22 @@ export default function PricingPage() {
 
       <section className="container-page pb-12 pt-12 sm:pt-16">
         <div className="eyebrow">Pricing</div>
-        <h1 className="text-h1 mt-4 max-w-3xl">Honest pricing, every car different.</h1>
+        <h1 className="text-h1 mt-4 max-w-3xl">
+          Mobile detailing prices in Bend, Oregon.
+        </h1>
         <p className="mt-6 max-w-prose text-lg text-[var(--color-fg-muted)]">
-          Every car is a different job. A maintenance wash on a one-year-old sedan is not the same
-          as a full detail on a family SUV that lives outside. We quote each one for what it
-          actually needs.
+          Auto detailing prices in Bend start at $80 for a maintenance wash and run up to $2,000+
+          for a multi-layer ceramic coating. Every car is a different job. A maintenance wash on a
+          one-year-old sedan is not the same as a full interior detail on a family SUV that lives
+          outside. We quote each one for what it actually needs.
         </p>
         <p className="mt-4 max-w-prose text-[var(--color-fg-muted)]">
-          Send a few details and a photo or two. We will reply with a written quote, usually the
-          same day.
+          Send a few details and a photo or two. We will reply with a written, no-commitment quote,
+          usually the same day.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <Link href="/#quote" className="cta">
-            Get a quote
+            Get a free quote
           </Link>
           <a href={`sms:${site.phoneE164}`} className="cta-ghost">
             Text us photos

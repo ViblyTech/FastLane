@@ -7,10 +7,19 @@ import { site } from "@/lib/site";
 import { breadcrumbSchema, contactPointSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact Fast Lane Detailing in Bend, OR",
+  title: "Contact Fast Lane Detailing Bend, OR | (541) 640-0612",
   description:
-    "Call or text (541) 640-0612, or request a free quote online. Mobile auto detailing across Bend and Central Oregon.",
+    "Contact Fast Lane Detailing in Bend, Oregon. Call or text (541) 640-0612 for a free mobile auto detailing quote. Same-day response in most cases.",
   path: "/contact",
+  keywords: [
+    "Fast Lane Detailing contact",
+    "Bend Oregon car detailer phone",
+    "mobile detailing quote Bend",
+    "auto detailing Bend OR phone",
+    "car detailing near me phone",
+    "detailing booking Bend Oregon",
+    "free detailing quote Bend",
+  ],
 });
 
 export default function ContactPage() {
@@ -29,10 +38,12 @@ export default function ContactPage() {
 
       <section className="container-page pb-12 pt-12 sm:pt-16">
         <div className="eyebrow">Contact</div>
-        <h1 className="text-h1 mt-4 max-w-3xl">Get in touch.</h1>
+        <h1 className="text-h1 mt-4 max-w-3xl">
+          Contact Fast Lane Detailing in Bend, OR.
+        </h1>
         <p className="mt-6 max-w-prose text-lg text-[var(--color-fg-muted)]">
-          Three ways to reach us. Phone is the fastest, text is the easiest, the form below is for
-          when you want to share details up front.
+          Three ways to reach a Bend mobile auto detailer. Phone is the fastest, text is the
+          easiest, the quote form below is for when you want to share vehicle details up front.
         </p>
       </section>
 

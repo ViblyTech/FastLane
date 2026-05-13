@@ -9,10 +9,20 @@ import { team, site } from "@/lib/site";
 import { breadcrumbSchema, blogCollectionSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Detailing notes from Bend, Oregon",
+  title: "Detailing Tips & Guides | Bend, OR Mobile Auto Detailing Blog",
   description:
-    "Practical, plain-language detailing guides from Fast Lane Detailing in Bend, Oregon. Ceramic coating, paint correction, winter prep, mag chloride, and more.",
+    "Practical, plain-language detailing guides from Bend, Oregon. Ceramic coating durability, paint correction stages, Central Oregon winter prep, pricing breakdowns.",
   path: "/blog",
+  keywords: [
+    "car detailing blog Bend Oregon",
+    "auto detailing tips Bend",
+    "ceramic coating guide",
+    "paint correction guide",
+    "Bend Oregon winter car care",
+    "mag chloride paint damage",
+    "car detailing prices Bend",
+    "detailing advice Central Oregon",
+  ],
 });
 
 export default function BlogIndex() {
@@ -51,7 +61,7 @@ export default function BlogIndex() {
       <section className="container-page pb-12 pt-12 sm:pt-16">
         <div className="eyebrow">Notes from the trailer</div>
         <h1 className="text-h1 mt-4 max-w-3xl">
-          Practical guides on paint, coatings, and Central Oregon weather.
+          Detailing tips and guides from Bend, Oregon.
         </h1>
         <p className="mt-6 max-w-prose text-lg text-[var(--color-fg-muted)]">
           What we tell customers on the driveway, written down. Plain language, real numbers, no

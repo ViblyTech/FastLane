@@ -7,12 +7,25 @@ export const site = {
     "Mobile auto detailing in Bend, Oregon. We bring a fully-equipped trailer to your driveway. Interior, exterior, ceramic coating, paint correction, engine bay, and odor removal. Free quotes.",
   keywords: [
     "mobile detailing Bend Oregon",
-    "car detailing Bend",
-    "ceramic coating Bend",
-    "paint correction Bend",
+    "mobile auto detailing Bend",
+    "mobile car detailing Bend",
+    "car detailing Bend Oregon",
+    "auto detailing Bend OR",
+    "car detailing near me Bend",
+    "best car detailing Bend",
+    "ceramic coating Bend Oregon",
+    "ceramic coating Bend OR",
+    "paint correction Bend Oregon",
     "interior car detailing Bend",
     "auto detailing Central Oregon",
     "mobile car wash Bend",
+    "mobile detailing Redmond Oregon",
+    "mobile detailing Sisters Oregon",
+    "mobile detailing Sunriver",
+    "engine bay cleaning Bend",
+    "car odor removal Bend",
+    "detailing Bend Oregon",
+    "Fast Lane Detailing",
   ],
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://fastlanedetailingbend.com",
   phone: "(541) 640-0612",
@@ -69,6 +82,9 @@ export type Service = {
   startingAt: string;
   faqs: Array<{ q: string; a: string }>;
   related: string[];
+  keywords: string[];
+  metaTitle: string;
+  metaDescription: string;
 };
 
 export const services: Service[] = [
@@ -106,6 +122,20 @@ export const services: Service[] = [
       },
     ],
     related: ["ceramic-coating", "interior-detailing", "paint-correction"],
+    keywords: [
+      "mobile detailing Bend Oregon",
+      "mobile auto detailing Bend",
+      "mobile car detailing Bend OR",
+      "car detailing at your home Bend",
+      "mobile detailer near me",
+      "mobile detailing Redmond",
+      "mobile detailing Sisters Oregon",
+      "mobile detailing Sunriver",
+      "mobile car wash Bend",
+    ],
+    metaTitle: "Mobile Auto Detailing Bend, OR | At Your Driveway",
+    metaDescription:
+      "Professional mobile auto detailing in Bend, Oregon. Interior and exterior at your driveway in one appointment. Self-contained trailer. Free quotes.",
   },
   {
     slug: "ceramic-coating",
@@ -144,6 +174,20 @@ export const services: Service[] = [
       },
     ],
     related: ["paint-correction", "mobile-detailing"],
+    keywords: [
+      "ceramic coating Bend Oregon",
+      "ceramic coating Bend OR",
+      "ceramic coating Central Oregon",
+      "ceramic coating near me Bend",
+      "paint protection Bend",
+      "ceramic coating cost Bend",
+      "best ceramic coating Bend",
+      "professional ceramic coating Oregon",
+      "ceramic coating Redmond",
+    ],
+    metaTitle: "Ceramic Coating Bend, OR | 2-5 Year Paint Protection",
+    metaDescription:
+      "Professional ceramic coating in Bend, OR. Two to five year paint protection from a 5-star detailer. Installed at home or in shop. Free consultation.",
   },
   {
     slug: "paint-correction",
@@ -178,6 +222,21 @@ export const services: Service[] = [
       },
     ],
     related: ["ceramic-coating", "mobile-detailing"],
+    keywords: [
+      "paint correction Bend Oregon",
+      "paint correction Bend OR",
+      "paint correction Central Oregon",
+      "paint correction cost Bend",
+      "swirl removal Bend",
+      "car polishing Bend",
+      "scratch removal Bend",
+      "machine polishing Bend",
+      "single stage paint correction",
+      "multi stage paint correction Oregon",
+    ],
+    metaTitle: "Paint Correction Bend, OR | Remove Swirls & Scratches",
+    metaDescription:
+      "Paint correction in Bend, Oregon. Remove swirls, scratches, and oxidation with single, two, or three-stage machine polishing. Free quotes.",
   },
   {
     slug: "interior-detailing",
@@ -209,6 +268,20 @@ export const services: Service[] = [
       },
     ],
     related: ["odor-removal", "mobile-detailing"],
+    keywords: [
+      "interior car detailing Bend Oregon",
+      "interior detailing Bend OR",
+      "car interior cleaning Bend",
+      "car shampoo Bend",
+      "carpet cleaning car Bend",
+      "leather conditioning Bend",
+      "interior detailer near me",
+      "auto interior cleaning Central Oregon",
+      "deep clean car interior Bend",
+    ],
+    metaTitle: "Interior Car Detailing Bend, OR | Deep Clean Mobile Service",
+    metaDescription:
+      "Deep interior car detailing in Bend, Oregon. Shampoo, leather conditioning, headliner, vents, glass. Mobile service across Central Oregon.",
   },
   {
     slug: "engine-bay",
@@ -237,6 +310,17 @@ export const services: Service[] = [
       },
     ],
     related: ["mobile-detailing", "paint-correction"],
+    keywords: [
+      "engine bay cleaning Bend Oregon",
+      "engine bay detail Bend",
+      "engine cleaning Bend OR",
+      "engine bay degrease Bend",
+      "engine detailing Central Oregon",
+      "auto engine cleaning Bend",
+    ],
+    metaTitle: "Engine Bay Cleaning Bend, OR | Safe Degrease & Dress",
+    metaDescription:
+      "Professional engine bay cleaning in Bend, Oregon. Safe degrease with masked electronics and dressed plastics. Pre-sale prep or show finish. Free quotes.",
   },
   {
     slug: "odor-removal",
@@ -266,6 +350,18 @@ export const services: Service[] = [
       },
     ],
     related: ["interior-detailing", "mobile-detailing"],
+    keywords: [
+      "car odor removal Bend Oregon",
+      "smoke smell removal car Bend",
+      "pet odor removal car Bend",
+      "car smell removal Bend",
+      "auto odor treatment Bend",
+      "remove smoke smell from car Oregon",
+      "cigarette smell removal car Bend",
+    ],
+    metaTitle: "Car Odor Removal Bend, OR | Smoke, Pet & Food Smell",
+    metaDescription:
+      "Car odor removal in Bend, Oregon. Smoke, pet, food. We treat the source, not just the smell. Source-based interior treatment from a 5-star detailer.",
   },
 ];
 

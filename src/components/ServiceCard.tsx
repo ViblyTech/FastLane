@@ -23,7 +23,7 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
         <p className="mt-3 max-w-prose text-[var(--color-fg-muted)]">{service.short}</p>
       </div>
       <span className="flex items-center gap-2 text-sm text-[var(--color-fg-muted)] transition-colors group-hover:text-[var(--color-accent)]">
-        Read more
+        {service.name} in Bend, OR
         <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
           →
         </span>

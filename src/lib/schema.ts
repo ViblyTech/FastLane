@@ -23,13 +23,20 @@ export function localBusinessSchema() {
     currenciesAccepted: site.currenciesAccepted,
     paymentAccepted: site.paymentsAccepted.join(", "),
     foundingDate: site.founded,
+    keywords: site.keywords.join(", "),
     knowsAbout: [
-      "Mobile auto detailing",
-      "Ceramic coating",
-      "Paint correction",
-      "Interior detailing",
+      "Mobile auto detailing in Bend Oregon",
+      "Ceramic coating installation",
+      "Professional paint correction",
+      "Interior car detailing",
       "Engine bay cleaning",
-      "Odor removal",
+      "Source-based car odor removal",
+      "Auto detailing Central Oregon",
+      "Mobile car wash Bend",
+      "Paint protection film alternatives",
+      "Pre-sale vehicle detailing",
+      "Winter car care Bend Oregon",
+      "Mag chloride removal",
     ],
     address: {
       "@type": "PostalAddress",
@@ -148,8 +155,10 @@ export function serviceSchema(service: Service) {
     "@id": `${site.url}/services/${service.slug}#service`,
     name: service.name,
     serviceType: service.name,
+    category: "Auto detailing",
     description: service.long,
     url: `${site.url}/services/${service.slug}`,
+    keywords: service.keywords.join(", "),
     provider: { "@id": BUSINESS_ID },
     areaServed: site.serviceAreas.map((city) => ({ "@type": "City", name: city })),
     audience: {
@@ -272,6 +281,7 @@ export function articleSchema(article: Article) {
         );
       }, 0),
     timeRequired: `PT${article.readMinutes}M`,
+    keywords: article.keywords.join(", "),
     author: author
       ? {
           "@type": "Person",

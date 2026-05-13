@@ -25,6 +25,7 @@ export type Article = {
   intro: string;
   sections: ArticleSection[];
   faqs: Array<{ q: string; a: string }>;
+  keywords: string[];
 };
 
 export const articles: Article[] = [
@@ -174,6 +175,15 @@ export const articles: Article[] = [
         a: "Cash, credit, debit, Venmo, and Zelle.",
       },
     ],
+    keywords: [
+      "mobile detailing cost Bend Oregon",
+      "car detailing prices Bend",
+      "how much does detailing cost",
+      "ceramic coating cost Bend",
+      "paint correction cost Oregon",
+      "auto detailing prices Central Oregon",
+      "car detailing cost near me",
+    ],
   },
   {
     slug: "how-long-does-ceramic-coating-last",
@@ -283,6 +293,15 @@ export const articles: Article[] = [
         a: "No. Coatings are hard, but they are thin. They will not stop rock chips. For chip protection on the front of the car, paint protection film is the right tool. Many of our customers combine PPF on the front with ceramic on the rest of the body.",
       },
     ],
+    keywords: [
+      "how long does ceramic coating last",
+      "ceramic coating durability",
+      "ceramic coating Bend Oregon",
+      "ceramic coating maintenance",
+      "best ceramic coating for cars",
+      "ceramic coating tiers",
+      "professional ceramic coating Oregon",
+    ],
   },
   {
     slug: "paint-correction-vs-ceramic-coating",
@@ -372,6 +391,15 @@ export const articles: Article[] = [
         q: "Can you correct then coat in one trip?",
         a: "Usually yes, but it is a long appointment. Correction takes most of a day; coating prep and application take another half-day plus a cure window. Most coating jobs in Bend are scheduled across one to two days.",
       },
+    ],
+    keywords: [
+      "paint correction vs ceramic coating",
+      "paint correction or ceramic coating",
+      "difference paint correction ceramic coating",
+      "paint correction Bend Oregon",
+      "ceramic coating prep",
+      "polish vs coating",
+      "car detailing services Bend",
     ],
   },
   {
@@ -489,6 +517,15 @@ export const articles: Article[] = [
         a: "Pick a sunny day above 40 degrees. Touchless washes are safer than hand-washes in cold because the car dries faster. Avoid washing when temperatures will drop below freezing within a few hours; trapped water in door seals expands and can damage rubber.",
       },
     ],
+    keywords: [
+      "winter car care Bend Oregon",
+      "Bend winter car wash",
+      "mag chloride car paint Oregon",
+      "cinder rock paint damage Bend",
+      "winter ceramic coating Bend",
+      "Central Oregon car wash winter",
+      "protect car paint Bend winter",
+    ],
   },
   {
     slug: "car-wash-vs-detail",
@@ -584,6 +621,14 @@ export const articles: Article[] = [
         q: "How often should I detail my car?",
         a: "Twice a year for a daily driver is the standard recommendation. Cars that live outside, in coastal climates, or under heavy tree cover may benefit from quarterly. Coated cars stretch to once a year with maintenance washes in between.",
       },
+    ],
+    keywords: [
+      "car wash vs car detail",
+      "difference car wash detail",
+      "what is car detailing",
+      "do I need a detail or wash",
+      "car detailing Bend Oregon",
+      "auto detailing vs car wash",
     ],
   },
 ];

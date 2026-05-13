@@ -29,6 +29,7 @@ export async function generateMetadata(
     title: article.title,
     description: article.excerpt,
     path: `/blog/${article.slug}`,
+    keywords: article.keywords,
   });
 }
 

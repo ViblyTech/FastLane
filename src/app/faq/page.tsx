@@ -8,10 +8,20 @@ import { faqs, services, site } from "@/lib/site";
 import { breadcrumbSchema, faqPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "FAQ: Mobile Detailing in Bend, OR",
+  title: "Mobile Auto Detailing FAQ Bend, OR | Real Answers",
   description:
-    "Real answers from a Bend, OR mobile detailer. Car wash vs. detail, how long ceramic coating lasts, what to expect on the day of your appointment.",
+    "Mobile auto detailing FAQ from Fast Lane Detailing in Bend, OR. Car wash vs detail, ceramic coating durability, mobile vs in-shop, pricing, and more.",
   path: "/faq",
+  keywords: [
+    "mobile detailing FAQ Bend Oregon",
+    "car detailing questions Bend",
+    "ceramic coating FAQ Bend",
+    "auto detailing FAQ Oregon",
+    "car wash vs detail",
+    "how long does ceramic coating last",
+    "what is paint correction",
+    "mobile detailing questions",
+  ],
 });
 
 const extended = [
@@ -58,7 +68,9 @@ export default function FaqPage() {
 
       <section className="container-page pb-12 pt-12 sm:pt-16">
         <div className="eyebrow">Frequently asked</div>
-        <h1 className="text-h1 mt-4 max-w-3xl">Real questions, real answers.</h1>
+        <h1 className="text-h1 mt-4 max-w-3xl">
+          Mobile auto detailing FAQ, Bend, OR.
+        </h1>
         <p className="mt-6 max-w-prose text-lg text-[var(--color-fg-muted)]">
           If your question is not on this page, text us at{" "}
           <a

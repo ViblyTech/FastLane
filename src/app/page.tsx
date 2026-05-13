@@ -13,10 +13,21 @@ import { customLogoHref } from "@/lib/logo";
 import { site, services, faqs } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Mobile Auto Detailing in Bend, OR | Fast Lane Detailing",
+  title: "Mobile Auto Detailing Bend, OR | Ceramic Coating & Paint Correction",
   description:
-    "Mobile auto detailing in Bend, Oregon. We bring the trailer to your driveway. Interior, exterior, ceramic coating, paint correction, engine bay, and odor removal. Free quotes.",
+    "Top-rated mobile auto detailing in Bend, Oregon. Ceramic coating, paint correction, interior detailing. 95+ five-star Google reviews. Free same-day quotes.",
   path: "/",
+  keywords: [
+    "mobile detailing Bend Oregon",
+    "mobile auto detailing Bend",
+    "car detailing Bend OR",
+    "ceramic coating Bend Oregon",
+    "paint correction Bend Oregon",
+    "auto detailing Central Oregon",
+    "car detailing near me Bend",
+    "best car detailing Bend",
+    "Fast Lane Detailing",
+  ],
 });
 
 export default function HomePage() {
@@ -176,7 +187,7 @@ function Services() {
           <SectionHeader
             eyebrow="Welcome to Fast Lane Detailing"
             heading="Our services"
-            subhead="Mobile or in-shop. The same two hands every time."
+            subhead="Mobile auto detailing, ceramic coating, and paint correction in Bend, Oregon. The same two hands every appointment, whether we come to your driveway or you book the shop."
           />
         </Reveal>
 
@@ -194,7 +205,7 @@ function Services() {
               href="/services"
               className="text-sm text-[var(--color-fg-muted)] underline underline-offset-4 hover:text-[var(--color-fg)]"
             >
-              Full service menu →
+              See the full auto detailing service menu →
             </Link>
           </div>
         </Reveal>
@@ -211,7 +222,7 @@ function Studio() {
           <SectionHeader
             eyebrow="The team"
             heading="Two people. One trailer."
-            subhead="Luka and Ian. Founded in Bend in 2024 with a decade of paint behind it. Every appointment, you are getting one of us, not a rotating crew you have never met."
+            subhead="Luka and Ian, owner-operated mobile auto detailers in Bend, Oregon. Founded 2024 with a decade of paint, polish, and ceramic experience behind it. Every appointment, you are getting one of us, not a rotating crew you have never met."
           />
         </Reveal>
 
@@ -295,7 +306,7 @@ function Faq() {
               href="/faq"
               className="text-sm text-[var(--color-fg-muted)] underline underline-offset-4 hover:text-[var(--color-fg)]"
             >
-              All FAQ →
+              Read every detailing FAQ →
             </Link>
           </div>
         </Reveal>

@@ -10,9 +10,18 @@ import { reviews, site } from "@/lib/site";
 import { breadcrumbSchema, reviewListSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Reviews of Fast Lane Detailing, Bend, OR",
-  description: `${site.rating.value.toFixed(1)} stars across ${site.rating.count} Google reviews. Real reviews from drivers in Bend, Redmond, Sisters, Sunriver, and Central Oregon.`,
+  title: `5-Star Reviews | Fast Lane Detailing Bend, OR | ${site.rating.count}+ Google Reviews`,
+  description: `${site.rating.value.toFixed(1)} stars across ${site.rating.count}+ Google reviews. Real customer reviews of mobile auto detailing in Bend, Redmond, Sisters, Sunriver, and Central Oregon.`,
   path: "/reviews",
+  keywords: [
+    "Fast Lane Detailing reviews",
+    "best car detailer Bend Oregon",
+    "top rated detailer Bend OR",
+    "5 star auto detailing Bend",
+    "Google reviews Fast Lane Detailing",
+    "mobile detailer reviews Bend",
+    "car detailing testimonials Central Oregon",
+  ],
 });
 
 const STAR_GOLD = "#fbbf24";
