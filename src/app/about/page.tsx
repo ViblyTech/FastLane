@@ -67,11 +67,10 @@ export default function AboutPage() {
               and figuring out a ride. So we brought the shop to you.
             </p>
             <p className="text-[var(--color-fg-muted)]">
-              The trailer carries its own power, water reclamation, professional polishers,
-              dual-stage extraction, and a coating prep room. Every tool we would use at a fixed
-              shop, parked in front of your house. Working on the floor of your garage or right in
-              the driveway, we leave less of a mess than a normal hose wash. When the weather
-              turns or your spot will not work, we bring the car in instead.
+              The trailer is fully self-contained: on-board water tank, generator, soaps,
+              professional polishers, dual-stage extraction, and a coating prep room. We do not
+              need access to your power or water. All we need is a flat spot to park. When the
+              weather turns or your spot will not work, we bring the car in to the shop instead.
             </p>
           </div>
         </div>

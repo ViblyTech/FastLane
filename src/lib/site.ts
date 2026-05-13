@@ -97,8 +97,8 @@ export const services: Service[] = [
     startingAt: "Free quote",
     faqs: [
       {
-        q: "Do you need a power hookup?",
-        a: "No. The trailer brings its own power. We use your outside tap for water, about the same as a normal hose use.",
+        q: "Do you need a power or water hookup?",
+        a: "No. The trailer is fully self-contained: on-board water tank and generator. We do not need access to your power or water at all. All we need is a flat spot to park.",
       },
       {
         q: "Will my driveway get soapy?",
@@ -275,8 +275,8 @@ export const faqs = [
     a: "A wash removes loose dirt. A detail decontaminates the paint, cleans the interior surface by surface, and finishes with protection. A full detail typically takes two to eight hours depending on the package and the condition of the car.",
   },
   {
-    q: "Do you bring your own water?",
-    a: "We bring our own power, soaps, and equipment. We use your outside tap for water, about the same volume as a normal hose use. If your spot has no water access, ask about the shop.",
+    q: "Do you bring your own water and power?",
+    a: "Yes. The trailer is fully self-contained with an on-board water tank, generator, soaps, and every piece of equipment we need. We do not need access to your power or water. All we need is a flat spot to park.",
   },
   {
     q: "How long does ceramic coating last?",
