@@ -30,7 +30,7 @@ type Props = {
 };
 
 export function ReviewsBand({
-  heading = "From our customers.",
+  heading = "From our customers",
   subhead = "Real reviews from drivers across Bend and Central Oregon.",
   pngHref,
 }: Props) {
@@ -40,13 +40,24 @@ export function ReviewsBand({
       className="border-y border-[var(--color-line-soft)] bg-[var(--color-canvas)]"
     >
       <div className="container-page py-24 sm:py-32">
-        <header className="mb-12 max-w-3xl">
+        <header className="text-center">
           <div className="eyebrow">Reviews</div>
-          <h2 className="text-h1 mt-4">{heading}</h2>
-          <p className="mt-6 max-w-prose text-lg text-[var(--color-fg-muted)]">{subhead}</p>
+          <h2
+            style={{ fontFamily: "var(--font-display)" }}
+            className="mt-6 text-[clamp(2.25rem,7vw,4.5rem)] uppercase leading-[0.95] tracking-[0.01em]"
+          >
+            {heading}
+          </h2>
+          <div
+            aria-hidden="true"
+            className="mx-auto mt-6 h-px w-20 bg-[var(--color-accent)]"
+          />
+          <p className="mx-auto mt-8 max-w-[44ch] text-lg text-[var(--color-fg-muted)]">
+            {subhead}
+          </p>
         </header>
 
-        <div className="grid gap-6 lg:grid-cols-[320px_1fr] lg:items-start">
+        <div className="mt-16 grid gap-6 lg:grid-cols-[320px_1fr] lg:items-start">
           <SummaryCard pngHref={pngHref} />
           <ReviewCarousel />
         </div>

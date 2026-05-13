@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Bebas_Neue } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
@@ -24,6 +24,15 @@ const mono = JetBrains_Mono({
   weight: ["400", "500"],
   preload: false,
   fallback: ["ui-monospace", "SF Mono", "Menlo", "monospace"],
+});
+
+const display = Bebas_Neue({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  weight: "400",
+  preload: true,
+  fallback: ["Impact", "Haettenschweiler", "Arial Narrow Bold", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -58,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
   return (
-    <html lang="en" className={`${inter.variable} ${mono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${mono.variable} ${display.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>

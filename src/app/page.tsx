@@ -8,6 +8,7 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { QuoteForm } from "@/components/QuoteForm";
 import { ReviewsBand } from "@/components/ReviewsBand";
 import { Reveal } from "@/components/Reveal";
+import { SectionHeader } from "@/components/SectionHeader";
 import { customLogoHref } from "@/lib/logo";
 import { site, services, faqs } from "@/lib/site";
 
@@ -82,11 +83,14 @@ function Hero({ pngHref }: { pngHref?: string }) {
         </Reveal>
 
         <Reveal delay={140}>
-          <h1 className="mt-10">
-            <span className="block text-[clamp(2.75rem,11vw,7.5rem)] font-black uppercase leading-[0.95] tracking-tight">
+          <h1
+            className="mt-10 font-[var(--font-display)]"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            <span className="block text-[clamp(3.25rem,13vw,9rem)] uppercase leading-[0.9] tracking-[0.01em]">
               Bend Oregon
             </span>
-            <span className="hero-outline mt-2 block text-[clamp(2.25rem,9vw,6.25rem)] font-black uppercase leading-[0.95] tracking-tight">
+            <span className="hero-outline mt-1 block text-[clamp(2.75rem,11vw,7.5rem)] uppercase leading-[0.9] tracking-[0.01em]">
               #1 Auto Detailer
             </span>
           </h1>
@@ -169,17 +173,11 @@ function Services() {
     <section id="services" className="bg-[var(--color-canvas)]">
       <div className="container-page py-28 sm:py-36">
         <Reveal>
-          <div className="text-center">
-            <div className="eyebrow">Welcome to Fast Lane Detailing</div>
-            <h2 className="text-h1 mt-6 uppercase tracking-tight">Our services</h2>
-            <div
-              aria-hidden="true"
-              className="mx-auto mt-6 h-px w-20 bg-[var(--color-accent)]"
-            />
-            <p className="mx-auto mt-8 max-w-[44ch] text-lg text-[var(--color-fg-muted)]">
-              Mobile or in-shop. The same two hands every time.
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow="Welcome to Fast Lane Detailing"
+            heading="Our services"
+            subhead="Mobile or in-shop. The same two hands every time."
+          />
         </Reveal>
 
         <Reveal delay={120}>
@@ -208,31 +206,17 @@ function Services() {
 function Studio() {
   return (
     <section className="border-y border-[var(--color-line-soft)] bg-[var(--color-canvas)]">
-      <div className="container-page grid gap-16 py-28 sm:py-36 lg:grid-cols-[1.1fr_1fr] lg:gap-24">
+      <div className="container-page py-28 sm:py-36">
         <Reveal>
-          <div>
-            <h2 className="text-h1">
-              Two people.
-              <br />
-              One trailer.
-            </h2>
-            <p className="mt-10 max-w-[40ch] text-xl leading-snug">
-              Luka and Ian. Founded in Bend in 2024 with a decade of paint behind it. Every
-              appointment, you are getting one of us, not a rotating crew you have never met.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link href="/about" className="cta-ghost">
-                About us
-              </Link>
-              <Link href="/reviews" className="cta-ghost">
-                Reviews
-              </Link>
-            </div>
-          </div>
+          <SectionHeader
+            eyebrow="The team"
+            heading="Two people. One trailer."
+            subhead="Luka and Ian. Founded in Bend in 2024 with a decade of paint behind it. Every appointment, you are getting one of us, not a rotating crew you have never met."
+          />
         </Reveal>
 
         <Reveal delay={140}>
-          <ol className="flex flex-col justify-center divide-y divide-[var(--color-line-soft)] border-y border-[var(--color-line-soft)] text-lg">
+          <ol className="mx-auto mt-16 max-w-2xl divide-y divide-[var(--color-line-soft)] border-y border-[var(--color-line-soft)] text-lg">
             <li className="flex items-baseline gap-6 py-6">
               <span className="w-8 shrink-0 font-mono text-sm text-[var(--color-fg-muted)]">
                 01
@@ -253,6 +237,17 @@ function Studio() {
             </li>
           </ol>
         </Reveal>
+
+        <Reveal delay={220}>
+          <div className="mt-12 flex flex-wrap justify-center gap-3">
+            <Link href="/about" className="cta-ghost">
+              About us
+            </Link>
+            <Link href="/reviews" className="cta-ghost">
+              Reviews
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -263,23 +258,15 @@ function Faq() {
     <section id="faq" className="bg-[var(--color-canvas)]">
       <div className="container-page py-28 sm:py-36">
         <Reveal>
-          <div className="max-w-3xl">
-            <h2 className="text-h1">Questions.</h2>
-            <p className="mt-6 max-w-[44ch] text-lg text-[var(--color-fg-muted)]">
-              What people ask before they book. If yours is not here, text us at{" "}
-              <a
-                href={`sms:${site.phoneE164}`}
-                className="text-[var(--color-fg)] underline underline-offset-4"
-              >
-                {site.phone}
-              </a>
-              .
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow="FAQ"
+            heading="Common questions"
+            subhead="What people ask before they book. If yours is not on the list, text us anytime."
+          />
         </Reveal>
 
         <Reveal delay={120}>
-          <ul className="mt-16 divide-y divide-[var(--color-line-soft)] border-y border-[var(--color-line-soft)]">
+          <ul className="mx-auto mt-16 max-w-3xl divide-y divide-[var(--color-line-soft)] border-y border-[var(--color-line-soft)]">
             {faqs.slice(0, 4).map((item) => (
               <li key={item.q}>
                 <details className="group py-7">
@@ -303,7 +290,7 @@ function Faq() {
         </Reveal>
 
         <Reveal delay={200}>
-          <div className="mt-12">
+          <div className="mt-12 text-center">
             <Link
               href="/faq"
               className="text-sm text-[var(--color-fg-muted)] underline underline-offset-4 hover:text-[var(--color-fg)]"
@@ -323,35 +310,34 @@ function Book() {
       id="quote"
       className="scroll-mt-24 border-t border-[var(--color-line-soft)] bg-[var(--color-canvas)]"
     >
-      <div className="container-page grid gap-12 py-28 sm:py-36 lg:grid-cols-[1fr_1.4fr]">
+      <div className="container-page py-28 sm:py-36">
         <Reveal>
-          <header>
-            <h2 className="text-h1">
-              Tell us about
-              <br />
-              your car.
-            </h2>
-            <p className="mt-8 max-w-[36ch] text-lg text-[var(--color-fg-muted)]">
-              Free quote, no commitment. Most appointments confirmed the same day.
-            </p>
-            <p className="mt-6 max-w-[36ch] text-sm text-[var(--color-fg-muted)]">
-              Or call or text{" "}
-              <a
-                href={`tel:${site.phoneE164}`}
-                className="text-[var(--color-fg)] underline underline-offset-4"
-                data-event="cta_call_click"
-              >
-                {site.phone}
-              </a>
-              .
-            </p>
-            <p className="mt-10 text-sm text-[var(--color-fg-muted)]">
-              {site.serviceAreas.join(" · ")}
-            </p>
-          </header>
+          <SectionHeader
+            eyebrow="Book"
+            heading="Tell us about your car"
+            subhead="Free quote, no commitment. Most appointments confirmed the same day."
+          />
         </Reveal>
-        <Reveal delay={140}>
-          <QuoteForm />
+
+        <Reveal delay={120}>
+          <p className="mt-6 text-center text-sm text-[var(--color-fg-muted)]">
+            Or call or text{" "}
+            <a
+              href={`tel:${site.phoneE164}`}
+              className="text-[var(--color-fg)] underline underline-offset-4"
+              data-event="cta_call_click"
+            >
+              {site.phone}
+            </a>
+            {" · "}
+            {site.serviceAreas.join(" · ")}
+          </p>
+        </Reveal>
+
+        <Reveal delay={200}>
+          <div className="mx-auto mt-12 max-w-3xl">
+            <QuoteForm />
+          </div>
         </Reveal>
       </div>
     </section>
