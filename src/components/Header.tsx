@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LogoMark } from "./LogoMark";
+import { MobileNav } from "./MobileNav";
 import { site } from "@/lib/site";
 
 const nav = [
@@ -40,14 +41,15 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <a
             href={`tel:${site.phoneE164}`}
-            className="hidden text-sm text-[var(--color-fg-muted)] hover:text-[var(--color-fg)] sm:inline"
+            className="hidden text-sm text-[var(--color-fg-muted)] hover:text-[var(--color-fg)] lg:inline"
             data-event="cta_call_click"
           >
             {site.phone}
           </a>
+          <MobileNav />
           <Link href="/#quote" className="cta" data-event="cta_book_click">
             Book now
           </Link>

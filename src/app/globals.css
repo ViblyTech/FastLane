@@ -251,11 +251,42 @@
   animation-play-state: paused;
 }
 
+@keyframes mobile-nav-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mobile-nav-item {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav {
+  animation: mobile-nav-fade 220ms var(--ease-out-quart);
+}
+
+.mobile-nav-item {
+  opacity: 0;
+  animation: mobile-nav-item 480ms var(--ease-out-quart) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;
   }
-  .reveal {
+  .reveal,
+  .mobile-nav,
+  .mobile-nav-item {
     opacity: 1;
     transform: none;
     animation: none;
