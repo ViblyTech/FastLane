@@ -93,10 +93,6 @@ export function Footer() {
             </a>
           </div>
         </div>
-
-        <div className="mt-6 text-xs text-[var(--color-fg-muted)]">
-          Friends in Tampa, FL? Visit our partner shop.
-        </div>
       </div>
     </footer>
   );
