@@ -29,6 +29,153 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    slug: "how-much-does-mobile-detailing-cost-bend-oregon",
+    title: "How much does mobile detailing cost in Bend, Oregon?",
+    excerpt:
+      "Mobile detailing in Bend runs $80 to $400 for standard packages, with ceramic coating adding $800 to $2,000+ on top. The real cost depends on package depth, vehicle size, and condition.",
+    author: "luka",
+    publishedAt: "2026-05-05",
+    updatedAt: "2026-05-12",
+    readMinutes: 6,
+    related: ["car-wash-vs-detail", "paint-correction-vs-ceramic-coating"],
+    ctaService: "mobile-detailing",
+    intro:
+      "Mobile detailing in Bend, Oregon runs roughly $80 for a maintenance wash to $400 for a full interior plus exterior detail, with ceramic coating adding $800 to $2,000 on top. The real number depends on three things: how deep a package the car needs, the vehicle size and condition, and whether you are adding paint protection. The honest pricing breakdown below is what we quote on the driveway in Bend.",
+    sections: [
+      {
+        heading: "Pricing by package, real ranges",
+        blocks: [
+          {
+            type: "p",
+            text: "Most mobile detailers in Central Oregon price in package tiers. Here is what we see across Bend, Redmond, and Sisters, and what we charge for each at Fast Lane:",
+          },
+          {
+            type: "table",
+            headers: ["Package", "Typical Bend price", "Time", "What you get"],
+            rows: [
+              [
+                "Maintenance wash",
+                "$80 – $150",
+                "1–2 hrs",
+                "Hand wash, wheels, tires, glass, light interior wipe",
+              ],
+              [
+                "Full exterior detail",
+                "$200 – $350",
+                "3–5 hrs",
+                "Decontamination, clay, paint sealant, dressed trim",
+              ],
+              [
+                "Full interior detail",
+                "$200 – $350",
+                "3–5 hrs",
+                "Vacuum, extraction, leather conditioning, glass",
+              ],
+              [
+                "Full int + ext detail",
+                "$300 – $500",
+                "5–7 hrs",
+                "Everything above in one appointment",
+              ],
+              [
+                "Paint correction",
+                "$400 – $1,500",
+                "6–16 hrs",
+                "Machine polish, single to three-stage cut",
+              ],
+              [
+                "Ceramic coating",
+                "$800 – $2,000+",
+                "1–2 days",
+                "Prep, correction, professional coat",
+              ],
+              [
+                "Odor removal",
+                "$150 – $400",
+                "4–8 hrs",
+                "Source treatment for smoke, pet, food",
+              ],
+            ],
+          },
+        ],
+      },
+      {
+        heading: "What actually changes the price",
+        blocks: [
+          {
+            type: "p",
+            text: "Three variables move quotes up or down on otherwise similar packages:",
+          },
+          {
+            type: "ol",
+            items: [
+              "Vehicle size. A 4Runner, Suburban, or Sprinter has more square footage of paint and more interior to clean than a Civic. Add 15 to 30 percent over the table above for full-size trucks and three-row SUVs.",
+              "Condition. A garaged daily driver costs less to detail than a worksite truck with a full bed of construction dust, a layer of cinder rock, and three years of pet hair. We quote based on photos and a quick walkaround, so what you pay matches what your car actually needs.",
+              "Paint condition before correction or coating. Light swirls from drive-through washes need one stage of correction. Hologram patterns or oxidized clear coat need two or three. The prep determines the bill, not the coating itself.",
+            ],
+          },
+        ],
+      },
+      {
+        heading: "How to budget for the right tier",
+        blocks: [
+          {
+            type: "p",
+            text: "A useful way to think about it: pick the tier that matches how long you plan to keep the car.",
+          },
+          {
+            type: "ul",
+            items: [
+              "Selling in 90 days: full detail ($300 to $500). Pays back in resale almost every time.",
+              "Daily driver, keeping for 1 to 3 more years: full detail twice a year plus maintenance washes between.",
+              "New or near-new car, keeping for 5+ years: paint correction plus ceramic coating up front, then maintenance washes. Most economical over time.",
+              "Project car or showpiece: multi-stage correction plus premium coating. Quote on consult.",
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Why mobile is competitive with fixed shops",
+        blocks: [
+          {
+            type: "p",
+            text: "A common assumption is that mobile detailing costs more because we travel. In practice, mobile prices in Bend are within 5 to 15 percent of in-shop prices for the same work, and the time you save not dropping off and picking up makes the math even tighter. We carry our own water, power, and equipment, so there is no surcharge for setup at your location.",
+          },
+        ],
+      },
+      {
+        heading: "What we will not do",
+        blocks: [
+          {
+            type: "p",
+            text: "Two pricing practices you should avoid in any detailing quote, mobile or shop:",
+          },
+          {
+            type: "ul",
+            items: [
+              "Coating quoted without correction prep. A ceramic coating locks in whatever is on the paint. Skipping prep on defected paint is a red flag.",
+              "Flat-rate pricing without seeing the car. Every vehicle is a different job. A reputable detailer asks for photos or does a walkaround before committing to a number.",
+            ],
+          },
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Do you charge extra for mobile service?",
+        a: "Not for jobs inside our standard service area (Bend, Redmond, Sisters, Sunriver, Tumalo, La Pine). For jobs outside the 30-mile radius, we may add a small travel fee, but we always quote it up front.",
+      },
+      {
+        q: "Will the quote change after you see the car?",
+        a: "We try to quote accurately from photos, but if the condition is substantially different from what was described, we will walk you through any adjustment before starting. No surprise charges.",
+      },
+      {
+        q: "Do you accept cards or only cash?",
+        a: "Cash, credit, debit, Venmo, and Zelle.",
+      },
+    ],
+  },
+  {
     slug: "how-long-does-ceramic-coating-last",
     title: "How long does ceramic coating last?",
     excerpt:
@@ -447,4 +594,8 @@ export function findArticle(slug: string) {
 
 export function articlesByAuthor(authorSlug: string) {
   return articles.filter((a) => a.author === authorSlug);
+}
+
+export function articlesByService(serviceSlug: string) {
+  return articles.filter((a) => a.ctaService === serviceSlug);
 }

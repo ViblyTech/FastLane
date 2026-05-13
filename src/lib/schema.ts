@@ -282,12 +282,41 @@ export function articleSchema(article: Article) {
       : undefined,
     publisher: { "@id": BUSINESS_ID },
     isPartOf: { "@id": WEBSITE_ID },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".article-headline", ".article-intro", ".article-section h2"],
+    },
     about: article.ctaService
       ? {
           "@type": "Service",
           name: services.find((s) => s.slug === article.ctaService)?.name ?? "",
         }
       : undefined,
+  };
+}
+
+export function blogCollectionSchema(items: Article[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${site.url}/blog#collection`,
+    name: `${site.name} — Detailing notes`,
+    url: `${site.url}/blog`,
+    description:
+      "Practical detailing guides from Fast Lane Detailing in Bend, Oregon: ceramic coating durability, paint correction, winter prep, mag chloride, pricing, and more.",
+    isPartOf: { "@id": WEBSITE_ID },
+    inLanguage: "en-US",
+    mainEntity: {
+      "@type": "ItemList",
+      itemListOrder: "https://schema.org/ItemListOrderDescending",
+      numberOfItems: items.length,
+      itemListElement: items.map((a, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${site.url}/blog/${a.slug}`,
+        name: a.title,
+      })),
+    },
   };
 }
 

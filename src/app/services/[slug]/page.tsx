@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallToAction } from "@/components/CallToAction";
 import { QuoteForm } from "@/components/QuoteForm";
 import { services, site } from "@/lib/site";
+import { articlesByService } from "@/lib/blog";
 import { serviceSchema, faqPageSchema, breadcrumbSchema } from "@/lib/schema";
 
 type Params = { slug: string };
@@ -36,6 +37,7 @@ export default async function ServiceDetail(
   if (!service) notFound();
 
   const related = services.filter((s) => service.related.includes(s.slug));
+  const relatedArticles = articlesByService(service.slug);
 
   return (
     <>
@@ -136,6 +138,40 @@ export default async function ServiceDetail(
                     </summary>
                     <p className="mt-3 max-w-prose text-[var(--color-fg-muted)]">{item.a}</p>
                   </details>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : null}
+
+      {relatedArticles.length > 0 ? (
+        <section className="border-b border-[var(--color-line-soft)] bg-[var(--color-surface)]">
+          <div className="container-page py-24">
+            <header className="mb-10 max-w-2xl">
+              <div className="eyebrow">Related reading</div>
+              <h2 className="text-h2 mt-4">
+                More on {service.name.toLowerCase()}
+              </h2>
+            </header>
+            <ul className="grid gap-6 sm:grid-cols-2">
+              {relatedArticles.map((a) => (
+                <li key={a.slug}>
+                  <Link
+                    href={`/blog/${a.slug}`}
+                    className="group flex h-full flex-col gap-3 rounded-card border border-[var(--color-line-soft)] bg-[var(--color-canvas)] p-6 transition-colors hover:border-[var(--color-fg)]"
+                  >
+                    <div className="eyebrow flex flex-wrap items-center gap-3 text-[var(--color-fg-muted)]">
+                      <span>{a.readMinutes} min read</span>
+                    </div>
+                    <h3 className="text-xl font-bold tracking-tight transition-colors group-hover:text-[var(--color-accent)]">
+                      {a.title}
+                    </h3>
+                    <p className="text-[var(--color-fg-muted)]">{a.excerpt}</p>
+                    <span className="mt-auto text-sm text-[var(--color-fg-muted)]">
+                      Read article →
+                    </span>
+                  </Link>
                 </li>
               ))}
             </ul>

@@ -6,7 +6,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CallToAction } from "@/components/CallToAction";
 import { articles } from "@/lib/blog";
 import { team, site } from "@/lib/site";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, blogCollectionSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
   title: "Detailing notes from Bend, Oregon",
@@ -28,6 +28,7 @@ export default function BlogIndex() {
             { name: "Home", url: site.url },
             { name: "Blog", url: `${site.url}/blog` },
           ]),
+          blogCollectionSchema(sorted),
           {
             "@context": "https://schema.org",
             "@type": "Blog",

@@ -70,13 +70,16 @@ export default async function ArticlePage(
 
       <article className="container-page pb-16 pt-12 sm:pt-16">
         <div className="eyebrow flex flex-wrap items-center gap-4 text-[var(--color-fg-muted)]">
-          <time dateTime={article.publishedAt}>
-            {new Date(article.publishedAt).toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </time>
+          <span>
+            Updated{" "}
+            <time dateTime={article.updatedAt} className="text-[var(--color-fg)]">
+              {new Date(article.updatedAt).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </time>
+          </span>
           <span aria-hidden="true">·</span>
           <span>{article.readMinutes} min read</span>
           {author ? (
@@ -95,15 +98,40 @@ export default async function ArticlePage(
           ) : null}
         </div>
 
-        <h1 className="text-h1 mt-6 max-w-4xl">{article.title}</h1>
+        <h1 className="article-headline text-h1 mt-6 max-w-4xl">{article.title}</h1>
 
-        <p className="mt-8 max-w-3xl text-xl leading-relaxed text-[var(--color-fg)] sm:text-2xl">
+        <p className="article-intro mt-8 max-w-3xl text-xl leading-relaxed text-[var(--color-fg)] sm:text-2xl">
           {article.intro}
         </p>
 
+        {article.publishedAt !== article.updatedAt ? (
+          <p className="mt-6 max-w-3xl text-xs text-[var(--color-fg-muted)]">
+            Originally published{" "}
+            <time dateTime={article.publishedAt}>
+              {new Date(article.publishedAt).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </time>
+            . Reviewed and updated{" "}
+            <time dateTime={article.updatedAt}>
+              {new Date(article.updatedAt).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </time>
+            .
+          </p>
+        ) : null}
+
         <div className="prose-y mt-16 max-w-3xl space-y-14">
           {article.sections.map((section, idx) => (
-            <section key={`${section.heading}-${idx}`} className="space-y-6">
+            <section
+              key={`${section.heading}-${idx}`}
+              className="article-section space-y-6"
+            >
               <h2 className="text-h2">{section.heading}</h2>
               {section.blocks.map((block, i) => (
                 <Block key={i} block={block} />

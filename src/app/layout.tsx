@@ -70,6 +70,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${mono.variable} ${display.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {plausibleDomain ? (
+          <>
+            <link rel="preconnect" href="https://plausible.io" crossOrigin="" />
+            <link rel="dns-prefetch" href="https://plausible.io" />
+          </>
+        ) : null}
       </head>
       <body>
         <div className="scroll-progress" aria-hidden="true" />
