@@ -54,7 +54,7 @@ export default function ContactPage() {
               label: "Call",
               value: site.phone,
               href: `tel:${site.phoneE164}`,
-              note: "Fastest. Mon to Sat business hours.",
+              note: "Fastest. Mon to Fri business hours.",
               event: "cta_call_click",
             },
             {
@@ -96,15 +96,11 @@ export default function ContactPage() {
           <dl className="mt-8 space-y-3 text-lg">
             <div className="flex justify-between gap-6 border-b border-[var(--color-line-soft)] pb-3">
               <dt>Monday to Friday</dt>
-              <dd className="text-[var(--color-fg-muted)]">8am to 6pm</dd>
+              <dd className="text-[var(--color-fg-muted)]">8am to 5pm</dd>
             </div>
             <div className="flex justify-between gap-6 border-b border-[var(--color-line-soft)] pb-3">
-              <dt>Saturday</dt>
-              <dd className="text-[var(--color-fg-muted)]">9am to 4pm</dd>
-            </div>
-            <div className="flex justify-between gap-6 border-b border-[var(--color-line-soft)] pb-3">
-              <dt>Sunday</dt>
-              <dd className="text-[var(--color-fg-muted)]">By appointment</dd>
+              <dt>Saturday + Sunday</dt>
+              <dd className="text-[var(--color-fg-muted)]">Closed</dd>
             </div>
           </dl>
           <address className="not-italic mt-12 space-y-1 text-sm text-[var(--color-fg-muted)]">

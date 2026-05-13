@@ -140,7 +140,7 @@ export const articles: Article[] = [
         blocks: [
           {
             type: "p",
-            text: "A common assumption is that mobile detailing costs more because we travel. In practice, mobile prices in Bend are within 5 to 15 percent of in-shop prices for the same work, and the time you save not dropping off and picking up makes the math even tighter. We carry our own water, power, and equipment, so there is no surcharge for setup at your location.",
+            text: "A common assumption is that mobile detailing costs more because we travel. In practice, mobile prices in Bend are within 5 to 15 percent of fixed-shop prices for the same work, and the time you save not dropping off and picking up makes the math even tighter. We carry our own water, power, and equipment, so there is no surcharge for setup at your location.",
           },
         ],
       },

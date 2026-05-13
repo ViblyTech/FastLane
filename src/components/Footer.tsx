@@ -53,7 +53,7 @@ export function Footer() {
                 </a>
                 {" · call or text"}
               </div>
-              <div>Mon to Fri 8am to 6pm · Sat 9am to 4pm</div>
+              <div>Mon to Fri · 8am to 5pm</div>
             </address>
           </div>
 

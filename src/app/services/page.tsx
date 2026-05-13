@@ -45,7 +45,7 @@ export default function ServicesIndex() {
         <p className="mt-6 max-w-prose text-lg text-[var(--color-fg-muted)]">
           Mobile auto detailing, ceramic coating, paint correction, interior detailing, engine bay
           cleaning, and odor removal across Bend, Redmond, Sisters, Sunriver, Tumalo, and La Pine.
-          Mobile or in-shop. Each link below opens a full breakdown of what is included, who it is
+          We come to you. Each link below opens a full breakdown of what is included, who it is
           for, and how long it takes.
         </p>
       </section>

@@ -69,18 +69,19 @@ export default function AboutPage() {
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
           <header>
             <div className="eyebrow">Why mobile</div>
-            <h2 className="text-h2 mt-4">Your driveway is the shop.</h2>
+            <h2 className="text-h2 mt-4">We come to you.</h2>
           </header>
           <div className="space-y-6 text-lg leading-relaxed">
             <p>
               A real detail takes hours. Most people do not have hours to spend dropping a car off
-              and figuring out a ride. So we brought the shop to you.
+              and figuring out a ride. So we built a trailer instead.
             </p>
             <p className="text-[var(--color-fg-muted)]">
               The trailer is fully self-contained: on-board water tank, generator, soaps,
               professional polishers, dual-stage extraction, and a coating prep room. We do not
               need access to your power or water. All we need is a flat spot to park. When the
-              weather turns or your spot will not work, we bring the car in to the shop instead.
+              weather turns or your spot will not work, we figure out a location that works for
+              both of us — a parking lot, your office, a friend's driveway, wherever makes sense.
             </p>
           </div>
         </div>

@@ -187,7 +187,7 @@ function Services() {
           <SectionHeader
             eyebrow="Welcome to Fast Lane Detailing"
             heading="Our services"
-            subhead="Mobile auto detailing, ceramic coating, and paint correction in Bend, Oregon. The same two hands every appointment, whether we come to your driveway or you book the shop."
+            subhead="Mobile auto detailing, ceramic coating, and paint correction in Bend, Oregon. The same two hands every appointment, at your driveway, your office, or anywhere with a flat spot to park."
           />
         </Reveal>
 
@@ -238,7 +238,7 @@ function Studio() {
               <span className="w-8 shrink-0 font-mono text-sm text-[var(--color-fg-muted)]">
                 02
               </span>
-              <span>We come to you. Driveway, office, or in-shop.</span>
+              <span>We come to you. Driveway, office, or anywhere that works for both of us.</span>
             </li>
             <li className="flex items-baseline gap-6 py-6">
               <span className="w-8 shrink-0 font-mono text-sm text-[var(--color-fg-muted)]">

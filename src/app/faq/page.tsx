@@ -10,7 +10,7 @@ import { breadcrumbSchema, faqPageSchema } from "@/lib/schema";
 export const metadata: Metadata = buildMetadata({
   title: "Mobile Auto Detailing FAQ Bend, OR | Real Answers",
   description:
-    "Mobile auto detailing FAQ from Fast Lane Detailing in Bend, OR. Car wash vs detail, ceramic coating durability, mobile vs in-shop, pricing, and more.",
+    "Mobile auto detailing FAQ from Fast Lane Detailing in Bend, OR. Car wash vs detail, ceramic coating durability, what we bring, pricing, and more.",
   path: "/faq",
   keywords: [
     "mobile detailing FAQ Bend Oregon",

@@ -40,8 +40,7 @@ export const site = {
   geo: { lat: 44.0582, lng: -121.3153 },
   serviceRadiusMiles: 30,
   hours: [
-    { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], open: "08:00", close: "18:00" },
-    { days: ["Saturday"], open: "09:00", close: "16:00" },
+    { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], open: "08:00", close: "17:00" },
   ],
   paymentsAccepted: ["Cash", "Credit Card", "Debit Card", "Venmo", "Zelle"],
   currenciesAccepted: "USD",
@@ -94,7 +93,7 @@ export const services: Service[] = [
     short: "Interior and exterior at your driveway, in one appointment.",
     long: "Hand wash, paint decontamination, interior vacuum and surface clean, glass, dressings, the works.",
     intro:
-      "Mobile detailing is a full interior-and-exterior service performed at the customer's location instead of a shop. We bring a fully-equipped trailer to your driveway, your office parking lot, or anywhere with a flat surface and an outdoor tap. One appointment, no driving across town.",
+      "Mobile detailing is a full interior-and-exterior service performed at the customer's location. We bring a fully self-contained trailer (on-board water tank, generator, soaps, and equipment) to your driveway, your office parking lot, or anywhere with a flat spot to park. One appointment, no driving across town.",
     includes: [
       "Foam pre-wash and contact wash",
       "Wheel face, barrel, and tire deep clean",
@@ -140,7 +139,7 @@ export const services: Service[] = [
   {
     slug: "ceramic-coating",
     name: "Ceramic Coating",
-    short: "Multi-year paint protection, installed at your home or in the shop.",
+    short: "Multi-year paint protection, installed at your home, office, or wherever works.",
     long: "Professional ceramic coatings with two to five-year durability. Includes decontamination and a single-stage polish before install.",
     intro:
       "Ceramic coating bonds a clear, hydrophobic layer to your paint that outlasts wax by years. Done right, it makes washes shorter, water bead aggressively, and the paint hold its gloss against UV and contaminants.",
@@ -187,7 +186,7 @@ export const services: Service[] = [
     ],
     metaTitle: "Ceramic Coating Bend, OR | 2-5 Year Paint Protection",
     metaDescription:
-      "Professional ceramic coating in Bend, OR. Two to five year paint protection from a 5-star detailer. Installed at home or in shop. Free consultation.",
+      "Professional ceramic coating in Bend, OR. Two to five year paint protection from a 5-star detailer. Installed at your home or office. Free consultation.",
   },
   {
     slug: "paint-correction",
@@ -264,7 +263,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "Can you get pet hair out of car seats?",
-        a: "Yes. We use a combination of rubber tools, soft brushes, and extraction. The harder cases take an extra hour, not a different shop.",
+        a: "Yes. We use a combination of rubber tools, soft brushes, and extraction. The harder cases take an extra hour, not a different detailer.",
       },
     ],
     related: ["odor-removal", "mobile-detailing"],
@@ -380,7 +379,7 @@ export const faqs = [
   },
   {
     q: "What if I park in a garage or my HOA restricts driveway work?",
-    a: "We have worked in downtown lots, condo garages, and HOA driveways across Bend. If your spot will not work, we book you for the in-shop appointment instead.",
+    a: "We have worked in downtown lots, condo garages, and HOA driveways across Bend. If your spot will not work, we figure out a location that works for both of us — a parking lot, a friend's driveway, your office, wherever makes sense.",
   },
   {
     q: "Do you service Redmond, Sisters, Sunriver, or Tumalo?",
