@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LogoMark } from "./LogoMark";
 import { MobileNav } from "./MobileNav";
+import { customLogoHref } from "@/lib/logo";
 import { site } from "@/lib/site";
 
 const nav = [
@@ -12,6 +13,8 @@ const nav = [
 ];
 
 export function Header() {
+  const pngHref = customLogoHref();
+
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--color-line-soft)] bg-[color-mix(in_oklab,var(--color-canvas)_85%,transparent)] backdrop-blur-md">
       <a
@@ -20,14 +23,14 @@ export function Header() {
       >
         Skip to content
       </a>
-      <div className="container-page flex items-center justify-between py-4">
+      <div className="container-page flex items-center justify-between py-3">
         <Link
           href="/"
-          className="text-lg sm:text-xl"
           aria-label={`${site.name} home`}
           prefetch
+          className="block h-12 sm:h-14"
         >
-          <LogoMark />
+          <LogoMark pngHref={pngHref} priority />
         </Link>
         <nav aria-label="Primary" className="hidden gap-7 text-sm md:flex">
           {nav.map((item) => (
@@ -49,7 +52,7 @@ export function Header() {
           >
             {site.phone}
           </a>
-          <MobileNav />
+          <MobileNav pngHref={pngHref} />
           <Link href="/#quote" className="cta" data-event="cta_book_click">
             Book now
           </Link>

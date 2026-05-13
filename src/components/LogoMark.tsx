@@ -3,27 +3,37 @@ import Image from "next/image";
 type Props = {
   variant?: "full" | "wordmark";
   className?: string;
-  /** When set, the "full" variant renders this image instead of the inline SVG. */
+  /** When set, renders the uploaded logo image instead of the inline SVG. */
   pngHref?: string;
+  /** Marks the image as priority for next/image (use on above-the-fold logos). */
+  priority?: boolean;
 };
 
-export function LogoMark({ variant = "wordmark", className, pngHref }: Props) {
-  if (variant === "full") {
-    if (pngHref) {
-      return (
-        <Image
-          src={pngHref}
-          alt="Fast Lane Detailing"
-          width={1024}
-          height={1024}
-          className={`h-full w-full object-contain ${className ?? ""}`}
-          sizes="(min-width: 768px) 128px, 96px"
-        />
-      );
-    }
-    return <FullSvg className={className} />;
+export function LogoMark({
+  variant = "wordmark",
+  className,
+  pngHref,
+  priority = false,
+}: Props) {
+  if (pngHref) {
+    const sizes =
+      variant === "full"
+        ? "(min-width: 768px) 128px, 96px"
+        : "(min-width: 640px) 56px, 48px";
+    return (
+      <Image
+        src={pngHref}
+        alt="Fast Lane Detailing"
+        width={1024}
+        height={1024}
+        className={`h-full w-auto object-contain ${className ?? ""}`}
+        sizes={sizes}
+        priority={priority}
+      />
+    );
   }
 
+  if (variant === "full") return <FullSvg className={className} />;
   return <WordmarkInline className={className} />;
 }
 

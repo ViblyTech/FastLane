@@ -15,7 +15,7 @@ const company = [
   { href: "/contact", label: "Contact" },
 ];
 
-export function MobileNav() {
+export function MobileNav({ pngHref }: { pngHref?: string }) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const close = () => setOpen(false);
@@ -63,10 +63,10 @@ export function MobileNav() {
         <Link
           href="/"
           onClick={close}
-          className="text-lg"
           aria-label={`${site.name} home`}
+          className="block h-14"
         >
-          <LogoMark />
+          <LogoMark pngHref={pngHref} />
         </Link>
         <button
           type="button"
