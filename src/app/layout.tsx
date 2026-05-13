@@ -63,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
       <body>
+        <div className="scroll-progress" aria-hidden="true" />
         <JsonLd data={[organizationSchema(), localBusinessSchema(), websiteSchema()]} />
         <Header />
         <main id="main">{children}</main>

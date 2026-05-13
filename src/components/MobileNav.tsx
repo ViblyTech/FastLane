@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { LogoMark } from "./LogoMark";
-import { site } from "@/lib/site";
+import { site, services } from "@/lib/site";
 
-const items = [
+const primary = [
   { href: "/services", label: "Services" },
   { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
@@ -44,12 +44,12 @@ export function MobileNav() {
         aria-label="Open menu"
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
-        className="flex h-10 w-10 items-center justify-center text-[var(--color-fg)] md:hidden"
+        className="-mr-2 flex h-11 w-11 items-center justify-center text-[var(--color-fg)] md:hidden"
       >
         <svg
           viewBox="0 0 24 24"
-          width="22"
-          height="22"
+          width="24"
+          height="24"
           aria-hidden="true"
           fill="none"
           stroke="currentColor"
@@ -68,9 +68,10 @@ export function MobileNav() {
           role="dialog"
           aria-modal="true"
           aria-label="Site navigation"
-          className="mobile-nav fixed inset-0 z-50 flex flex-col bg-[var(--color-canvas)] md:hidden"
+          style={{ backgroundColor: "var(--color-canvas)", color: "var(--color-fg)" }}
+          className="mobile-nav fixed inset-0 z-50 flex flex-col md:hidden"
         >
-          <div className="container-page flex items-center justify-between py-4">
+          <div className="flex items-center justify-between border-b border-[var(--color-line-soft)] px-6 py-4">
             <Link
               href="/"
               onClick={() => setOpen(false)}
@@ -83,12 +84,12 @@ export function MobileNav() {
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Close menu"
-              className="flex h-10 w-10 items-center justify-center text-[var(--color-fg)]"
+              className="-mr-2 flex h-11 w-11 items-center justify-center text-[var(--color-fg)]"
             >
               <svg
                 viewBox="0 0 24 24"
-                width="22"
-                height="22"
+                width="24"
+                height="24"
                 aria-hidden="true"
                 fill="none"
                 stroke="currentColor"
@@ -103,31 +104,55 @@ export function MobileNav() {
 
           <nav
             aria-label="Mobile primary"
-            className="container-page flex-1 overflow-y-auto pb-8 pt-4"
+            className="flex-1 overflow-y-auto overscroll-contain"
           >
-            <ul className="flex flex-col divide-y divide-[var(--color-line-soft)] border-y border-[var(--color-line-soft)]">
-              {items.map((item, i) => (
-                <li
-                  key={item.href}
-                  className="mobile-nav-item"
-                  style={{ animationDelay: `${100 + i * 40}ms` }}
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className="flex items-center justify-between gap-4 py-5 text-3xl font-semibold tracking-tight"
+            <div className="px-6 pb-8 pt-4">
+              <ul>
+                {primary.map((item, i) => (
+                  <li
+                    key={item.href}
+                    className="mobile-nav-item border-b border-[var(--color-line-soft)] last:border-b-0"
+                    style={{ animationDelay: `${60 + i * 28}ms` }}
                   >
-                    <span>{item.label}</span>
-                    <span aria-hidden="true" className="text-[var(--color-fg-muted)]">
-                      →
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                    <Link
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center justify-between gap-4 py-5 text-3xl font-semibold tracking-tight"
+                    >
+                      <span>{item.label}</span>
+                      <span aria-hidden="true" className="text-[var(--color-fg-muted)]">
+                        →
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="eyebrow mt-10">Services</div>
+              <ul className="mt-3">
+                {services.map((s, i) => (
+                  <li
+                    key={s.slug}
+                    className="mobile-nav-item border-b border-[var(--color-line-soft)] last:border-b-0"
+                    style={{ animationDelay: `${260 + i * 24}ms` }}
+                  >
+                    <Link
+                      href={`/services/${s.slug}`}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center justify-between gap-4 py-3.5 text-base"
+                    >
+                      <span>{s.name}</span>
+                      <span aria-hidden="true" className="text-[var(--color-fg-muted)]">
+                        →
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </nav>
 
-          <div className="container-page flex flex-col gap-3 border-t border-[var(--color-line-soft)] py-6">
+          <div className="flex flex-col gap-3 border-t border-[var(--color-line-soft)] px-6 py-5">
             <a
               href={`tel:${site.phoneE164}`}
               onClick={() => setOpen(false)}
