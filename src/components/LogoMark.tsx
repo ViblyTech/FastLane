@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Props = {
   variant?: "full" | "wordmark";
   className?: string;
@@ -9,13 +11,13 @@ export function LogoMark({ variant = "wordmark", className, pngHref }: Props) {
   if (variant === "full") {
     if (pngHref) {
       return (
-        <img
+        <Image
           src={pngHref}
           alt="Fast Lane Detailing"
           width={1024}
           height={1024}
           className={`h-full w-full object-contain ${className ?? ""}`}
-          decoding="async"
+          sizes="(min-width: 768px) 128px, 96px"
         />
       );
     }
