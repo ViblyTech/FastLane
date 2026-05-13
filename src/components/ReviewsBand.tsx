@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { reviews, site } from "@/lib/site";
 
@@ -52,13 +52,16 @@ export function ReviewsBand({
             aria-hidden="true"
             className="mx-auto mt-6 h-px w-20 bg-[var(--color-accent)]"
           />
-          <p className="mx-auto mt-8 max-w-[44ch] text-lg text-[var(--color-fg-muted)]">
+          <p className="mx-auto mt-8 max-w-[44ch] text-base text-[var(--color-fg-muted)] sm:text-lg">
             {subhead}
           </p>
         </header>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-[320px_1fr] lg:items-start">
+        <div className="mx-auto mt-12 max-w-md sm:max-w-lg">
           <SummaryCard pngHref={pngHref} />
+        </div>
+
+        <div className="mt-10">
           <ReviewCarousel />
         </div>
       </div>
@@ -68,8 +71,8 @@ export function ReviewsBand({
 
 function SummaryCard({ pngHref }: { pngHref?: string }) {
   return (
-    <div className="rounded-card border border-[var(--color-line-soft)] bg-[var(--color-surface)] p-6 text-center sm:p-8">
-      <div className="mx-auto h-20 w-20 overflow-hidden rounded-md bg-[var(--color-canvas)] p-2">
+    <div className="rounded-card border border-[var(--color-line-soft)] bg-[var(--color-surface)] p-6 text-center">
+      <div className="mx-auto h-16 w-16 overflow-hidden rounded-md bg-[var(--color-canvas)] p-2">
         {pngHref ? (
           <Image
             src={pngHref}
@@ -77,7 +80,7 @@ function SummaryCard({ pngHref }: { pngHref?: string }) {
             width={1024}
             height={1024}
             className="h-full w-full object-contain"
-            sizes="80px"
+            sizes="64px"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-sm font-black italic">
@@ -86,7 +89,7 @@ function SummaryCard({ pngHref }: { pngHref?: string }) {
         )}
       </div>
       <h3 className="mt-4 text-lg font-bold">Fast Lane Detailing</h3>
-      <Stars rating={site.rating.value} size={20} className="mt-2 justify-center" />
+      <Stars rating={site.rating.value} size={22} className="mt-2 justify-center" />
       <p className="mt-2 text-sm text-[var(--color-fg-muted)]">
         {site.rating.count} Google reviews
       </p>
@@ -94,7 +97,7 @@ function SummaryCard({ pngHref }: { pngHref?: string }) {
         href={site.social.googleReviewUrl}
         target="_blank"
         rel="noopener"
-        className="mt-5 inline-flex w-full items-center justify-center rounded-md border border-[var(--color-fg)] px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[var(--color-fg)] hover:text-[var(--color-canvas)]"
+        className="mt-5 inline-flex w-full items-center justify-center rounded-md border border-[var(--color-fg)] px-4 py-3 text-sm font-medium transition-colors hover:bg-[var(--color-fg)] hover:text-[var(--color-canvas)]"
         data-event="cta_review_click"
       >
         Write a review
@@ -104,50 +107,122 @@ function SummaryCard({ pngHref }: { pngHref?: string }) {
 }
 
 function ReviewCarousel() {
+  const scrollerRef = useRef<HTMLUListElement>(null);
+  const cardRefs = useRef<Array<HTMLLIElement | null>>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        let bestIndex = activeIndex;
+        let bestRatio = 0;
+        for (const entry of entries) {
+          if (entry.intersectionRatio > bestRatio) {
+            const index = cardRefs.current.indexOf(entry.target as HTMLLIElement);
+            if (index !== -1) {
+              bestRatio = entry.intersectionRatio;
+              bestIndex = index;
+            }
+          }
+        }
+        if (bestRatio > 0.5) setActiveIndex(bestIndex);
+      },
+      {
+        root: scroller,
+        threshold: [0.25, 0.5, 0.75, 1],
+      },
+    );
+
+    cardRefs.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const scrollToIndex = (i: number) => {
+    const card = cardRefs.current[i];
+    const scroller = scrollerRef.current;
+    if (!card || !scroller) return;
+    const scrollerRect = scroller.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const offset =
+      cardRect.left -
+      scrollerRect.left +
+      scroller.scrollLeft -
+      (scrollerRect.width - cardRect.width) / 2;
+    scroller.scrollTo({ left: offset, behavior: "smooth" });
+  };
+
   return (
     <div className="relative">
       <ul
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        aria-label="Customer reviews carousel"
+        ref={scrollerRef}
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-2 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        aria-label="Customer reviews"
       >
         {reviews.map((review, i) => (
           <li
             key={i}
-            className="snap-center shrink-0 basis-[88%] sm:basis-[55%] lg:basis-[48%]"
+            ref={(el) => {
+              cardRefs.current[i] = el;
+            }}
+            className="snap-center shrink-0 basis-full sm:basis-[60%] lg:basis-[42%] xl:basis-[32%]"
           >
             <ReviewCard review={review} />
           </li>
         ))}
       </ul>
-      <p className="mt-4 text-xs text-[var(--color-fg-muted)] sm:hidden">
-        Swipe to see more reviews →
-      </p>
+
+      <div className="mt-6 flex items-center justify-center gap-2">
+        {reviews.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            onClick={() => scrollToIndex(i)}
+            aria-label={`Go to review ${i + 1} of ${reviews.length}`}
+            aria-current={i === activeIndex ? "true" : undefined}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === activeIndex
+                ? "w-8 bg-[var(--color-fg)]"
+                : "w-1.5 bg-[var(--color-fg-muted)]/40 hover:bg-[var(--color-fg-muted)]"
+            }`}
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
 function ReviewCard({ review }: { review: (typeof reviews)[number] }) {
   const [expanded, setExpanded] = useState(false);
-  const truncated = review.body.length > 220;
-  const displayBody = !truncated || expanded ? review.body : review.body.slice(0, 220).trimEnd() + "…";
+  const truncated = review.body.length > 180;
+  const displayBody =
+    !truncated || expanded ? review.body : review.body.slice(0, 180).trimEnd() + "…";
   const color = avatarColor(review.author);
 
   return (
-    <article className="flex h-full flex-col gap-4 rounded-card border border-[var(--color-line-soft)] bg-[var(--color-surface)] p-6">
+    <article className="flex h-full flex-col gap-4 rounded-card border border-[var(--color-line-soft)] bg-[var(--color-surface)] p-5 sm:p-6">
       <header className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
           <span
             aria-hidden="true"
             style={{ backgroundColor: color }}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-base font-semibold text-white"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-base font-semibold text-white"
           >
             {review.author.charAt(0)}
           </span>
-          <div>
-            <div className="text-base font-semibold leading-tight">{review.author}</div>
+          <div className="min-w-0">
+            <div className="truncate text-base font-semibold leading-tight">
+              {review.author}
+            </div>
             <time
               dateTime={review.date}
-              className="text-sm text-[var(--color-fg-muted)]"
+              className="text-xs text-[var(--color-fg-muted)] sm:text-sm"
             >
               {new Date(review.date).toLocaleDateString("en-GB", {
                 day: "numeric",
@@ -159,10 +234,8 @@ function ReviewCard({ review }: { review: (typeof reviews)[number] }) {
         </div>
         <GoogleG />
       </header>
-      <Stars rating={review.rating} size={18} />
-      <p className="text-[15px] leading-relaxed text-[var(--color-fg)]">
-        {displayBody}
-      </p>
+      <Stars rating={review.rating} size={16} />
+      <p className="text-[15px] leading-relaxed text-[var(--color-fg)]">{displayBody}</p>
       {truncated ? (
         <button
           type="button"
@@ -212,8 +285,8 @@ function Stars({
 function GoogleG() {
   return (
     <svg
-      width="22"
-      height="22"
+      width="20"
+      height="20"
       viewBox="0 0 48 48"
       aria-label="Google review"
       role="img"
