@@ -12,6 +12,9 @@ const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
+  fallback: ["system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+  adjustFontFallback: "Arial",
 });
 
 const mono = JetBrains_Mono({
@@ -19,6 +22,8 @@ const mono = JetBrains_Mono({
   variable: "--font-mono-face",
   display: "swap",
   weight: ["400", "500"],
+  preload: false,
+  fallback: ["ui-monospace", "SF Mono", "Menlo", "monospace"],
 });
 
 export const metadata: Metadata = {

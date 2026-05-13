@@ -77,7 +77,7 @@ export const services: Service[] = [
     short: "Interior and exterior at your driveway, in one appointment.",
     long: "Hand wash, paint decontamination, interior vacuum and surface clean, glass, dressings, the works.",
     intro:
-      "Our flagship service. We bring the trailer to your driveway, your office parking lot, or anywhere with a flat surface and an outdoor tap. One appointment, interior and exterior, no driving across town.",
+      "Mobile detailing is a full interior-and-exterior service performed at the customer's location instead of a shop. We bring a fully-equipped trailer to your driveway, your office parking lot, or anywhere with a flat surface and an outdoor tap. One appointment, no driving across town.",
     includes: [
       "Foam pre-wash and contact wash",
       "Wheel face, barrel, and tire deep clean",
@@ -215,7 +215,7 @@ export const services: Service[] = [
     short: "Degrease and dress. Electronics protected, finish you can show off.",
     long: "We mask sensitive electronics, degrease the bay safely, and dress plastics and hoses.",
     intro:
-      "A clean engine bay makes leaks visible, holds resale value, and looks the part if you ever pop the hood. We do it carefully, with everything sensitive covered, no high-pressure water near connectors.",
+      "An engine bay detail is the safe cleaning, degreasing, and dressing of everything under the hood. We mask sensitive electronics, use low-pressure water, and finish with a satin dressing on plastics and hoses. The result makes leaks visible, holds resale value, and looks the part if you ever pop the hood.",
     includes: [
       "Mask air intake, alternator, fuse box, and sensitive electronics",
       "Cool-engine degrease and low-pressure rinse",

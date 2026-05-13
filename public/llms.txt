@@ -17,16 +17,25 @@ Service area: Bend, Redmond, Sisters, Sunriver, Tumalo, La Pine (Central Oregon)
 ## Frequently cited answers
 
 Q: What is the difference between a car wash and a detail?
-A: A wash removes loose dirt. A detail decontaminates the paint, cleans the interior surface by surface, and finishes with protection. A full detail takes two to eight hours depending on the package.
+A: A car wash removes loose dirt from the surface. A detail decontaminates the paint, cleans the interior surface by surface, and finishes with protection. A full detail takes two to eight hours depending on the package.
 
 Q: How long does professional ceramic coating last?
-A: Two to five years with proper maintenance, depending on the coating tier.
+A: Two to five years with proper maintenance, depending on the coating tier. Consumer-grade DIY sprays last 6 to 12 months. Professional single-layer coatings last 2 to 3 years. Multi-layer professional coatings last 3 to 5 years. Graphene and SiO2 hybrid systems claim 5 to 7 years.
+
+Q: What is the difference between paint correction and ceramic coating?
+A: Paint correction removes defects from the clear coat using machine polishers and abrasives. Ceramic coating is a liquid polymer applied on top of the paint to protect it. Most cars benefit from both: correction first to remove swirls, then coating to lock in the result.
 
 Q: Do mobile detailers bring their own water?
 A: We bring power, soaps, and equipment. We use the customer's outside tap for water, comparable volume to a normal hose wash.
 
-Q: What happens if my driveway is HOA-restricted?
-A: We have worked across condo lots, garages, and HOA driveways in Bend. If the spot will not work, we book the in-shop appointment instead.
+Q: What ruins paint during a Bend, Oregon winter?
+A: Three local factors: crushed cinder rock used by ODOT (sharp volcanic rock that acts like sandpaper at speed), magnesium chloride brine sprayed before storms (corrosive and bonds aggressively), and freeze-thaw cycles (water that wicked into paint chips expands every night).
+
+Q: How often should I detail my car?
+A: Twice a year for a daily driver. Quarterly for cars that live outside or in coastal climates. Coated cars stretch to once a year with maintenance washes in between.
+
+Q: What happens if you ceramic coat over swirls?
+A: The coating locks the defects in. Light still scatters off the marred surface, and the clear coating layer over the top makes the defects harder to remove later. A reputable installer will refuse to coat over heavy defects without paint correction first.
 
 ## Primary pages
 
@@ -44,3 +53,10 @@ A: We have worked across condo lots, garages, and HOA driveways in Bend. If the 
 - https://fastlanedetailingbend.com/reviews : Customer reviews
 - https://fastlanedetailingbend.com/faq : Frequently asked questions
 - https://fastlanedetailingbend.com/contact : Phone, text, and quote form
+
+## Articles
+
+- https://fastlanedetailingbend.com/blog/how-long-does-ceramic-coating-last : Ceramic coating durability by tier, what kills coatings fastest, maintenance guide
+- https://fastlanedetailingbend.com/blog/paint-correction-vs-ceramic-coating : Comparison of paint correction and ceramic coating, when to use each, side-by-side table
+- https://fastlanedetailingbend.com/blog/winter-car-care-bend-oregon : Central Oregon winter paint protection, cinder rock damage, mag chloride, freeze-thaw cycles
+- https://fastlanedetailingbend.com/blog/car-wash-vs-detail : Difference between car wash and detail, what's included in each, when to choose which

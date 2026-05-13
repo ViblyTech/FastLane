@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site, services } from "@/lib/site";
+import { articles } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -54,5 +55,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticEntries, ...serviceEntries];
+  const articleEntries = articles.map((a) => ({
+    url: `${site.url}/blog/${a.slug}`,
+    lastModified: new Date(a.updatedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  return [...staticEntries, ...serviceEntries, ...articleEntries];
 }

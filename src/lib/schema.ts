@@ -1,4 +1,5 @@
 import { site, faqs, services, team, reviews, type Service } from "./site";
+import type { Article } from "./blog";
 
 const BUSINESS_ID = `${site.url}/#business`;
 const WEBSITE_ID = `${site.url}/#website`;
@@ -237,6 +238,57 @@ export function reviewListSchema() {
     },
     itemReviewed: { "@id": BUSINESS_ID },
   }));
+}
+
+export function articleSchema(article: Article) {
+  const author = team.find((t) => t.slug === article.author);
+  const url = `${site.url}/blog/${article.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: article.title,
+    description: article.excerpt,
+    url,
+    mainEntityOfPage: url,
+    image: [`${site.url}/og.png`],
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt,
+    inLanguage: "en-US",
+    wordCount:
+      article.intro.split(/\s+/).length +
+      article.sections.reduce((total, section) => {
+        return (
+          total +
+          section.blocks.reduce((blockTotal, block) => {
+            if (block.type === "p") return blockTotal + block.text.split(/\s+/).length;
+            if (block.type === "ul" || block.type === "ol")
+              return (
+                blockTotal +
+                block.items.reduce((sum, item) => sum + item.split(/\s+/).length, 0)
+              );
+            return blockTotal;
+          }, 0)
+        );
+      }, 0),
+    timeRequired: `PT${article.readMinutes}M`,
+    author: author
+      ? {
+          "@type": "Person",
+          "@id": `${site.url}/about#${author.slug}`,
+          name: author.name,
+          jobTitle: author.role,
+        }
+      : undefined,
+    publisher: { "@id": BUSINESS_ID },
+    isPartOf: { "@id": WEBSITE_ID },
+    about: article.ctaService
+      ? {
+          "@type": "Service",
+          name: services.find((s) => s.slug === article.ctaService)?.name ?? "",
+        }
+      : undefined,
+  };
 }
 
 export function contactPointSchema() {
