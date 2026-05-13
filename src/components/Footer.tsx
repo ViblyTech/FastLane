@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LogoMark } from "./LogoMark";
+import { customLogoHref } from "@/lib/logo";
 import { site } from "@/lib/site";
 
 const cols = {
@@ -28,13 +29,14 @@ const cols = {
 };
 
 export function Footer() {
+  const pngHref = customLogoHref();
   return (
     <footer className="border-t border-[var(--color-line-soft)] bg-[var(--color-canvas)]">
       <div className="container-page py-16">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <div className="h-32 w-32 text-[var(--color-fg)]">
-              <LogoMark variant="full" className="h-full w-full" />
+              <LogoMark variant="full" pngHref={pngHref} className="h-full w-full" />
             </div>
             <address className="not-italic mt-6 space-y-1 text-sm text-[var(--color-fg-muted)]">
               <div className="text-[var(--color-fg)]">{site.name}</div>
