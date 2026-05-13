@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
 import { faqPageSchema, howToProcessSchema } from "@/lib/schema";
@@ -22,7 +23,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={[howToProcessSchema(), faqPageSchema([...faqs])]} />
-      <Hero />
+      <Hero pngHref={pngHref} />
       <TrustLine />
       <Services />
       <ReviewsBand pngHref={pngHref} />
@@ -33,53 +34,79 @@ export default function HomePage() {
   );
 }
 
-function Hero() {
+function Hero({ pngHref }: { pngHref?: string }) {
   return (
     <section className="hero relative isolate overflow-hidden bg-black text-white">
       <div aria-hidden="true" className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0b0b0d] to-black" />
         <div className="absolute inset-0 hero-spotlight" />
+        <div className="absolute inset-0 hero-grain" />
+        {pngHref ? (
+          <div className="hero-watermark pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[min(140vw,1200px)] -translate-x-1/2 -translate-y-1/2 opacity-[0.06]">
+            <Image
+              src={pngHref}
+              alt=""
+              width={1024}
+              height={1024}
+              className="h-full w-full object-contain"
+              sizes="100vw"
+              priority
+            />
+          </div>
+        ) : null}
         <svg
           viewBox="0 0 1600 900"
-          className="absolute inset-0 h-full w-full opacity-[0.07]"
+          className="absolute inset-0 h-full w-full opacity-[0.05]"
           preserveAspectRatio="xMidYMid slice"
           fill="none"
           stroke="white"
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
+          aria-hidden="true"
         >
           <path d="M180 540 C 360 380, 700 300, 950 320 C 1140 336, 1240 380, 1310 420 C 1370 450, 1420 460, 1460 450" />
           <path d="M180 540 C 380 560, 720 580, 960 575 C 1140 568, 1280 545, 1380 510 C 1430 490, 1450 470, 1460 450" />
         </svg>
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
       </div>
 
       <div className="container-page relative flex min-h-[88vh] flex-col items-center justify-center py-24 text-center sm:min-h-[92vh] sm:py-32">
         <Reveal>
-          <div className="eyebrow text-white/60">
-            Car detailing · Bend, Oregon
+          <div className="flex items-center gap-3 text-[0.7rem] font-medium uppercase tracking-[0.32em] text-white/55">
+            <span className="hidden h-px w-8 bg-white/30 sm:inline-block" />
+            <span>Car detailing · Bend, Oregon</span>
+            <span className="hidden h-px w-8 bg-white/30 sm:inline-block" />
           </div>
         </Reveal>
 
         <Reveal delay={140}>
-          <h1 className="mt-8">
-            <span className="block text-[clamp(2.5rem,10vw,7rem)] font-black uppercase leading-[0.95] tracking-tight">
+          <h1 className="mt-10">
+            <span className="block text-[clamp(2.75rem,11vw,7.5rem)] font-black uppercase leading-[0.95] tracking-tight">
               Bend Oregon
             </span>
-            <span className="hero-outline mt-1 block text-[clamp(2rem,8vw,6rem)] font-black uppercase leading-[0.95] tracking-tight">
+            <span className="hero-outline mt-2 block text-[clamp(2.25rem,9vw,6.25rem)] font-black uppercase leading-[0.95] tracking-tight">
               #1 Auto Detailer
             </span>
           </h1>
         </Reveal>
 
         <Reveal delay={260}>
-          <p className="mt-10 max-w-xl text-base text-white/75 sm:text-lg">
+          <div
+            aria-hidden="true"
+            className="mx-auto mt-10 h-px w-20 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+          />
+        </Reveal>
+
+        <Reveal delay={300}>
+          <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
             Your go-to for car detailing, ceramic coating, and paint correction in Bend, Oregon.
           </p>
         </Reveal>
 
-        <Reveal delay={380}>
-          <div className="mt-10 flex flex-col items-center gap-5">
+        <Reveal delay={420}>
+          <div className="mt-12 flex flex-col items-center gap-6">
             <a
               href={`tel:${site.phoneE164}`}
               className="hero-cta"
@@ -87,9 +114,10 @@ function Hero() {
             >
               Call now
             </a>
-            <p className="text-xs uppercase tracking-[0.18em] text-white/55">
-              <span className="text-white">{site.rating.value.toFixed(1)} ★</span> from{" "}
-              {site.rating.count}+ Google reviews
+            <p className="flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-white/55">
+              <span className="text-white">{site.rating.value.toFixed(1)} ★</span>
+              <span className="h-px w-4 bg-white/25" aria-hidden="true" />
+              <span>{site.rating.count}+ Google reviews</span>
             </p>
           </div>
         </Reveal>
@@ -99,7 +127,7 @@ function Hero() {
           aria-label="Scroll to services"
           className="scroll-chevron absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 transition-colors hover:text-white"
         >
-          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5">
             <polyline points="10 16 20 26 30 16" />
           </svg>
         </a>
