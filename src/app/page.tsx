@@ -35,42 +35,74 @@ export default function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative isolate overflow-hidden">
-      <div className="container-page relative pb-28 pt-20 sm:pb-40 sm:pt-40 lg:pt-48">
+    <section className="hero relative isolate overflow-hidden bg-black text-white">
+      <div aria-hidden="true" className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0b0b0d] to-black" />
+        <div className="absolute inset-0 hero-spotlight" />
+        <svg
+          viewBox="0 0 1600 900"
+          className="absolute inset-0 h-full w-full opacity-[0.07]"
+          preserveAspectRatio="xMidYMid slice"
+          fill="none"
+          stroke="white"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M180 540 C 360 380, 700 300, 950 320 C 1140 336, 1240 380, 1310 420 C 1370 450, 1420 460, 1460 450" />
+          <path d="M180 540 C 380 560, 720 580, 960 575 C 1140 568, 1280 545, 1380 510 C 1430 490, 1450 470, 1460 450" />
+        </svg>
+      </div>
+
+      <div className="container-page relative flex min-h-[88vh] flex-col items-center justify-center py-24 text-center sm:min-h-[92vh] sm:py-32">
         <Reveal>
-          <h1 className="text-display max-w-[16ch]">
-            Detailing that{" "}
-            <span className="text-[var(--color-accent)]">comes to you.</span>
-          </h1>
-        </Reveal>
-        <Reveal delay={120}>
-          <p className="mt-10 max-w-[28ch] text-xl text-[var(--color-fg-muted)] sm:text-2xl">
-            Mobile detailing. Bend, Oregon.
-          </p>
-        </Reveal>
-        <Reveal delay={220}>
-          <div className="mt-12 flex flex-wrap items-center gap-3">
-            <Link href="#quote" className="cta" data-event="cta_book_click">
-              Book now
-            </Link>
-            <a
-              href={`sms:${site.phoneE164}`}
-              className="cta-ghost"
-              data-event="cta_text_click"
-            >
-              Text {site.phone}
-            </a>
+          <div className="eyebrow text-white/60">
+            Car detailing · Bend, Oregon
           </div>
         </Reveal>
-        <Reveal delay={340}>
-          <p className="mt-16 max-w-[40ch] text-sm text-[var(--color-fg-muted)]">
-            <span className="text-[var(--color-fg)]">
-              {site.rating.value.toFixed(1)} ★
-            </span>{" "}
-            across {site.rating.count}+ reviews. Ten-plus years of detailing experience behind the
-            trailer.
+
+        <Reveal delay={140}>
+          <h1 className="mt-8">
+            <span className="block text-[clamp(2.5rem,10vw,7rem)] font-black uppercase leading-[0.95] tracking-tight">
+              Bend Oregon
+            </span>
+            <span className="hero-outline mt-1 block text-[clamp(2rem,8vw,6rem)] font-black uppercase leading-[0.95] tracking-tight">
+              #1 Auto Detailer
+            </span>
+          </h1>
+        </Reveal>
+
+        <Reveal delay={260}>
+          <p className="mt-10 max-w-xl text-base text-white/75 sm:text-lg">
+            Your go-to for car detailing, ceramic coating, and paint correction in Bend, Oregon.
           </p>
         </Reveal>
+
+        <Reveal delay={380}>
+          <div className="mt-10 flex flex-col items-center gap-5">
+            <a
+              href={`tel:${site.phoneE164}`}
+              className="hero-cta"
+              data-event="cta_call_click"
+            >
+              Call now
+            </a>
+            <p className="text-xs uppercase tracking-[0.18em] text-white/55">
+              <span className="text-white">{site.rating.value.toFixed(1)} ★</span> from{" "}
+              {site.rating.count}+ Google reviews
+            </p>
+          </div>
+        </Reveal>
+
+        <a
+          href="#services"
+          aria-label="Scroll to services"
+          className="scroll-chevron absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 transition-colors hover:text-white"
+        >
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <polyline points="10 16 20 26 30 16" />
+          </svg>
+        </a>
       </div>
     </section>
   );
@@ -109,9 +141,14 @@ function Services() {
     <section id="services" className="bg-[var(--color-canvas)]">
       <div className="container-page py-28 sm:py-36">
         <Reveal>
-          <div className="max-w-3xl">
-            <h2 className="text-h1">Six services.</h2>
-            <p className="mt-6 max-w-[42ch] text-lg text-[var(--color-fg-muted)]">
+          <div className="text-center">
+            <div className="eyebrow">Welcome to Fast Lane Detailing</div>
+            <h2 className="text-h1 mt-6 uppercase tracking-tight">Our services</h2>
+            <div
+              aria-hidden="true"
+              className="mx-auto mt-6 h-px w-20 bg-[var(--color-accent)]"
+            />
+            <p className="mx-auto mt-8 max-w-[44ch] text-lg text-[var(--color-fg-muted)]">
               Mobile or in-shop. The same two hands every time.
             </p>
           </div>
@@ -126,7 +163,7 @@ function Services() {
         </Reveal>
 
         <Reveal delay={200}>
-          <div className="mt-12">
+          <div className="mt-12 text-center">
             <Link
               href="/services"
               className="text-sm text-[var(--color-fg-muted)] underline underline-offset-4 hover:text-[var(--color-fg)]"
