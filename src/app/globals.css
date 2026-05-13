@@ -318,6 +318,83 @@
   animation: mobile-nav-item 480ms var(--ease-out-quart) both;
 }
 
+.mobile-nav-group > summary {
+  list-style: none;
+}
+.mobile-nav-group > summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-nav-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  font-size: 1.875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.mobile-nav-plus {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-weight: 300;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--color-fg-muted);
+  transition: transform 240ms var(--ease-out-quart),
+    color 240ms var(--ease-out-quart);
+}
+.mobile-nav-group[open] .mobile-nav-plus {
+  transform: rotate(45deg);
+  color: var(--color-fg);
+}
+
+.mobile-nav-children {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.75rem;
+  animation: mobile-nav-dropdown 280ms var(--ease-out-quart);
+}
+
+@keyframes mobile-nav-dropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.625rem 0 0.625rem 1rem;
+  font-size: 1.0625rem;
+  color: var(--color-fg);
+  transition: color 150ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.mobile-nav-child:hover {
+  color: var(--color-accent);
+}
+.mobile-nav-child > span[aria-hidden] {
+  color: var(--color-fg-muted);
+  font-size: 0.9375rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;

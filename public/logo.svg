@@ -1,14 +1,24 @@
-<!-- Placeholder. Replace with the master Fast Lane Detailing SVG from brand assets. Uses currentColor so it inherits the parent text color for theme support. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="currentColor" aria-hidden="true">
+  <title>Fast Lane Detailing</title>
   <g fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M260 460 C 340 360, 480 320, 600 340 C 700 356, 760 410, 770 470" />
-    <path d="M260 460 C 320 470, 460 478, 600 472 C 700 468, 760 462, 770 470" />
+    <path d="M236 432 C 296 332, 412 268, 528 268 C 612 268, 668 296, 700 320 C 728 340, 748 348, 768 348 C 784 348, 796 344, 808 336" />
+    <path d="M236 432 C 304 444, 412 452, 528 448 C 612 446, 680 436, 720 424 C 752 416, 780 400, 808 376" />
   </g>
-  <text x="512" y="600" font-family="ui-sans-serif, system-ui, sans-serif" font-style="italic" font-weight="800" font-size="160" text-anchor="middle" fill="currentColor">Fast Lane</text>
-  <text x="512" y="660" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="500" font-size="32" letter-spacing="12" text-anchor="middle" fill="currentColor">MOBILE DETAILING</text>
+  <text x="512" y="568" font-family="ui-sans-serif, system-ui, sans-serif" font-style="italic" font-weight="900" font-size="180" letter-spacing="-2" text-anchor="middle">
+    <tspan fill="currentColor">F</tspan>
+    <tspan fill="none" stroke="currentColor" stroke-width="3.5">a</tspan>
+    <tspan fill="currentColor">s</tspan>
+    <tspan fill="none" stroke="currentColor" stroke-width="3.5">t</tspan>
+    <tspan> </tspan>
+    <tspan fill="currentColor">L</tspan>
+    <tspan fill="none" stroke="currentColor" stroke-width="3.5">a</tspan>
+    <tspan fill="currentColor">n</tspan>
+    <tspan fill="none" stroke="currentColor" stroke-width="3.5">e</tspan>
+  </text>
+  <text x="512" y="648" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="500" font-size="32" letter-spacing="14" text-anchor="middle" fill="currentColor">MOBILE DETAILING</text>
   <g stroke="currentColor" stroke-width="2">
-    <line x1="280" y1="720" x2="430" y2="720" />
-    <line x1="594" y1="720" x2="744" y2="720" />
+    <line x1="284" y1="720" x2="430" y2="720" />
+    <line x1="594" y1="720" x2="740" y2="720" />
   </g>
-  <text x="512" y="728" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="500" font-size="22" letter-spacing="6" text-anchor="middle" fill="currentColor">EST. 2024</text>
+  <text x="512" y="728" font-family="ui-sans-serif, system-ui, sans-serif" font-weight="500" font-size="22" letter-spacing="8" text-anchor="middle" fill="currentColor">EST. 2024</text>
 </svg>

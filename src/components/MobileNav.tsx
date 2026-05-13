@@ -5,18 +5,18 @@ import Link from "next/link";
 import { LogoMark } from "./LogoMark";
 import { site, services } from "@/lib/site";
 
-const primary = [
-  { href: "/services", label: "Services" },
-  { href: "/pricing", label: "Pricing" },
+const company = [
   { href: "/about", label: "About" },
-  { href: "/service-area", label: "Service area" },
   { href: "/reviews", label: "Reviews" },
+  { href: "/service-area", label: "Service area" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
 
   useEffect(() => {
     if (!open) return;
@@ -74,7 +74,7 @@ export function MobileNav() {
           <div className="flex items-center justify-between border-b border-[var(--color-line-soft)] px-6 py-4">
             <Link
               href="/"
-              onClick={() => setOpen(false)}
+              onClick={close}
               className="text-lg"
               aria-label={`${site.name} home`}
             >
@@ -82,7 +82,7 @@ export function MobileNav() {
             </Link>
             <button
               type="button"
-              onClick={() => setOpen(false)}
+              onClick={close}
               aria-label="Close menu"
               className="-mr-2 flex h-11 w-11 items-center justify-center text-[var(--color-fg)]"
             >
@@ -106,56 +106,68 @@ export function MobileNav() {
             aria-label="Mobile primary"
             className="flex-1 overflow-y-auto overscroll-contain"
           >
-            <div className="px-6 pb-8 pt-4">
-              <ul>
-                {primary.map((item, i) => (
-                  <li
-                    key={item.href}
-                    className="mobile-nav-item border-b border-[var(--color-line-soft)] last:border-b-0"
-                    style={{ animationDelay: `${60 + i * 28}ms` }}
-                  >
-                    <Link
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className="flex items-center justify-between gap-4 py-5 text-3xl font-semibold tracking-tight"
-                    >
-                      <span>{item.label}</span>
-                      <span aria-hidden="true" className="text-[var(--color-fg-muted)]">
-                        →
-                      </span>
+            <div className="px-6 pb-8 pt-2">
+              <details
+                open
+                className="mobile-nav-group border-b border-[var(--color-line-soft)]"
+              >
+                <summary className="mobile-nav-summary">
+                  <span>Services</span>
+                  <span aria-hidden="true" className="mobile-nav-plus">
+                    +
+                  </span>
+                </summary>
+                <ul className="mobile-nav-children">
+                  <li>
+                    <Link href="/services" onClick={close} className="mobile-nav-child">
+                      <span>Service menu</span>
+                      <span aria-hidden="true">→</span>
                     </Link>
                   </li>
-                ))}
-              </ul>
+                  {services.map((s) => (
+                    <li key={s.slug}>
+                      <Link
+                        href={`/services/${s.slug}`}
+                        onClick={close}
+                        className="mobile-nav-child"
+                      >
+                        <span>{s.name}</span>
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
 
-              <div className="eyebrow mt-10">Services</div>
-              <ul className="mt-3">
-                {services.map((s, i) => (
-                  <li
-                    key={s.slug}
-                    className="mobile-nav-item border-b border-[var(--color-line-soft)] last:border-b-0"
-                    style={{ animationDelay: `${260 + i * 24}ms` }}
-                  >
-                    <Link
-                      href={`/services/${s.slug}`}
-                      onClick={() => setOpen(false)}
-                      className="flex items-center justify-between gap-4 py-3.5 text-base"
-                    >
-                      <span>{s.name}</span>
-                      <span aria-hidden="true" className="text-[var(--color-fg-muted)]">
-                        →
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <details className="mobile-nav-group">
+                <summary className="mobile-nav-summary">
+                  <span>Company</span>
+                  <span aria-hidden="true" className="mobile-nav-plus">
+                    +
+                  </span>
+                </summary>
+                <ul className="mobile-nav-children">
+                  {company.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        onClick={close}
+                        className="mobile-nav-child"
+                      >
+                        <span>{item.label}</span>
+                        <span aria-hidden="true">→</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
             </div>
           </nav>
 
           <div className="flex flex-col gap-3 border-t border-[var(--color-line-soft)] px-6 py-5">
             <a
               href={`tel:${site.phoneE164}`}
-              onClick={() => setOpen(false)}
+              onClick={close}
               className="cta-ghost w-full justify-between"
               data-event="cta_call_click"
             >
@@ -164,7 +176,7 @@ export function MobileNav() {
             </a>
             <Link
               href="/#quote"
-              onClick={() => setOpen(false)}
+              onClick={close}
               className="cta w-full justify-between"
               data-event="cta_book_click"
             >
