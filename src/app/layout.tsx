@@ -33,11 +33,6 @@ export const metadata: Metadata = {
   creator: site.name,
   publisher: site.name,
   keywords: [...site.keywords],
-  icons: {
-    icon: [{ url: "/icon", sizes: "32x32", type: "image/png" }],
-    shortcut: "/icon",
-    apple: "/icon",
-  },
   manifest: "/manifest.webmanifest",
   formatDetection: {
     telephone: true,
