@@ -23,15 +23,16 @@ export function Header() {
       >
         Skip to content
       </a>
-      <div className="container-page flex items-center justify-between py-3">
+      <div className="container-page relative flex items-center justify-between py-3">
         <Link
           href="/"
           aria-label={`${site.name} home`}
           prefetch
-          className="block h-12 sm:h-14"
+          className="relative z-10 block h-12 sm:h-14"
         >
           <LogoMark pngHref={pngHref} priority />
         </Link>
+
         <nav aria-label="Primary" className="hidden gap-7 text-sm md:flex">
           {nav.map((item) => (
             <Link
@@ -44,7 +45,16 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-2 sm:gap-3">
+
+        <div
+          className="pointer-events-none absolute inset-y-0 left-1/2 flex -translate-x-1/2 items-center md:hidden"
+        >
+          <div className="pointer-events-auto">
+            <MobileNav pngHref={pngHref} />
+          </div>
+        </div>
+
+        <div className="relative z-10 flex items-center gap-2 sm:gap-3">
           <a
             href={`tel:${site.phoneE164}`}
             className="hidden text-sm text-[var(--color-fg-muted)] hover:text-[var(--color-fg)] lg:inline"
@@ -52,7 +62,6 @@ export function Header() {
           >
             {site.phone}
           </a>
-          <MobileNav pngHref={pngHref} />
           <Link href="/#quote" className="cta" data-event="cta_book_click">
             Book now
           </Link>

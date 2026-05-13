@@ -2,12 +2,16 @@
 
 import { useState, type FormEvent } from "react";
 import { services } from "@/lib/site";
+import { vehicleMakes, vehicleModels, vehicleYears } from "@/lib/vehicles";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export function QuoteForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
+  const [make, setMake] = useState("");
+
+  const models = make && vehicleModels[make] ? vehicleModels[make] : [];
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -31,6 +35,7 @@ export function QuoteForm() {
 
       setStatus("success");
       form.reset();
+      setMake("");
       if (typeof window !== "undefined" && "plausible" in window) {
         (window as unknown as { plausible: (e: string) => void }).plausible("quote_form_submit");
       }
@@ -79,21 +84,51 @@ export function QuoteForm() {
 
       <Field label="Email" name="email" type="email" autoComplete="email" required />
 
-      <div className="grid gap-6 sm:grid-cols-2">
-        <Field
-          label="Vehicle (year, make, model)"
-          name="vehicle"
-          placeholder="2022 Toyota 4Runner"
-        />
-        <Select label="What you're interested in" name="service" defaultLabel="Select a service">
-          {services.map((s) => (
-            <option key={s.slug} value={s.name}>
-              {s.name}
+      <div className="grid gap-6 sm:grid-cols-3">
+        <Select label="Year" name="year" defaultLabel="Year">
+          {vehicleYears.map((y) => (
+            <option key={y} value={y}>
+              {y}
             </option>
           ))}
-          <option value="not-sure">Not sure yet</option>
+        </Select>
+
+        <Select
+          label="Make"
+          name="make"
+          defaultLabel="Make"
+          value={make}
+          onChange={(e) => setMake(e.target.value)}
+        >
+          {vehicleMakes.map((m) => (
+            <option key={m} value={m}>
+              {m}
+            </option>
+          ))}
+        </Select>
+
+        <Select
+          label="Model"
+          name="model"
+          defaultLabel={make ? "Model" : "Pick a make first"}
+          disabled={!make}
+        >
+          {models.map((m) => (
+            <option key={m} value={m}>
+              {m}
+            </option>
+          ))}
         </Select>
       </div>
+
+      <Select label="What you're interested in" name="service" defaultLabel="Select a service">
+        {services.map((s) => (
+          <option key={s.slug} value={s.name}>
+            {s.name}
+          </option>
+        ))}
+        <option value="not-sure">Not sure yet</option>
+      </Select>
 
       <Select label="Where" name="location" defaultLabel="Select a location">
         <option value="my-home">My driveway or home</option>
@@ -180,12 +215,19 @@ function Select({
   name,
   defaultLabel,
   children,
+  disabled,
+  value,
+  onChange,
 }: {
   label: string;
   name: string;
   defaultLabel: string;
   children: React.ReactNode;
+  disabled?: boolean;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }) {
+  const controlled = value !== undefined;
   return (
     <div>
       <label htmlFor={name} className="mb-2 block text-sm font-medium">
@@ -194,8 +236,11 @@ function Select({
       <select
         id={name}
         name={name}
-        defaultValue=""
-        className="w-full rounded-md border border-[var(--color-line-soft)] bg-[var(--color-canvas)] px-3 py-3 text-base transition-colors focus:border-[var(--color-accent)] focus:outline-none"
+        disabled={disabled}
+        {...(controlled
+          ? { value, onChange }
+          : { defaultValue: "", onChange })}
+        className="w-full rounded-md border border-[var(--color-line-soft)] bg-[var(--color-canvas)] px-3 py-3 text-base transition-colors focus:border-[var(--color-accent)] focus:outline-none disabled:cursor-not-allowed disabled:opacity-60"
       >
         <option value="" disabled>
           {defaultLabel}

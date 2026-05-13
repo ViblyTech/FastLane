@@ -106,12 +106,6 @@ export function MobileNav({ pngHref }: { pngHref?: string }) {
               </span>
             </summary>
             <ul className="mobile-nav-children">
-              <li>
-                <Link href="/services" onClick={close} className="mobile-nav-child">
-                  <span>Service menu</span>
-                  <span aria-hidden="true">→</span>
-                </Link>
-              </li>
               {services.map((s) => (
                 <li key={s.slug}>
                   <Link

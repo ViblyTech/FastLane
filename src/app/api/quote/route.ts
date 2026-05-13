@@ -7,6 +7,9 @@ type QuotePayload = {
   name?: string;
   phone?: string;
   email?: string;
+  year?: string;
+  make?: string;
+  model?: string;
   vehicle?: string;
   service?: string;
   location?: string;
@@ -50,7 +53,11 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, dev: true }, { status: 200 });
   }
 
-  const html = renderEmail(payload);
+  const vehicleLine =
+    [payload.year, payload.make, payload.model].filter(Boolean).join(" ").trim() ||
+    payload.vehicle ||
+    "";
+  const html = renderEmail({ ...payload, vehicle: vehicleLine });
 
   try {
     const resend = new Resend(apiKey);
@@ -58,7 +65,7 @@ export async function POST(req: Request) {
       from,
       to,
       replyTo: email,
-      subject: `Quote request: ${payload.vehicle || name}`,
+      subject: `Quote request: ${vehicleLine || name}`,
       html,
     });
     if (result.error) {
