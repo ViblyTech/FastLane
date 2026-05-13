@@ -14,7 +14,7 @@ const inter = Inter({
   display: "swap",
   preload: true,
   fallback: ["system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
-  adjustFontFallback: "Arial",
+  adjustFontFallback: true,
 });
 
 const mono = JetBrains_Mono({
