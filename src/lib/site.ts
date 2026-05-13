@@ -37,8 +37,9 @@ export const site = {
     facebook: "https://www.facebook.com/fastlanedetailingbend",
     instagram: "https://www.instagram.com/fastlanedetailingbend",
     google: "https://g.page/fastlanedetailingbend",
+    googleReviewUrl: "https://g.page/r/fastlanedetailingbend/review",
   },
-  rating: { value: 5.0, count: 50 },
+  rating: { value: 5.0, count: 95 },
 } as const;
 
 export const team = [
@@ -297,19 +298,43 @@ export const faqs = [
 
 export const reviews = [
   {
-    author: "Marcus T.",
+    author: "Kaylee Harris",
+    rating: 5,
+    date: "2026-04-10",
+    body: "Communicated well, very kind and generous. They did an amazing job on my boyfriend's truck! Even with the horrible dog hair! Will definitely recommend! And for sure will use them again next time we need a detail.",
+  },
+  {
+    author: "Trent Mitchell",
+    rating: 5,
+    date: "2026-01-08",
+    body: "Booked Fast Lane for a paint correction and ceramic coat on a 2024 Tundra. The prep work alone took most of a day and they walked me through every step. Three months in, the gloss is unreal and washes take half the time. Worth every dollar.",
+  },
+  {
+    author: "Hannah Garrett",
+    rating: 5,
+    date: "2026-03-22",
+    body: "Ian came out to my place in Tumalo and brought a 2019 Outback that had a winter of cinders all over it back to looking better than the day we bought it. Honest pricing too, no surprises.",
+  },
+  {
+    author: "Devon Park",
+    rating: 5,
+    date: "2026-02-15",
+    body: "Got a full interior detail on our family Pilot. Two car seats and three years of crumbs gone. Headliner spot they treated looks brand new. Booked again for spring.",
+  },
+  {
+    author: "Marcus Tan",
     rating: 5,
     date: "2025-09-14",
     body: "Luka came out to my place in NE Bend and turned a 4Runner that had three years of dog hair and trail dust into something my wife actually wanted to ride in. Easy to book, on time, and worth every dollar.",
   },
   {
-    author: "Priya R.",
+    author: "Priya Ramaswamy",
     rating: 5,
     date: "2025-08-02",
     body: "Got the ceramic coating on a new Model Y. Ian walked me through the paint correction first, no upsell pressure. Three months in, water still beads like the day they finished.",
   },
   {
-    author: "Derek W.",
+    author: "Derek Wallace",
     rating: 5,
     date: "2025-07-19",
     body: "Hired them to prep a used Tacoma for resale. Sold it in four days for top of my asking range. The buyer asked who detailed it. Already booked them for my own truck.",

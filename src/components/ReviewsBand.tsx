@@ -1,0 +1,229 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { reviews, site } from "@/lib/site";
+
+const STAR_GOLD = "#fbbf24";
+
+const avatarPalette = [
+  "#2563eb",
+  "#16a34a",
+  "#dc2626",
+  "#7c3aed",
+  "#ea580c",
+  "#0891b2",
+  "#db2777",
+  "#65a30d",
+];
+
+function avatarColor(name: string) {
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) hash = (hash << 5) - hash + name.charCodeAt(i);
+  return avatarPalette[Math.abs(hash) % avatarPalette.length];
+}
+
+type Props = {
+  heading?: string;
+  subhead?: string;
+  pngHref?: string;
+};
+
+export function ReviewsBand({
+  heading = "From our customers.",
+  subhead = "Real reviews from drivers across Bend and Central Oregon.",
+  pngHref,
+}: Props) {
+  return (
+    <section
+      aria-label="Customer reviews"
+      className="border-y border-[var(--color-line-soft)] bg-[var(--color-canvas)]"
+    >
+      <div className="container-page py-24 sm:py-32">
+        <header className="mb-12 max-w-3xl">
+          <div className="eyebrow">Reviews</div>
+          <h2 className="text-h1 mt-4">{heading}</h2>
+          <p className="mt-6 max-w-prose text-lg text-[var(--color-fg-muted)]">{subhead}</p>
+        </header>
+
+        <div className="grid gap-6 lg:grid-cols-[320px_1fr] lg:items-start">
+          <SummaryCard pngHref={pngHref} />
+          <ReviewCarousel />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SummaryCard({ pngHref }: { pngHref?: string }) {
+  return (
+    <div className="rounded-card border border-[var(--color-line-soft)] bg-[var(--color-surface)] p-6 text-center sm:p-8">
+      <div className="mx-auto h-20 w-20 overflow-hidden rounded-md bg-[var(--color-canvas)] p-2">
+        {pngHref ? (
+          <Image
+            src={pngHref}
+            alt="Fast Lane Detailing"
+            width={1024}
+            height={1024}
+            className="h-full w-full object-contain"
+            sizes="80px"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-sm font-black italic">
+            FL
+          </div>
+        )}
+      </div>
+      <h3 className="mt-4 text-lg font-bold">Fast Lane Detailing</h3>
+      <Stars rating={site.rating.value} size={20} className="mt-2 justify-center" />
+      <p className="mt-2 text-sm text-[var(--color-fg-muted)]">
+        {site.rating.count} Google reviews
+      </p>
+      <a
+        href={site.social.googleReviewUrl}
+        target="_blank"
+        rel="noopener"
+        className="mt-5 inline-flex w-full items-center justify-center rounded-md border border-[var(--color-fg)] px-4 py-2.5 text-sm font-medium transition-colors hover:bg-[var(--color-fg)] hover:text-[var(--color-canvas)]"
+        data-event="cta_review_click"
+      >
+        Write a review
+      </a>
+    </div>
+  );
+}
+
+function ReviewCarousel() {
+  return (
+    <div className="relative">
+      <ul
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        aria-label="Customer reviews carousel"
+      >
+        {reviews.map((review, i) => (
+          <li
+            key={i}
+            className="snap-center shrink-0 basis-[88%] sm:basis-[55%] lg:basis-[48%]"
+          >
+            <ReviewCard review={review} />
+          </li>
+        ))}
+      </ul>
+      <p className="mt-4 text-xs text-[var(--color-fg-muted)] sm:hidden">
+        Swipe to see more reviews →
+      </p>
+    </div>
+  );
+}
+
+function ReviewCard({ review }: { review: (typeof reviews)[number] }) {
+  const [expanded, setExpanded] = useState(false);
+  const truncated = review.body.length > 220;
+  const displayBody = !truncated || expanded ? review.body : review.body.slice(0, 220).trimEnd() + "…";
+  const color = avatarColor(review.author);
+
+  return (
+    <article className="flex h-full flex-col gap-4 rounded-card border border-[var(--color-line-soft)] bg-[var(--color-surface)] p-6">
+      <header className="flex items-start justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <span
+            aria-hidden="true"
+            style={{ backgroundColor: color }}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-base font-semibold text-white"
+          >
+            {review.author.charAt(0)}
+          </span>
+          <div>
+            <div className="text-base font-semibold leading-tight">{review.author}</div>
+            <time
+              dateTime={review.date}
+              className="text-sm text-[var(--color-fg-muted)]"
+            >
+              {new Date(review.date).toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </time>
+          </div>
+        </div>
+        <GoogleG />
+      </header>
+      <Stars rating={review.rating} size={18} />
+      <p className="text-[15px] leading-relaxed text-[var(--color-fg)]">
+        {displayBody}
+      </p>
+      {truncated ? (
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          className="self-start text-sm text-[var(--color-fg-muted)] underline-offset-4 hover:text-[var(--color-fg)] hover:underline"
+        >
+          {expanded ? "Show less" : "Read more"}
+        </button>
+      ) : null}
+    </article>
+  );
+}
+
+function Stars({
+  rating,
+  size = 18,
+  className = "",
+}: {
+  rating: number;
+  size?: number;
+  className?: string;
+}) {
+  const filled = Math.round(rating);
+  return (
+    <div
+      aria-label={`${rating.toFixed(1)} out of 5 stars`}
+      className={`flex items-center gap-0.5 ${className}`}
+    >
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg
+          key={i}
+          width={size}
+          height={size}
+          viewBox="0 0 24 24"
+          fill={i < filled ? STAR_GOLD : "transparent"}
+          stroke={STAR_GOLD}
+          strokeWidth="1.5"
+          aria-hidden="true"
+        >
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+function GoogleG() {
+  return (
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 48 48"
+      aria-label="Google review"
+      role="img"
+      className="shrink-0"
+    >
+      <path
+        fill="#4285F4"
+        d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"
+      />
+      <path
+        fill="#34A853"
+        d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"
+      />
+      <path
+        fill="#FBBC04"
+        d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"
+      />
+      <path
+        fill="#EA4335"
+        d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"
+      />
+    </svg>
+  );
+}

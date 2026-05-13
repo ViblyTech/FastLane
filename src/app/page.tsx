@@ -5,7 +5,9 @@ import { faqPageSchema, howToProcessSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 import { ServiceCard } from "@/components/ServiceCard";
 import { QuoteForm } from "@/components/QuoteForm";
+import { ReviewsBand } from "@/components/ReviewsBand";
 import { Reveal } from "@/components/Reveal";
+import { customLogoHref } from "@/lib/logo";
 import { site, services, faqs } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
@@ -16,12 +18,14 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function HomePage() {
+  const pngHref = customLogoHref();
   return (
     <>
       <JsonLd data={[howToProcessSchema(), faqPageSchema([...faqs])]} />
       <Hero />
       <TrustLine />
       <Services />
+      <ReviewsBand pngHref={pngHref} />
       <Studio />
       <Faq />
       <Book />
