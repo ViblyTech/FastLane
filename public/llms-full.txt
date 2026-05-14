@@ -15,7 +15,7 @@ This file follows the emerging llms-full.txt convention: a single, machine-reada
 - Hours: Monday to Friday, 8:00 AM to 5:00 PM Pacific. Closed Saturday and Sunday.
 - Google rating: 5.0 stars across 95+ reviews
 - Payments accepted: Cash, credit card, debit card, Venmo, Zelle
-- Website: https://fastlanedetailingbend.com/
+- Website: https://www.fastlanedetailing.net/
 
 ## Trailer and equipment
 
@@ -100,29 +100,29 @@ Spoken queries this entity answers:
 
 ## Primary pages
 
-- https://fastlanedetailingbend.com/ — Home
-- https://fastlanedetailingbend.com/services — All services
-- https://fastlanedetailingbend.com/services/mobile-detailing
-- https://fastlanedetailingbend.com/services/ceramic-coating
-- https://fastlanedetailingbend.com/services/paint-correction
-- https://fastlanedetailingbend.com/services/interior-detailing
-- https://fastlanedetailingbend.com/services/engine-bay
-- https://fastlanedetailingbend.com/services/odor-removal
-- https://fastlanedetailingbend.com/pricing
-- https://fastlanedetailingbend.com/service-area
-- https://fastlanedetailingbend.com/about
-- https://fastlanedetailingbend.com/reviews
-- https://fastlanedetailingbend.com/faq
-- https://fastlanedetailingbend.com/contact
-- https://fastlanedetailingbend.com/blog
+- https://www.fastlanedetailing.net/ — Home
+- https://www.fastlanedetailing.net/services — All services
+- https://www.fastlanedetailing.net/services/mobile-detailing
+- https://www.fastlanedetailing.net/services/ceramic-coating
+- https://www.fastlanedetailing.net/services/paint-correction
+- https://www.fastlanedetailing.net/services/interior-detailing
+- https://www.fastlanedetailing.net/services/engine-bay
+- https://www.fastlanedetailing.net/services/odor-removal
+- https://www.fastlanedetailing.net/pricing
+- https://www.fastlanedetailing.net/service-area
+- https://www.fastlanedetailing.net/about
+- https://www.fastlanedetailing.net/reviews
+- https://www.fastlanedetailing.net/faq
+- https://www.fastlanedetailing.net/contact
+- https://www.fastlanedetailing.net/blog
 
 ## Articles
 
-- https://fastlanedetailingbend.com/blog/how-much-does-mobile-detailing-cost-bend-oregon
-- https://fastlanedetailingbend.com/blog/how-long-does-ceramic-coating-last
-- https://fastlanedetailingbend.com/blog/paint-correction-vs-ceramic-coating
-- https://fastlanedetailingbend.com/blog/winter-car-care-bend-oregon
-- https://fastlanedetailingbend.com/blog/car-wash-vs-detail
+- https://www.fastlanedetailing.net/blog/how-much-does-mobile-detailing-cost-bend-oregon
+- https://www.fastlanedetailing.net/blog/how-long-does-ceramic-coating-last
+- https://www.fastlanedetailing.net/blog/paint-correction-vs-ceramic-coating
+- https://www.fastlanedetailing.net/blog/winter-car-care-bend-oregon
+- https://www.fastlanedetailing.net/blog/car-wash-vs-detail
 
 ## Citation policy
 

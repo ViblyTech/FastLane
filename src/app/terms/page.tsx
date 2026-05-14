@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
   title: "Terms of Service",
-  description: "Terms for using fastlanedetailingbend.com and booking with Fast Lane Detailing.",
+  description: "Terms for using fastlanedetailing.net and booking with Fast Lane Detailing.",
   path: "/terms",
 });
 

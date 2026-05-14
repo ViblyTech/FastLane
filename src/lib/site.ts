@@ -27,7 +27,7 @@ export const site = {
     "detailing Bend Oregon",
     "Fast Lane Detailing",
   ],
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://fastlanedetailingbend.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.fastlanedetailing.net",
   phone: "(541) 640-0612",
   phoneE164: "+15416400612",
   founded: "2024",

@@ -63,7 +63,7 @@ export async function POST(req: Request) {
     location: payload.location ?? "",
     notes: payload.notes ?? "",
     submittedAt,
-    source: "fastlanedetailingbend.com",
+    source: "fastlanedetailing.net",
   };
 
   // Fire Zapier webhook in parallel — non-blocking, errors logged but do not
