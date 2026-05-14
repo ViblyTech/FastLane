@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/metadata";
-import { faqPageSchema, howToProcessSchema } from "@/lib/schema";
+import { faqPageSchema, howToProcessSchema, homePageSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 import { ServiceCard } from "@/components/ServiceCard";
 import { QuoteForm } from "@/components/QuoteForm";
@@ -34,7 +34,7 @@ export default function HomePage() {
   const pngHref = customLogoHref();
   return (
     <>
-      <JsonLd data={[howToProcessSchema(), faqPageSchema([...faqs])]} />
+      <JsonLd data={[homePageSchema(), howToProcessSchema(), faqPageSchema([...faqs])]} />
       <Hero pngHref={pngHref} />
       <TrustLine />
       <Services />
@@ -95,7 +95,7 @@ function Hero({ pngHref }: { pngHref?: string }) {
 
         <Reveal delay={140}>
           <h1
-            className="mt-10 font-[var(--font-display)]"
+            className="hero-headline mt-10 font-[var(--font-display)]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             <span className="block text-[clamp(3.25rem,13vw,9rem)] uppercase leading-[0.9] tracking-[0.01em]">
@@ -115,7 +115,7 @@ function Hero({ pngHref }: { pngHref?: string }) {
         </Reveal>
 
         <Reveal delay={300}>
-          <p className="mx-auto mt-8 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
+          <p className="hero-subhead mx-auto mt-8 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
             Your go-to for car detailing, ceramic coating, and paint correction in Bend, Oregon.
           </p>
         </Reveal>
@@ -129,7 +129,7 @@ function Hero({ pngHref }: { pngHref?: string }) {
             >
               Call now
             </a>
-            <p className="flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-white/55">
+            <p className="hero-trust flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-white/55">
               <span className="text-white">{site.rating.value.toFixed(1)} ★</span>
               <span className="h-px w-4 bg-white/25" aria-hidden="true" />
               <span>{site.rating.count}+ Google reviews</span>

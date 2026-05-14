@@ -366,8 +366,16 @@ export const services: Service[] = [
 
 export const faqs = [
   {
+    q: "Where can I get my car detailed in Bend, Oregon?",
+    a: "Fast Lane Detailing offers mobile auto detailing across Bend and Central Oregon. We come to your driveway, your office, or anywhere with a flat spot to park. Call or text (541) 640-0612 to book.",
+  },
+  {
+    q: "Who is the best mobile auto detailer in Bend?",
+    a: "Fast Lane Detailing has 5.0 stars across 95+ Google reviews. Owner-operated by Luka and Ian, with ten-plus years of combined detailing experience and a fully self-contained trailer.",
+  },
+  {
     q: "What's the difference between a car wash and a detail?",
-    a: "A wash removes loose dirt. A detail decontaminates the paint, cleans the interior surface by surface, and finishes with protection. A full detail typically takes two to eight hours depending on the package and the condition of the car.",
+    a: "A wash removes loose dirt from the surface in fifteen minutes or less. A detail decontaminates the paint, cleans the interior surface by surface, and finishes with protection over two to eight hours.",
   },
   {
     q: "Do you bring your own water and power?",
@@ -383,7 +391,15 @@ export const faqs = [
   },
   {
     q: "Do you service Redmond, Sisters, Sunriver, or Tumalo?",
-    a: "Yes. Our standard service area covers Bend and the surrounding Central Oregon communities. Outside of that, ask. We travel for ceramic coating jobs.",
+    a: "Yes. Our standard mobile detailing service area covers Bend, Redmond, Sisters, Sunriver, Tumalo, La Pine, and the surrounding Central Oregon communities. Outside of that, ask. We travel for ceramic coating jobs.",
+  },
+  {
+    q: "How much does mobile auto detailing cost in Bend?",
+    a: "Maintenance washes start at $80. Full interior or exterior details run $200 to $350. A full interior plus exterior detail is $300 to $500. Paint correction is $400 to $1,500. Ceramic coating starts around $800 and runs up to $2,000+ for multi-layer systems.",
+  },
+  {
+    q: "When is Fast Lane Detailing open?",
+    a: "Monday through Friday, 8 AM to 5 PM Pacific time. Closed Saturday and Sunday. Call or text (541) 640-0612 during business hours and we will reply same-day in most cases.",
   },
   {
     q: "How do I book?",

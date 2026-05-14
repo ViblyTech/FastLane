@@ -25,11 +25,19 @@ export async function generateMetadata(
   const { slug } = await params;
   const article = findArticle(slug);
   if (!article) return {};
+  const author = team.find((t) => t.slug === article.author);
   return buildMetadata({
     title: article.title,
     description: article.excerpt,
     path: `/blog/${article.slug}`,
     keywords: article.keywords,
+    article: {
+      publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt,
+      authors: author ? [author.name] : undefined,
+      section: "Auto Detailing",
+      tags: article.keywords,
+    },
   });
 }
 

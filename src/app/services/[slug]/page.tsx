@@ -8,7 +8,12 @@ import { CallToAction } from "@/components/CallToAction";
 import { QuoteForm } from "@/components/QuoteForm";
 import { services, site } from "@/lib/site";
 import { articlesByService } from "@/lib/blog";
-import { serviceSchema, faqPageSchema, breadcrumbSchema } from "@/lib/schema";
+import {
+  serviceSchema,
+  faqPageSchema,
+  breadcrumbSchema,
+  servicePageSchema,
+} from "@/lib/schema";
 
 type Params = { slug: string };
 
@@ -44,6 +49,7 @@ export default async function ServiceDetail(
     <>
       <JsonLd
         data={[
+          servicePageSchema(service),
           serviceSchema(service),
           breadcrumbSchema([
             { name: "Home", url: site.url },
@@ -63,10 +69,44 @@ export default async function ServiceDetail(
 
       <section className="container-page pb-12 pt-12 sm:pt-16">
         <div className="eyebrow">{service.startingAt}</div>
-        <h1 className="text-h1 mt-4 max-w-3xl">
+        <h1 className="service-headline text-h1 mt-4 max-w-3xl">
           {service.name} in Bend, OR.
         </h1>
-        <p className="mt-6 max-w-3xl text-lg text-[var(--color-fg-muted)]">{service.intro}</p>
+        <p className="service-intro mt-6 max-w-3xl text-lg text-[var(--color-fg-muted)]">
+          {service.intro}
+        </p>
+
+        <aside
+          className="service-quick-answer mt-10 max-w-3xl rounded-card border border-[var(--color-line-soft)] bg-[var(--color-surface)] p-6"
+          aria-label="Quick answer"
+        >
+          <div className="eyebrow text-[var(--color-fg-muted)]">Quick answer</div>
+          <dl className="mt-4 grid gap-4 sm:grid-cols-3">
+            <div>
+              <dt className="eyebrow">Service</dt>
+              <dd className="mt-1 text-base font-semibold">{service.name}</dd>
+            </div>
+            <div>
+              <dt className="eyebrow">Typical time</dt>
+              <dd className="mt-1 text-base font-semibold">{service.time}</dd>
+            </div>
+            <div>
+              <dt className="eyebrow">Pricing</dt>
+              <dd className="mt-1 text-base font-semibold">{service.startingAt}</dd>
+            </div>
+          </dl>
+          <p className="mt-5 text-sm text-[var(--color-fg-muted)]">
+            Serving Bend, Redmond, Sisters, Sunriver, Tumalo, and La Pine. Call or text{" "}
+            <a
+              href={`tel:${site.phoneE164}`}
+              className="text-[var(--color-fg)] underline underline-offset-4"
+            >
+              {site.phone}
+            </a>{" "}
+            to book.
+          </p>
+        </aside>
+
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <Link href="/#quote" className="cta">
             Book this service

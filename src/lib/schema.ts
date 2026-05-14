@@ -88,11 +88,65 @@ export function localBusinessSchema() {
         url: `${site.url}/services/${s.slug}`,
       },
     })),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Fast Lane Detailing Services",
+      itemListElement: services.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.name,
+          description: s.short,
+          url: `${site.url}/services/${s.slug}`,
+          serviceType: s.name,
+          provider: { "@id": BUSINESS_ID },
+        },
+      })),
+    },
     founder: team.map((t) => ({
       "@type": "Person",
       name: t.name,
       jobTitle: t.role,
     })),
+  };
+}
+
+export function homePageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${site.url}/#webpage`,
+    url: site.url,
+    name: `${site.name} — Mobile Auto Detailing Bend, OR`,
+    description: site.description,
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": BUSINESS_ID },
+    primaryImageOfPage: `${site.url}/og.png`,
+    inLanguage: "en-US",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".hero-headline", ".hero-subhead", ".hero-trust"],
+    },
+  };
+}
+
+export function servicePageSchema(service: Service) {
+  const url = `${site.url}/services/${service.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: service.metaTitle,
+    description: service.metaDescription,
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": `${url}#service` },
+    primaryImageOfPage: `${site.url}/og.png`,
+    inLanguage: "en-US",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".service-headline", ".service-intro", ".service-quick-answer"],
+    },
   };
 }
 
