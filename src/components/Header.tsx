@@ -28,7 +28,7 @@ export function Header() {
           href="/"
           aria-label={`${site.name} home`}
           prefetch
-          className="relative z-10 block h-12 sm:h-14"
+          className="relative z-10 block h-16 sm:h-20"
         >
           <LogoMark pngHref={pngHref} priority />
         </Link>
