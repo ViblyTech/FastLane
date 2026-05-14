@@ -8,6 +8,9 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { QuoteForm } from "@/components/QuoteForm";
 import { ReviewsBand } from "@/components/ReviewsBand";
 import { Reveal } from "@/components/Reveal";
+import { Counter } from "@/components/Counter";
+import { MagneticButton } from "@/components/MagneticButton";
+import { Stagger, StaggerItem } from "@/components/Stagger";
 import { SectionHeader } from "@/components/SectionHeader";
 import { customLogoHref } from "@/lib/logo";
 import { site, services, faqs } from "@/lib/site";
@@ -122,17 +125,26 @@ function Hero({ pngHref }: { pngHref?: string }) {
 
         <Reveal delay={420}>
           <div className="mt-12 flex flex-col items-center gap-6">
-            <a
+            <MagneticButton
               href={`tel:${site.phoneE164}`}
               className="hero-cta"
               data-event="cta_call_click"
+              strength={0.2}
             >
               Call now
-            </a>
+            </MagneticButton>
             <p className="hero-trust flex items-center gap-2 text-[0.7rem] uppercase tracking-[0.22em] text-white/55">
-              <span className="text-white">{site.rating.value.toFixed(1)} ★</span>
+              <Counter
+                to={site.rating.value}
+                decimals={1}
+                suffix=" ★"
+                className="text-white"
+                duration={1.4}
+              />
               <span className="h-px w-4 bg-white/25" aria-hidden="true" />
-              <span>{site.rating.count}+ Google reviews</span>
+              <span>
+                <Counter to={site.rating.count} suffix="+" duration={1.8} /> Google reviews
+              </span>
             </p>
           </div>
         </Reveal>
@@ -164,16 +176,19 @@ function TrustLine() {
       className="border-y border-[var(--color-line-soft)] bg-[var(--color-canvas)]"
     >
       <div className="container-page py-6">
-        <ul className="eyebrow flex flex-wrap items-center justify-between gap-x-6 gap-y-3 text-[var(--color-fg-muted)]">
+        <Stagger
+          as="ul"
+          className="eyebrow flex flex-wrap items-center justify-between gap-x-6 gap-y-3 text-[var(--color-fg-muted)]"
+        >
           {promises.map((p, i) => (
-            <li key={p} className="flex items-center gap-6">
+            <StaggerItem key={p} as="li" className="flex items-center gap-6">
               <span>{p}</span>
               {i < promises.length - 1 ? (
                 <span className="hidden h-px w-8 bg-[var(--color-line-soft)] sm:inline-block" />
               ) : null}
-            </li>
+            </StaggerItem>
           ))}
-        </ul>
+        </Stagger>
       </div>
     </section>
   );

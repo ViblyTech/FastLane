@@ -1,61 +1,48 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
+import type { ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
   delay?: number;
   className?: string;
+  as?: "div" | "section" | "header" | "article" | "li" | "ul" | "ol";
 };
 
-export function Reveal({ children, delay = 0, className = "" }: Props) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+const variants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  shown: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 110,
+      damping: 22,
+      mass: 0.9,
+    },
+  },
+};
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+export function Reveal({ children, delay = 0, className = "", as = "div" }: Props) {
+  const reduced = useReducedMotion();
+  const MotionTag = motion[as] as typeof motion.div;
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      setVisible(true);
-      return;
-    }
-
-    const el = ref.current;
-    if (!el) return;
-
-    if (typeof IntersectionObserver === "undefined") {
-      setVisible(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (entry && entry.isIntersecting) {
-          setVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0, rootMargin: "0px 0px -8% 0px" },
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  if (reduced) {
+    const Tag = as;
+    return <Tag className={className}>{children}</Tag>;
+  }
 
   return (
-    <div
-      ref={ref}
+    <MotionTag
       className={className}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(24px)",
-        transition: `opacity 800ms cubic-bezier(0.25, 1, 0.5, 1) ${delay}ms, transform 900ms cubic-bezier(0.19, 1, 0.22, 1) ${delay}ms`,
-        willChange: "transform, opacity",
-      }}
+      initial="hidden"
+      whileInView="shown"
+      viewport={{ once: true, margin: "-8% 0px -8% 0px" }}
+      variants={variants}
+      transition={{ delay: delay / 1000 }}
     >
       {children}
-    </div>
+    </MotionTag>
   );
 }
