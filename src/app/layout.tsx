@@ -67,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || site.analytics.gtm;
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
-  const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
+  const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || site.analytics.ads;
 
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable} ${display.variable}`}>
