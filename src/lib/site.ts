@@ -52,6 +52,9 @@ export const site = {
     googleReviewUrl: "https://g.page/r/fastlanedetailingbend/review",
   },
   rating: { value: 5.0, count: 95 },
+  analytics: {
+    gtm: "GTM-PLLD4KQD",
+  },
 } as const;
 
 export const team = [

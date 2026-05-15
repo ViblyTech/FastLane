@@ -65,6 +65,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID || site.analytics.gtm;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
 
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable} ${display.variable}`}>
@@ -76,13 +79,60 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <link rel="dns-prefetch" href="https://plausible.io" />
           </>
         ) : null}
+        {gtmId || gaId || adsId ? (
+          <>
+            <link
+              rel="preconnect"
+              href="https://www.googletagmanager.com"
+              crossOrigin=""
+            />
+            <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+          </>
+        ) : null}
+        {gtmId ? (
+          <Script id="gtm-init" strategy="afterInteractive">
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${gtmId}');`}
+          </Script>
+        ) : null}
       </head>
       <body>
+        {gtmId ? (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+              title="Google Tag Manager"
+            />
+          </noscript>
+        ) : null}
         <div className="scroll-progress" aria-hidden="true" />
         <JsonLd data={[organizationSchema(), localBusinessSchema(), websiteSchema()]} />
         <Header />
         <main id="main">{children}</main>
         <Footer />
+
+        {gaId || adsId ? (
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaId ?? adsId}`}
+            strategy="afterInteractive"
+          />
+        ) : null}
+        {gaId || adsId ? (
+          <Script id="gtag-init" strategy="afterInteractive">
+            {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+${gaId ? `gtag('config', '${gaId}');` : ""}
+${adsId ? `gtag('config', '${adsId}');` : ""}`}
+          </Script>
+        ) : null}
+
         {plausibleDomain ? (
           <Script
             defer

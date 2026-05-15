@@ -2,13 +2,17 @@ import type { NextConfig } from "next";
 
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
+const googleTagSources =
+  "https://www.googletagmanager.com https://www.google-analytics.com https://*.googletagmanager.com https://*.google-analytics.com https://www.googleadservices.com https://*.g.doubleclick.net";
+
 const cspDirectives = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://plausible.io",
+  `script-src 'self' 'unsafe-inline' https://plausible.io ${googleTagSources}`,
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob:",
+  `img-src 'self' data: blob: ${googleTagSources}`,
   "font-src 'self' data:",
-  `connect-src 'self' ${plausibleDomain ? "https://plausible.io" : ""}`.trim(),
+  `connect-src 'self' ${plausibleDomain ? "https://plausible.io" : ""} ${googleTagSources}`.trim(),
+  "frame-src 'self' https://www.googletagmanager.com https://td.doubleclick.net",
   "frame-ancestors 'none'",
   "form-action 'self'",
   "base-uri 'self'",
