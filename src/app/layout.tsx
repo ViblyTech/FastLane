@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono, Bebas_Neue } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import { CallConversion } from "@/components/CallConversion";
 import { localBusinessSchema, websiteSchema, organizationSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -113,6 +114,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         ) : null}
         <div className="scroll-progress" aria-hidden="true" />
         <JsonLd data={[organizationSchema(), localBusinessSchema(), websiteSchema()]} />
+        <CallConversion />
         <Header />
         <main id="main">{children}</main>
         <Footer />
