@@ -105,7 +105,7 @@ function Hero({ pngHref }: { pngHref?: string }) {
               Bend Oregon
             </span>
             <span className="hero-outline mt-1 block text-[clamp(2.75rem,11vw,7.5rem)] uppercase leading-[0.9] tracking-[0.01em]">
-              #1 Auto Detailer
+              Top-Rated Auto Detailer
             </span>
           </h1>
         </Reveal>
