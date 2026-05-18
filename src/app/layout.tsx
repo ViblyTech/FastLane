@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { CallConversion } from "@/components/CallConversion";
+import { ConsentBanner } from "@/components/ConsentBanner";
 import { localBusinessSchema, websiteSchema, organizationSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -90,6 +91,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <link rel="dns-prefetch" href="https://www.google-analytics.com" />
           </>
         ) : null}
+        {gtmId || gaId || adsId ? (
+          <Script id="consent-default" strategy="beforeInteractive">
+            {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+window.gtag = window.gtag || gtag;
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  analytics_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  functionality_storage: 'granted',
+  security_storage: 'granted',
+  wait_for_update: 500
+});
+try {
+  var s = window.localStorage && window.localStorage.getItem('fastlane-consent-v1');
+  if (s === 'granted') {
+    gtag('consent', 'update', {
+      ad_storage: 'granted',
+      analytics_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted'
+    });
+  }
+} catch (e) {}`}
+          </Script>
+        ) : null}
         {gtmId ? (
           <Script id="gtm-init" strategy="afterInteractive">
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -143,6 +171,7 @@ ${adsId ? `gtag('config', '${adsId}');` : ""}`}
             strategy="afterInteractive"
           />
         ) : null}
+        <ConsentBanner />
       </body>
     </html>
   );
