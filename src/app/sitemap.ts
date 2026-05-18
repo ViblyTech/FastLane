@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/lib/site";
+import { articles } from "@/lib/blog";
 
 // Hardcoded canonical origin so the sitemap always matches the property
 // registered in Google Search Console, independent of NEXT_PUBLIC_SITE_URL.
@@ -28,6 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/reviews": "weekly",
     "/service-area": "monthly",
     "/faq": "monthly",
+    "/blog": "weekly",
   };
 
   const staticPaths = [
@@ -39,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/service-area",
     "/contact",
     "/faq",
+    "/blog",
     "/privacy",
     "/terms",
     "/accessibility",
@@ -59,7 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const articleEntries = articles.map((a) => ({
-    url: `${site.url}/blog/${a.slug}`,
+    url: `${ORIGIN}/blog/${a.slug}`,
     lastModified: new Date(a.updatedAt),
     changeFrequency: "monthly" as const,
     priority: 0.75,

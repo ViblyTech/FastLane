@@ -56,10 +56,6 @@ export const site = {
     gtm: "GTM-PLLD4KQD",
     ads: "AW-18075280930",
   },
-  rating: { value: 5.0, count: 50 },
-  analytics: {
-    gtm: "GTM-PLLD4KQD",
-  },
 } as const;
 
 export const team = [
