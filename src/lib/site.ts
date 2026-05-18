@@ -55,6 +55,11 @@ export const site = {
   analytics: {
     gtm: "GTM-PLLD4KQD",
     ads: "AW-18075280930",
+    // Phone-call conversion target (AW-CONVERSION_ID/LABEL) used by
+    // Google Ads call-tracking phone-number replacement. Fired via a
+    // gtag('config', target, { phone_conversion_number }) call after
+    // the base AW tag loads.
+    adsPhoneConversion: "AW-18075280930/bD4QCL6hu68cEKLM-6pD",
   },
 } as const;
 
