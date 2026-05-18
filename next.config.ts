@@ -2,17 +2,48 @@ import type { NextConfig } from "next";
 
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 
-const googleTagSources =
-  "https://www.googletagmanager.com https://www.google-analytics.com https://*.googletagmanager.com https://*.google-analytics.com https://www.googleadservices.com https://*.g.doubleclick.net";
+// Per Google Tag Platform CSP guidance:
+// https://developers.google.com/tag-platform/security/guides/csp
+// Covers GTM, GA4, Google Ads conversion measurement, Floodlight, and
+// Consent Mode v2 messaging frames.
+const googleScriptSrc = [
+  "https://*.googletagmanager.com",
+  "https://tagmanager.google.com",
+].join(" ");
+
+const googleImgSrc = [
+  "https://*.google-analytics.com",
+  "https://*.analytics.google.com",
+  "https://*.googletagmanager.com",
+  "https://*.g.doubleclick.net",
+  "https://*.google.com",
+  "https://*.googleadservices.com",
+].join(" ");
+
+const googleConnectSrc = [
+  "https://*.google-analytics.com",
+  "https://*.analytics.google.com",
+  "https://*.googletagmanager.com",
+  "https://*.g.doubleclick.net",
+  "https://*.google.com",
+  "https://*.googleadservices.com",
+].join(" ");
+
+const googleFrameSrc = [
+  "https://www.googletagmanager.com",
+  "https://td.doubleclick.net",
+  "https://bid.g.doubleclick.net",
+  "https://*.fundingchoicesmessages.google.com",
+].join(" ");
 
 const cspDirectives = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' https://plausible.io ${googleTagSources}`,
+  `script-src 'self' 'unsafe-inline' https://plausible.io ${googleScriptSrc}`,
   "style-src 'self' 'unsafe-inline'",
-  `img-src 'self' data: blob: ${googleTagSources}`,
+  `img-src 'self' data: blob: ${googleImgSrc}`,
   "font-src 'self' data:",
-  `connect-src 'self' ${plausibleDomain ? "https://plausible.io" : ""} ${googleTagSources}`.trim(),
-  "frame-src 'self' https://www.googletagmanager.com https://td.doubleclick.net",
+  `connect-src 'self' ${plausibleDomain ? "https://plausible.io" : ""} ${googleConnectSrc}`.trim(),
+  `frame-src 'self' ${googleFrameSrc}`,
   "frame-ancestors 'none'",
   "form-action 'self'",
   "base-uri 'self'",
