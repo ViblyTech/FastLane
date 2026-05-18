@@ -1,12 +1,15 @@
 import type { MetadataRoute } from "next";
-import { site, services } from "@/lib/site";
-import { articles } from "@/lib/blog";
+import { services } from "@/lib/site";
+
+// Hardcoded canonical origin so the sitemap always matches the property
+// registered in Google Search Console, independent of NEXT_PUBLIC_SITE_URL.
+const ORIGIN = "https://www.fastlanedetailing.net";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   const priorityMap: Record<string, number> = {
-    "": 1.0,
+    "/": 1.0,
     "/services": 0.9,
     "/pricing": 0.9,
     "/contact": 0.9,
@@ -17,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   };
 
   const changefreqMap: Record<string, MetadataRoute.Sitemap[number]["changeFrequency"]> = {
-    "": "weekly",
+    "/": "weekly",
     "/services": "weekly",
     "/pricing": "monthly",
     "/contact": "monthly",
@@ -28,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   };
 
   const staticPaths = [
-    "",
+    "/",
     "/services",
     "/pricing",
     "/about",
@@ -42,14 +45,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const staticEntries = staticPaths.map((path) => ({
-    url: `${site.url}${path}`,
+    url: path === "/" ? `${ORIGIN}/` : `${ORIGIN}${path}`,
     lastModified: now,
     changeFrequency: changefreqMap[path] ?? "monthly",
     priority: priorityMap[path] ?? 0.5,
   }));
 
   const serviceEntries = services.map((s) => ({
-    url: `${site.url}/services/${s.slug}`,
+    url: `${ORIGIN}/services/${s.slug}`,
     lastModified: now,
     changeFrequency: "monthly" as const,
     priority: 0.85,

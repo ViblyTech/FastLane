@@ -69,19 +69,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || site.analytics.gtm;
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
-  const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || site.analytics.ads;
+  const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
 
   return (
     <html lang="en" className={`${inter.variable} ${mono.variable} ${display.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        {plausibleDomain ? (
-          <>
-            <link rel="preconnect" href="https://plausible.io" crossOrigin="" />
-            <link rel="dns-prefetch" href="https://plausible.io" />
-          </>
-        ) : null}
-        {gtmId || gaId || adsId ? (
+        {(gtmId || gaId || adsId) ? (
           <>
             <link
               rel="preconnect"
@@ -90,33 +84,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             />
             <link rel="dns-prefetch" href="https://www.google-analytics.com" />
           </>
-        ) : null}
-        {gtmId || gaId || adsId ? (
-          <Script id="consent-default" strategy="beforeInteractive">
-            {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-window.gtag = window.gtag || gtag;
-gtag('consent', 'default', {
-  ad_storage: 'denied',
-  analytics_storage: 'denied',
-  ad_user_data: 'denied',
-  ad_personalization: 'denied',
-  functionality_storage: 'granted',
-  security_storage: 'granted',
-  wait_for_update: 500
-});
-try {
-  var s = window.localStorage && window.localStorage.getItem('fastlane-consent-v1');
-  if (s === 'granted') {
-    gtag('consent', 'update', {
-      ad_storage: 'granted',
-      analytics_storage: 'granted',
-      ad_user_data: 'granted',
-      ad_personalization: 'granted'
-    });
-  }
-} catch (e) {}`}
-          </Script>
         ) : null}
         {gtmId ? (
           <Script id="gtm-init" strategy="afterInteractive">
@@ -140,7 +107,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             />
           </noscript>
         ) : null}
-        <div className="scroll-progress" aria-hidden="true" />
         <JsonLd data={[organizationSchema(), localBusinessSchema(), websiteSchema()]} />
         <CallConversion />
         <Header />
