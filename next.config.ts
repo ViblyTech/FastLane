@@ -9,6 +9,10 @@ const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 const googleScriptSrc = [
   "https://*.googletagmanager.com",
   "https://tagmanager.google.com",
+  "https://*.google-analytics.com",
+  "https://*.googleadservices.com",
+  "https://*.g.doubleclick.net",
+  "https://www.google.com",
 ].join(" ");
 
 const googleImgSrc = [
