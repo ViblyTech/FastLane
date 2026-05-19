@@ -143,6 +143,7 @@ export function servicePageSchema(service: Service) {
     about: { "@id": `${url}#service` },
     primaryImageOfPage: `${site.url}/og.png`,
     inLanguage: "en-US",
+    dateModified: service.updatedAt,
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [".service-headline", ".service-intro", ".service-quick-answer"],
@@ -380,6 +381,38 @@ export function blogCollectionSchema(items: Article[]) {
         url: `${site.url}/blog/${a.slug}`,
         name: a.title,
       })),
+    },
+  };
+}
+
+export function cityPageSchema(opts: {
+  city: string;
+  state: string;
+  slug: string;
+  metaTitle: string;
+  metaDescription: string;
+}) {
+  const url = `${site.url}/service-area/${opts.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: opts.metaTitle,
+    description: opts.metaDescription,
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": BUSINESS_ID },
+    inLanguage: "en-US",
+    significantLink: services.map((s) => `${site.url}/services/${s.slug}`),
+    mainEntity: {
+      "@type": "Place",
+      name: `${opts.city}, ${opts.state}`,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: opts.city,
+        addressRegion: opts.state,
+        addressCountry: "US",
+      },
     },
   };
 }

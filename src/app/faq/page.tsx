@@ -50,6 +50,38 @@ const extended = [
     q: "What payments do you accept?",
     a: "Cash, credit and debit cards, Venmo, and Zelle.",
   },
+  {
+    q: "Do I need to be home while you detail my car?",
+    a: "No. As long as we have access to the car and a way to confirm the appointment is yours, you can be at work, running errands, or out of town. We send updates and a final walk-around photo set if you ask.",
+  },
+  {
+    q: "What if it rains or snows on my appointment day?",
+    a: "We re-schedule for free. We will not work on paint in rain or snow because it compromises the result. If you have covered parking — a carport, garage, or driveway awning — we may still be able to run interior work.",
+  },
+  {
+    q: "Do you offer gift certificates?",
+    a: "Yes. Call or text (541) 640-0612 with the recipient's name and the service you want covered. We email the certificate within the day.",
+  },
+  {
+    q: "Can you remove tree sap, bird droppings, and bug splatter?",
+    a: "Yes. These are part of what a detail is designed for. Catching them early matters — tree sap that's been baking on hot paint for a month can etch the clear coat and may need polishing to fully remove.",
+  },
+  {
+    q: "How do I maintain a ceramic coating?",
+    a: "Hand wash every two to three weeks with a pH-neutral shampoo. Avoid automatic brush washes. Touchless washes are fine. We walk you through it at handoff.",
+  },
+  {
+    q: "Will detailing fix faded headlights?",
+    a: "Yes. Headlight restoration is part of paint correction — we polish the oxidized layer off the lens and seal it. The result lasts one to three years depending on sun exposure.",
+  },
+  {
+    q: "Do you detail leased vehicles before turn-in?",
+    a: "Yes, and we recommend it. A pre-turn-in detail almost always saves more in damage fees than it costs. Book early — most leases have a 30-day inspection window.",
+  },
+  {
+    q: "Can you detail in winter?",
+    a: "Yes, on dry days. We watch the forecast and re-schedule freely if temperatures drop below 40°F or precipitation moves in. Garage details are no-weather appointments.",
+  },
 ];
 
 export default function FaqPage() {

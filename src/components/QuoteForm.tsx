@@ -36,14 +36,37 @@ export function QuoteForm() {
       setStatus("success");
       form.reset();
       setMake("");
-      if (typeof window !== "undefined" && "plausible" in window) {
-        (window as unknown as { plausible: (e: string) => void }).plausible("quote_form_submit");
+      if (typeof window !== "undefined") {
+        const w = window as unknown as {
+          plausible?: (e: string) => void;
+          dataLayer?: Array<Record<string, unknown>>;
+          gtag?: (...args: unknown[]) => void;
+        };
+        w.plausible?.("quote_form_submit");
+        w.dataLayer = w.dataLayer ?? [];
+        w.dataLayer.push({
+          event: "quote_submit",
+          form_id: "quote",
+          service: typeof data.service === "string" ? data.service : undefined,
+          location: typeof data.location === "string" ? data.location : undefined,
+        });
+        w.gtag?.("event", "generate_lead", {
+          form_id: "quote",
+          value: 1,
+          currency: "USD",
+        });
       }
     } catch (err) {
       setStatus("error");
       setError(err instanceof Error ? err.message : "Something went wrong.");
-      if (typeof window !== "undefined" && "plausible" in window) {
-        (window as unknown as { plausible: (e: string) => void }).plausible("quote_form_error");
+      if (typeof window !== "undefined") {
+        const w = window as unknown as {
+          plausible?: (e: string) => void;
+          dataLayer?: Array<Record<string, unknown>>;
+        };
+        w.plausible?.("quote_form_error");
+        w.dataLayer = w.dataLayer ?? [];
+        w.dataLayer.push({ event: "quote_submit_error", form_id: "quote" });
       }
     }
   }

@@ -75,6 +75,16 @@ export default async function ServiceDetail(
         <p className="service-intro mt-6 max-w-3xl text-lg text-[var(--color-fg-muted)]">
           {service.intro}
         </p>
+        <p className="mt-4 text-xs text-[var(--color-fg-muted)]">
+          Last updated:{" "}
+          <time dateTime={service.updatedAt}>
+            {new Date(service.updatedAt).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </time>
+        </p>
 
         <aside
           className="service-quick-answer mt-10 max-w-3xl rounded-card border border-[var(--color-line-soft)] bg-[var(--color-surface)] p-6"
@@ -153,6 +163,27 @@ export default async function ServiceDetail(
           </div>
         </div>
       </section>
+
+      {service.details && service.details.length > 0 ? (
+        <section className="border-b border-[var(--color-line-soft)] bg-[var(--color-surface)]">
+          <div className="container-page grid gap-12 py-24 lg:grid-cols-[1fr_1.4fr]">
+            <header>
+              <div className="eyebrow">How we do it</div>
+              <h2 className="text-h2 mt-4">{service.name}, step by step.</h2>
+            </header>
+            <div className="space-y-10">
+              {service.details.map((d) => (
+                <article key={d.heading}>
+                  <h3 className="text-2xl font-bold tracking-tight">{d.heading}</h3>
+                  <p className="mt-3 max-w-prose leading-relaxed text-[var(--color-fg-muted)]">
+                    {d.body}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {service.faqs.length > 0 ? (
         <section className="border-b border-[var(--color-line-soft)]">

@@ -86,6 +86,7 @@ export type Service = {
   intro: string;
   includes: string[];
   goodFor: string[];
+  details?: Array<{ heading: string; body: string }>;
   time: string;
   startingAt: string;
   faqs: Array<{ q: string; a: string }>;
@@ -93,6 +94,7 @@ export type Service = {
   keywords: string[];
   metaTitle: string;
   metaDescription: string;
+  updatedAt: string;
 };
 
 export const services: Service[] = [
@@ -144,6 +146,7 @@ export const services: Service[] = [
     metaTitle: "Mobile Auto Detailing Bend, OR | At Your Driveway",
     metaDescription:
       "Professional mobile auto detailing in Bend, Oregon. Interior and exterior at your driveway in one appointment. Self-contained trailer. Free quotes.",
+    updatedAt: "2026-05-19",
   },
   {
     slug: "ceramic-coating",
@@ -180,6 +183,14 @@ export const services: Service[] = [
         q: "Can ceramic go on wheels and glass?",
         a: "Yes, and we recommend both. Coated wheels stay cleaner between washes and coated glass sheds rain at highway speed.",
       },
+      {
+        q: "How long do I need to wait before washing after a ceramic coat?",
+        a: "Seven days. The coating is touch-dry within an hour, but the full cure takes a week. Avoid automatic washes for the first month and never go through a brush wash for the life of the coating.",
+      },
+      {
+        q: "Is ceramic coating worth it in Bend?",
+        a: "For most owners who keep cars more than two years, yes. Mag chloride, road dust, UV at 3,600 feet, and pine sap all attack unprotected paint. A coating shrugs all of that off and makes maintenance washes faster.",
+      },
     ],
     related: ["paint-correction", "mobile-detailing"],
     keywords: [
@@ -196,6 +207,7 @@ export const services: Service[] = [
     metaTitle: "Ceramic Coating Bend, OR | 2-5 Year Paint Protection",
     metaDescription:
       "Professional ceramic coating in Bend, OR. Two to five year paint protection from a 5-star detailer. Installed at your home or office. Free consultation.",
+    updatedAt: "2026-05-19",
   },
   {
     slug: "paint-correction",
@@ -228,6 +240,14 @@ export const services: Service[] = [
         q: "Will correction take out every scratch?",
         a: "It will take out anything contained within the clear coat. Scratches you can catch a fingernail on may go through the clear, which means correction will improve them but not erase them.",
       },
+      {
+        q: "How much clear coat does correction remove?",
+        a: "A typical single-stage removes one to three microns of clear coat — well within safe limits. Modern factory clear is 40 to 60 microns thick. We measure with a paint gauge before and during correction to stay in safe territory.",
+      },
+      {
+        q: "How long does paint correction last without a coating?",
+        a: "The correction itself is permanent — what we remove is gone. But the corrected paint is still vulnerable to new defects from wash-induced scratches, road debris, and UV. A sealant holds the finish for two to four months; a ceramic coating holds it for years.",
+      },
     ],
     related: ["ceramic-coating", "mobile-detailing"],
     keywords: [
@@ -245,6 +265,7 @@ export const services: Service[] = [
     metaTitle: "Paint Correction Bend, OR | Remove Swirls & Scratches",
     metaDescription:
       "Paint correction in Bend, Oregon. Remove swirls, scratches, and oxidation with single, two, or three-stage machine polishing. Free quotes.",
+    updatedAt: "2026-05-19",
   },
   {
     slug: "interior-detailing",
@@ -274,6 +295,18 @@ export const services: Service[] = [
         q: "Can you get pet hair out of car seats?",
         a: "Yes. We use a combination of rubber tools, soft brushes, and extraction. The harder cases take an extra hour, not a different detailer.",
       },
+      {
+        q: "Will hot-water extraction shrink or fade my carpet?",
+        a: "No. We use temperature-controlled extraction and pH-balanced shampoo. Carpet and upholstery dry within a few hours and come back uniform, not blotchy.",
+      },
+      {
+        q: "Do you clean child car seats?",
+        a: "We surface-wipe the hard plastics and vacuum the harness webbing. We do not remove the harness covers — that voids most car-seat warranties. If a seat needs full disassembly, you do that part and we clean the empty space underneath.",
+      },
+      {
+        q: "Can you remove water spots from interior glass?",
+        a: "Yes. Most interior water spots come from off-gassing condensing on the windshield. We clean with a low-residue glass cleaner and microfiber, then re-polish if any film remains.",
+      },
     ],
     related: ["odor-removal", "mobile-detailing"],
     keywords: [
@@ -290,6 +323,7 @@ export const services: Service[] = [
     metaTitle: "Interior Car Detailing Bend, OR | Deep Clean Mobile Service",
     metaDescription:
       "Deep interior car detailing in Bend, Oregon. Shampoo, leather conditioning, headliner, vents, glass. Mobile service across Central Oregon.",
+    updatedAt: "2026-05-19",
   },
   {
     slug: "engine-bay",
@@ -297,17 +331,39 @@ export const services: Service[] = [
     short: "Degrease and dress. Electronics protected, finish you can show off.",
     long: "We mask sensitive electronics, degrease the bay safely, and dress plastics and hoses.",
     intro:
-      "An engine bay detail is the safe cleaning, degreasing, and dressing of everything under the hood. We mask sensitive electronics, use low-pressure water, and finish with a satin dressing on plastics and hoses. The result makes leaks visible, holds resale value, and looks the part if you ever pop the hood.",
+      "An engine bay detail is the safe cleaning, degreasing, and dressing of everything under the hood. On a clean bay, oil weeps and coolant seeps are immediately visible — you spot problems early. On a dirty one, you do not notice a leak until you smell it. We mask the electronics, work with the engine cool, use low-pressure water only, and finish with a satin dressing that does not run, drip, or fling onto components. Done a few times per year, an engine bay stays close to factory-clean for the life of the car.",
     includes: [
-      "Mask air intake, alternator, fuse box, and sensitive electronics",
-      "Cool-engine degrease and low-pressure rinse",
-      "Hand-detail of plastics, hoses, and brackets",
-      "Plastic and rubber dressing for satin finish",
+      "Cool-engine inspection — we will not work on a hot motor",
+      "Mask the air intake, alternator, fuse box, distributor, coil packs, and any open electronics",
+      "Citrus-based degreaser applied by hand to plastics, hoses, brackets, and the firewall",
+      "Hand agitation with soft brushes for delicate components and stiff brushes for caked grease",
+      "Low-pressure rinse — never high-pressure spray near sensors or connectors",
+      "Towel-dry every reachable surface to prevent water spots",
+      "Water-based plastic and rubber dressing for a satin, non-greasy finish",
+      "Final walk-around with hood up so you see exactly what was done",
     ],
     goodFor: [
-      "Pre-sale prep",
-      "Shows and meets",
-      "Anyone who actually looks under the hood",
+      "Pre-sale prep where a clean bay adds visible value",
+      "Shows, meets, and any time you'll pop the hood for someone",
+      "Owners who tow, drive dirt roads, or live east of town where dust gets in",
+      "Anyone who wants to spot a leak the day it starts, not after it's done damage",
+    ],
+    details: [
+      {
+        heading: "How we keep it safe",
+        body:
+          "The number-one failure mode in engine bay cleaning is water in a connector or on a control module. We prevent it. Every wash starts with a cool engine — if you've driven recently, we wait. With the hood open, we mask everything sensitive: the air intake, alternator, fuse box, exposed ECUs, and any open coil packs. Plastic and painter's tape, no liquid touches what is covered. We use a garden-pressure hose, never a power washer near sensors or wiring. On hybrids and EVs we mask the high-voltage warning areas and stay away from them entirely. The car drives away dry and ready.",
+      },
+      {
+        heading: "Our process, step by step",
+        body:
+          "First pass is a citrus-based degreaser applied by hand to plastics, hoses, brackets, and the firewall. It dwells for a few minutes — long enough to break the bond between grime and surface, not long enough to bleach plastics. We agitate with brushes, soft for delicate trim and stiff for caked-on grease. Then a low-pressure rinse, working top to bottom so dirty water never runs over a clean surface. We towel-dry every reachable area, remove masking, and inspect. If a hose or bracket needs a second pass, it gets one. Then the dressing.",
+      },
+      {
+        heading: "What the dressing does, and what it does not do",
+        body:
+          "We use a water-based satin dressing on plastics, rubber, and engine covers. It conditions the surface and leaves a uniform, OEM-clean appearance — not the glossy, dripping look that attracts dust within a week. We do not dress anything that gets hot enough to wick or discolor: no manifold dressing, no exhaust dressing. The result lasts months between cleanings and does not transfer to your hands or clothes when you check the dipstick.",
+      },
     ],
     time: "One to two hours",
     startingAt: "Free quote",
@@ -315,6 +371,26 @@ export const services: Service[] = [
       {
         q: "Is it safe?",
         a: "Yes, when it is done right. We cool the engine, mask the electronics, and use low pressure. We have done it on everything from old Subarus to new EVs.",
+      },
+      {
+        q: "Can you clean the engine bay on an EV or hybrid?",
+        a: "Yes. We have done engine bay details on Teslas, EUVs, and hybrids. Same approach: cool components, mask the high-voltage areas, work clean. We stay away from the orange high-voltage cables entirely.",
+      },
+      {
+        q: "How often should I get my engine bay detailed?",
+        a: "Once or twice a year for most daily drivers in Bend. More often if you tow, take dirt roads, or live east of town where the dust gets in. An annual detail keeps it from ever getting bad.",
+      },
+      {
+        q: "Will the dressing damage rubber or plastic?",
+        a: "No. We use water-based, silicone-light dressings that condition without leaving a glossy residue. They do not cause cracking and they do not attract dust like cheap aerosol dressings do.",
+      },
+      {
+        q: "Will cleaning hide leaks I should know about?",
+        a: "The opposite. A clean engine bay makes any new weep or seep obvious within a day or two. We tell you about anything we notice while we work — that is part of why people book this service.",
+      },
+      {
+        q: "Can I drive the car right after?",
+        a: "Yes. We confirm everything is dry, all masking is removed, and the engine starts and runs normally before we hand it back. No wait time.",
       },
     ],
     related: ["mobile-detailing", "paint-correction"],
@@ -325,10 +401,13 @@ export const services: Service[] = [
       "engine bay degrease Bend",
       "engine detailing Central Oregon",
       "auto engine cleaning Bend",
+      "EV engine bay cleaning Bend",
+      "show car engine detail Oregon",
     ],
     metaTitle: "Engine Bay Cleaning Bend, OR | Safe Degrease & Dress",
     metaDescription:
       "Professional engine bay cleaning in Bend, Oregon. Safe degrease with masked electronics and dressed plastics. Pre-sale prep or show finish. Free quotes.",
+    updatedAt: "2026-05-19",
   },
   {
     slug: "odor-removal",
@@ -336,25 +415,72 @@ export const services: Service[] = [
     short: "Smoke, pet, food. We treat the source, not just the smell.",
     long: "Source-based odor treatment. Interior shampoo and extraction first, then targeted treatment in the cabin and HVAC.",
     intro:
-      "Most odor problems are not a smell problem, they are a residue problem. We treat the source first with shampoo and extraction, then handle anything left in the air with targeted cabin and HVAC treatment.",
+      "Most odor problems are not a smell problem, they are a residue problem. Air fresheners and ozone alone do not work because they mask, they do not remove. We treat the source first with shampoo, extraction, and surface treatment, then handle anything left in the air with targeted cabin and HVAC treatment. The result is a car that smells like nothing — not like a different chemical that you'll get tired of by next week.",
     includes: [
-      "Full interior detail as prep",
-      "Carpet and upholstery extraction",
-      "Headliner and trim odor treatment as needed",
-      "Cabin air treatment",
-      "HVAC purge",
+      "Walk-through to identify the source: cabin, trunk, HVAC, or under-seat",
+      "Full interior detail as prep so we work on clean surfaces",
+      "Hot-water carpet and upholstery extraction with low-residue shampoo",
+      "Headliner spot treatment with vacuum recovery — no over-saturation",
+      "Trunk and cargo carpet extraction including under the spare tire",
+      "Targeted cabin surface treatment for porous trim and weatherstripping",
+      "Cabin air treatment that runs through the HVAC system with the blower on full",
+      "Equilibrate-and-recheck: close the car, let it sit, smell it again before we hand it back",
     ],
     goodFor: [
-      "Cars that were smoked in",
-      "Pet accidents and dander",
-      "Spilled food, drinks, or worse",
+      "Cars that were smoked in by a previous owner",
+      "Pet accidents, dander, and that wet-dog cabin smell",
+      "Spilled food, drinks, milk, or worse",
+      "Used-car purchases where you bought the car and the smell came with it",
+      "Anyone who has tried air fresheners, ozone, or DIY shampooing and given up",
+    ],
+    details: [
+      {
+        heading: "Step 1: find the source",
+        body:
+          "We start by walking through the car and smelling each area separately — cabin, trunk, HVAC on recirc, engine bay. Smoke residue lives in headliner foam, vent ducts, and any soft surface. Pet odor is in carpet padding, seat foam, and HVAC condensation. Food and biological spills are in carpet and the padding underneath. Knowing where the smell lives changes the treatment. A trunk smell that we treat as a cabin smell will come back in two weeks. We localize before we touch anything.",
+      },
+      {
+        heading: "Step 2: extract, do not mask",
+        body:
+          "Source-based removal means physically pulling the residue out, not covering it. We hot-water extract the carpets and seats with low-residue shampoo. Headliners get a controlled chemical treatment with immediate vacuum recovery so we never over-saturate the foam — over-saturating headliner foam is what causes sag, and we avoid it. Trunk and cargo carpets get the same extraction treatment. If the spill went deeper than the carpet — like a pet accident that soaked through to the subfloor padding — we tell you up front. Sometimes the only fix is replacing pad sections, and that is a body-shop job, not a detail.",
+      },
+      {
+        heading: "Step 3: cabin air and HVAC",
+        body:
+          "After surfaces are clean and dry, we treat the cabin air and HVAC. The treatment runs through the climate system with the blower on full, recirc off, then on. It reaches everywhere your air comes out of, including the evaporator and the ductwork behind the dash. This is the step that gets the last 10% out — the part of the smell that lives in the vents instead of the carpet.",
+      },
+      {
+        heading: "Step 4: verify before handoff",
+        body:
+          "We close the car, let it sit, and re-check after the cabin equilibrates. If the smell remains, the source was deeper than the first scan and we keep working. We are honest about what is and is not possible. Decades of indoor smoking leaves residue in foam and weatherstripping that no chemistry will fully reverse — we will tell you up front what to expect. For most cars, including most used-car smoker buys, we get to a clean baseline that holds.",
+      },
     ],
     time: "Four to eight hours",
     startingAt: "Free quote",
     faqs: [
       {
         q: "Can you really get smoke smell out?",
-        a: "In most cases, yes. Severity matters. Decades-long smoking will leave residue in foam and headliner that we will be honest about up front.",
+        a: "In most cases, yes. Severity matters. A few months of casual smoking is straightforward. Decades-long heavy smoking leaves residue in foam and headliner that we will be honest about up front — we may get to 90% and not 100%.",
+      },
+      {
+        q: "Will it come back?",
+        a: "Not if we got the source. If the smell returns within a few weeks, the source was deeper than the first treatment reached — we'll come back and treat the area we missed.",
+      },
+      {
+        q: "Do you use ozone?",
+        a: "We use ozone selectively, as a finishing step on heavy smoke cars. Ozone alone does not remove residue, which is why most ozone-only treatments fail. We treat the source first, then ozone is the last 5%.",
+      },
+      {
+        q: "Can you remove pet accident smells from the carpet padding?",
+        a: "Often, yes. Light accidents that did not soak through come out with hot-water extraction. Heavy accidents that reached the subfloor padding may need section replacement at a body shop — we will tell you which yours is after we look.",
+      },
+      {
+        q: "Will my car smell like chemicals when you are done?",
+        a: "Briefly, while it dries. Within a few hours the cabin is odor-neutral. If you have a chemical sensitivity, tell us up front and we will use a fragrance-free protocol.",
+      },
+      {
+        q: "How long should I keep windows down after?",
+        a: "An hour or two with the windows cracked is plenty. Most of the moisture is already extracted before we leave.",
       },
     ],
     related: ["interior-detailing", "mobile-detailing"],
@@ -366,10 +492,14 @@ export const services: Service[] = [
       "auto odor treatment Bend",
       "remove smoke smell from car Oregon",
       "cigarette smell removal car Bend",
+      "dog smell removal car Bend",
+      "ozone treatment car Bend",
+      "used car smoke smell removal Oregon",
     ],
     metaTitle: "Car Odor Removal Bend, OR | Smoke, Pet & Food Smell",
     metaDescription:
       "Car odor removal in Bend, Oregon. Smoke, pet, food. We treat the source, not just the smell. Source-based interior treatment from a 5-star detailer.",
+    updatedAt: "2026-05-19",
   },
 ];
 

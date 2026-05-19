@@ -38,6 +38,8 @@ const googleFrameSrc = [
   "https://td.doubleclick.net",
   "https://bid.g.doubleclick.net",
   "https://*.fundingchoicesmessages.google.com",
+  "https://www.google.com",
+  "https://maps.google.com",
 ].join(" ");
 
 const cspDirectives = [

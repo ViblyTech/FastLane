@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about": 0.7,
     "/reviews": 0.8,
     "/service-area": 0.8,
+    "/service-area/bend-or": 0.85,
+    "/service-area/redmond-or": 0.8,
+    "/service-area/sisters-or": 0.8,
     "/faq": 0.7,
   };
 
@@ -28,6 +31,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about": "monthly",
     "/reviews": "weekly",
     "/service-area": "monthly",
+    "/service-area/bend-or": "monthly",
+    "/service-area/redmond-or": "monthly",
+    "/service-area/sisters-or": "monthly",
     "/faq": "monthly",
     "/blog": "weekly",
   };
@@ -39,6 +45,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/reviews",
     "/service-area",
+    "/service-area/bend-or",
+    "/service-area/redmond-or",
+    "/service-area/sisters-or",
     "/contact",
     "/faq",
     "/blog",

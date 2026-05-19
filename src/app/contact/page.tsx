@@ -115,6 +115,43 @@ export default function ContactPage() {
           <QuoteForm />
         </div>
       </section>
+
+      <section className="border-t border-[var(--color-line-soft)] bg-[var(--color-surface)]">
+        <div className="container-page py-20">
+          <header className="mb-8 max-w-2xl">
+            <div className="eyebrow">Service area map</div>
+            <h2 className="text-h2 mt-4">Where we work.</h2>
+            <p className="mt-3 text-[var(--color-fg-muted)]">
+              Based in Bend, Oregon. Free travel inside a {site.serviceRadiusMiles}-mile radius —
+              Bend, Redmond, Sisters, Sunriver, Tumalo, and La Pine.
+            </p>
+          </header>
+          <div className="aspect-[16/9] w-full overflow-hidden rounded-card border border-[var(--color-line-soft)] bg-[var(--color-canvas)]">
+            <iframe
+              title={`Map of ${site.address.locality}, ${site.address.region} — Fast Lane Detailing service area`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(`${site.address.locality}, ${site.address.region}`)}&z=10&output=embed`}
+              width="100%"
+              height="100%"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{ border: 0 }}
+              allowFullScreen
+            />
+          </div>
+          <p className="mt-4 text-xs text-[var(--color-fg-muted)]">
+            See us on{" "}
+            <a
+              href={site.social.google}
+              target="_blank"
+              rel="noopener"
+              className="underline underline-offset-4 hover:text-[var(--color-fg)]"
+            >
+              Google Business Profile
+            </a>
+            .
+          </p>
+        </div>
+      </section>
     </>
   );
 }

@@ -10,7 +10,7 @@ import { reviews, site } from "@/lib/site";
 import { breadcrumbSchema, reviewListSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: `5-Star Reviews | Fast Lane Detailing Bend, OR | ${site.rating.count}+ Google Reviews`,
+  title: `${site.rating.value.toFixed(1)} ★ Reviews | Fast Lane Detailing Bend, OR`,
   description: `${site.rating.value.toFixed(1)} stars across ${site.rating.count}+ Google reviews. Real customer reviews of mobile auto detailing in Bend, Redmond, Sisters, Sunriver, and Central Oregon.`,
   path: "/reviews",
   keywords: [

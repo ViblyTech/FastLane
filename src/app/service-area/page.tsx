@@ -8,21 +8,24 @@ import { CallToAction } from "@/components/CallToAction";
 import { site } from "@/lib/site";
 import { breadcrumbSchema } from "@/lib/schema";
 
-const areas: Array<{ city: string; note: string; drive: string }> = [
+const areas: Array<{ city: string; note: string; drive: string; href?: string }> = [
   {
     city: "Bend",
     note: "Our home base. From the Old Mill District to NE, NW, and the Westside.",
     drive: "0 minutes",
+    href: "/service-area/bend-or",
   },
   {
     city: "Redmond",
     note: "Regular runs. SW and NE Redmond, plus Tetherow-adjacent stops out the highway.",
     drive: "20 minutes",
+    href: "/service-area/redmond-or",
   },
   {
     city: "Sisters",
     note: "Weekly mobile runs in season. Ranch and craftsman driveways no problem.",
     drive: "25 minutes",
+    href: "/service-area/sisters-or",
   },
   {
     city: "Sunriver",
@@ -42,7 +45,7 @@ const areas: Array<{ city: string; note: string; drive: string }> = [
 ];
 
 export const metadata: Metadata = buildMetadata({
-  title: "Mobile Detailing Service Area | Bend, Redmond, Sisters, Sunriver",
+  title: "Service Area | Mobile Detailing Bend, Redmond, Sisters",
   description:
     "Mobile auto detailing across Central Oregon: Bend, Redmond, Sisters, Sunriver, Tumalo, La Pine. Free travel within a 30-mile radius of Bend.",
   path: "/service-area",
@@ -112,6 +115,14 @@ export default function ServiceAreaPage() {
                 <span className="eyebrow">{a.drive}</span>
               </div>
               <p className="text-[var(--color-fg-muted)]">{a.note}</p>
+              {a.href ? (
+                <Link
+                  href={a.href}
+                  className="mt-2 text-sm text-[var(--color-fg-muted)] underline underline-offset-4 hover:text-[var(--color-accent)]"
+                >
+                  Mobile detailing in {a.city}, OR →
+                </Link>
+              ) : null}
             </article>
           ))}
         </div>
