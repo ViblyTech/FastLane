@@ -262,7 +262,7 @@ export function howToProcessSchema() {
         "@type": "HowToStep",
         position: 2,
         name: "We come to you",
-        text: "Our fully-equipped trailer arrives at your driveway, parking lot, or office. In-shop appointments available if your spot will not work.",
+        text: "Our fully self-contained trailer arrives at your driveway, parking lot, or office. If your spot will not work, we'll find a location that works for both of us.",
       },
       {
         "@type": "HowToStep",

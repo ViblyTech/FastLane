@@ -156,7 +156,7 @@ export function QuoteForm() {
       <Select label="Where" name="location" defaultLabel="Select a location">
         <option value="my-home">My driveway or home</option>
         <option value="my-office">My office or parking lot</option>
-        <option value="your-shop">Your shop</option>
+        <option value="flexible">Flexible — figure out a spot that works</option>
         <option value="not-sure">Not sure yet</option>
       </Select>
 

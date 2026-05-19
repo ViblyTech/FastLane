@@ -5,6 +5,16 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       { userAgent: "*", allow: "/", disallow: ["/api/", "/_next/"] },
+      // Google AdsBot must be explicitly allowed to crawl landing pages
+      // so Google Ads can verify destination quality and rule out
+      // malicious software. Listing them by name also protects against
+      // a future wildcard disallow accidentally blocking them.
+      { userAgent: "AdsBot-Google", allow: "/" },
+      { userAgent: "AdsBot-Google-Mobile", allow: "/" },
+      { userAgent: "AdsBot-Google-Mobile-Apps", allow: "/" },
+      { userAgent: "Mediapartners-Google", allow: "/" },
+      { userAgent: "Googlebot", allow: "/", disallow: ["/api/"] },
+      { userAgent: "Googlebot-Image", allow: "/" },
       { userAgent: "GPTBot", allow: "/", disallow: ["/api/"] },
       { userAgent: "ChatGPT-User", allow: "/", disallow: ["/api/"] },
       { userAgent: "OAI-SearchBot", allow: "/", disallow: ["/api/"] },

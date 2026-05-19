@@ -10,7 +10,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Auto Detailing Services Bend, OR | Mobile & In-Shop",
+  title: "Auto Detailing Services Bend, OR | Mobile Detailer",
   description:
     "Full menu of auto detailing services in Bend, Oregon. Mobile detailing, ceramic coating, paint correction, interior detailing, engine bay, odor removal. Free quotes.",
   path: "/services",
