@@ -13,6 +13,7 @@ const googleScriptSrc = [
   "https://*.googleadservices.com",
   "https://*.g.doubleclick.net",
   "https://www.google.com",
+  "https://www.gstatic.com",
 ].join(" ");
 
 const googleImgSrc = [
